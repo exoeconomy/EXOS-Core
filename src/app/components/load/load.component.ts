@@ -71,7 +71,7 @@ export class LoadComponent implements OnDestroy {
 
         this.networks = [
             // { id: 'main', name: 'Main' },
-            { id: 'exosmain', name: 'EXOS Node' },
+            { id: 'exosmain', name: 'EXOS Main' },
             // { id: 'citytest', name: 'City Chain (Test)' },
             // { id: 'stratistest', name: 'Stratis (Test)' },
             // { id: 'stratismain', name: 'Stratis' },
