@@ -101,7 +101,7 @@ export class GlobalService {
                     temp = value / 100;
                     return temp.toFixed(this.decimalLimit);
 
-                case 'CITY':
+                case 'EXOS':
                     temp = value / 100000000;
                     return temp.toFixed(this.decimalLimit);
                 case 'mCITY':

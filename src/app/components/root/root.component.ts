@@ -124,7 +124,7 @@ export class RootComponent implements OnInit, OnDestroy {
 
                 const dialogRef = this.dialog.open(ReportComponent, {
                     data: {
-                        title: 'Failed to start City Chain background daemon',
+                        title: 'Failed to start EXOS Node background daemon',
                         error,
                         lines: this.log.lastEntries()
                     }

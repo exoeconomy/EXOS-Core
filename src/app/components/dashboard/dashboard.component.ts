@@ -8,7 +8,6 @@ import { WalletService } from '../../services/wallet.service';
 import { CoinService } from 'src/app/services/coin.service';
 import { CoincapService } from 'src/app/services/coincap.service';
 import { Subscription } from 'rxjs';
-import { CoincapAsset } from 'src/app/classes/coincap-asset';
 import { CoinAsset } from 'src/app/classes/coin-asset';
 import { NotificationService } from 'src/app/services/notification.service';
 import { P2pb2bAsset } from 'src/app/classes/p2pb2b2-asset';
@@ -33,7 +32,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     constructor(
         private apiService: ApiService,
-        private coincap: CoincapService,
         private coin: CoinService,
         private globalService: GlobalService,
         public appState: ApplicationStateService,
@@ -48,7 +46,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.startSubscriptions();
+        // this.startSubscriptions();
     }
 
     changeTicker(change) {
@@ -69,7 +67,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     private startSubscriptions() {
 
-        this.subscriptions = [];
+        /*this.subscriptions = [];
 
         let asset = this.appState.chain;
 
@@ -122,7 +120,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
         //             this.reactivate();
         //         }
         //     ));
+        */
     }
+
 
     private mapP2pb2bToAsset(coin: P2pb2bAsset): CoinAsset {
 
@@ -141,6 +141,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         return asset;
     }
 
+    /*
     private mapCoincapToAsset(coin: CoincapAsset): CoinAsset {
 
         const asset: CoinAsset = {
@@ -157,6 +158,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
         return asset;
     }
+    */
 
     private cancelSubscriptions() {
         if (!this.subscriptions) {
@@ -172,7 +174,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     /** Called to cancel and restart all subscriptions. */
     private reactivate() {
         this.cancelSubscriptions();
-        this.startSubscriptions();
+       // this.startSubscriptions();
     }
 
     ngOnDestroy() {

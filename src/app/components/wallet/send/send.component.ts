@@ -82,7 +82,7 @@ export class SendComponent implements OnInit, OnDestroy {
         amount: {
             required: 'An amount is required.',
             pattern: 'Enter a valid transaction amount. Only positive numbers and no more than 8 decimals are allowed.',
-            min: 'The amount has to be more or equal to 0.00001 City.',
+            min: 'The amount has to be more or equal to 0.00001 EXOS.',
             max: 'The total transaction amount exceeds your available balance.'
         },
         fee: {

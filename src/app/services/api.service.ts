@@ -35,7 +35,7 @@ export class ApiService {
     private daemon;
 
     public apiUrl: string;
-    public apiVersion = 'v2.0-dev'; // This will change into "v1.0-city" in a future update to the City Chain daemon.
+    public apiVersion = 'v2.0-dev'; // This will change into "v1.0-city" in a future update to the EXOS Core daemon.
     public genesisDate: Date;
     public apiPort: number;
 
@@ -82,10 +82,10 @@ export class ApiService {
 
                 if (this.daemon !== 'OK') {
                     this.notifications.add({
-                        title: 'City Chain background error',
-                        hint: 'Messages from the background process received in City Hub',
+                        title: 'EXOS Core background error',
+                        hint: 'Messages from the background process received in EXOS Core',
                         message: this.daemon,
-                        icon: (this.daemon.indexOf('City Hub was started in development mode') > -1) ? 'build' : 'warning'
+                        icon: (this.daemon.indexOf('EXOS Core was started in development mode') > -1) ? 'build' : 'warning'
                     });
                     // this.snackBar.open(this.daemon, null, { duration: 7000 });
                 }
@@ -433,7 +433,7 @@ export class ApiService {
         });
 
         return this.http
-            .get(this.apiUrl + '/wallet/firstaddress', { headers: this.headers, params: search })
+            .get(this.apiUrl + '/wallet/addresses', { headers: this.headers, params: search })
             .pipe(catchError(this.handleError.bind(this)))
             .pipe(map((response: Response) => response));
     }
@@ -633,7 +633,7 @@ export class ApiService {
             .pipe(map((response: Response) => response));
     }
 
-    /** Use this to handle error in the initial startup (wallet/files) of City Hub. */
+    /** Use this to handle error in the initial startup (wallet/files) of EXOS Core. */
     handleInitialError(error: HttpErrorResponse | any) {
         // Only show snackbar errors when we have connected. Initially we will receive some errors due to aggresive
         // attempts at connecting to the node.
@@ -671,7 +671,7 @@ export class ApiService {
 
         this.notifications.add({
             title: 'Communication error',
-            hint: 'These types of errors are not uncommon, happens when there is issues communicating between City Hub and City Chain background process',
+            hint: 'These types of errors are not uncommon, happens when there is issues communicating between EXOS Core and EXOS Core background process',
             message: errorMessage,
             icon: 'warning'
         });

@@ -1,12 +1,12 @@
 name: Pull Request
 
-on: 
+on:
   pull_request:
     branches:
       - master
 
 jobs:
-  
+
   buildAndTest:
 
     strategy:
@@ -30,10 +30,10 @@ jobs:
       fail-fast: false
 
     runs-on: ${{ matrix.os }}
-    
+
     env:
-      PROJECT_NAME: 'City.Chain'
-      DAEMON: '1.0.25'
+      PROJECT_NAME: 'OpenExo.Node'
+      DAEMON: '1.0.18'
       ARCH: 'x64'
 
     steps:
@@ -58,18 +58,18 @@ jobs:
         sudo apt install snapd
         sudo snap install --classic snapcraft
 
-    - name: Download City Chain
+    - name: Download OpenExo Node
       shell: pwsh
       run: |
         echo ${env:PATH}
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        $url = "https://github.com/CityChainFoundation/city-chain/releases/download/v${{ env.DAEMON }}/City.Chain-${{ env.DAEMON }}-${{ matrix.platform }}-${{ env.ARCH }}${{ matrix.extension }}"
+        $url = "https://github.com/block-core/blockcore-nodes/releases/download/${{ env.DAEMON }}/EXOS-${{ env.DAEMON }}-${{ matrix.platform }}-${{ env.ARCH }}${{ matrix.extension }}"
         $output = Join-Path -Path "./" -ChildPath "daemon${{ matrix.extension }}"
         Write-Output "Url: $url"
         Write-Output "Path: $output"
         $start_time = Get-Date
         (New-Object System.Net.WebClient).DownloadFile($url, $output)
-        Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)" 
+        Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
 
     - name: Unpack (Windows)
       if: matrix.os == 'windows-latest'

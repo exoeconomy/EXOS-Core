@@ -13,15 +13,12 @@ export class AppModes {
     available: AppMode[] = [{
         id: 'basic',
         name: 'Basic',
-        features: ['dashboard', 'wallet', 'merchants', 'settings', 'logout']
-    }, {
-        id: 'advanced',
-        name: 'Advanced',
-        features: ['dashboard', 'wallet', 'history', 'merchants', 'settings', 'logout', 'staking']
-    }, {
+        features: ['dashboard', 'wallet', 'settings', 'logout', 'staking']
+    },
+    {
         id: 'experimental',
         name: 'Experimental',
-        features: ['dashboard', 'wallet', 'history', 'identity', 'merchants', 'settings', 'logout', 'staking', 'hubs', 'debug']
+        features: ['dashboard', 'wallet', 'settings', 'logout', 'staking', 'debug']
     }];
 
     active: AppMode;

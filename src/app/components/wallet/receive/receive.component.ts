@@ -8,7 +8,7 @@ import { WalletService } from '../../../services/wallet.service';
 import { Logger } from '../../../services/logger.service';
 import * as bip32 from 'bip32';
 import * as city from 'city-lib';
-import * as coininfo from 'city-coininfo';
+import * as coininfo from 'exos-coininfo';
 
 @Component({
     selector: 'app-receive',
@@ -80,7 +80,7 @@ export class ReceiveComponent implements OnInit, OnDestroy {
             .subscribe(
                 response => {
                     this.address = response;
-                    this.qrString = 'city:' + response;
+                    this.qrString = 'exos:' + response;
                 },
                 error => {
                     this.log.error('Failed to get first receive address:', error);
@@ -126,7 +126,7 @@ export class ReceiveComponent implements OnInit, OnDestroy {
             .subscribe(
                 response => {
                     this.address = response;
-                    this.qrString = 'city:' + response;
+                    this.qrString = 'exos:' + response;
                 },
                 error => {
                     this.log.error('Failed to get unused receive address:', error);

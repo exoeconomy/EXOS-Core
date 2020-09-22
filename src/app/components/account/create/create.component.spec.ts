@@ -17,7 +17,7 @@ import * as bip39 from 'bip39';
 import * as bip32 from 'bip32';
 import * as bip38 from '../../../../libs/bip38';
 import * as city from 'city-lib';
-import * as coininfo from 'city-coininfo';
+import * as coininfo from 'exos-coininfo';
 import { HDNode } from 'city-lib';
 import * as wif from 'wif';
 import Dexie from 'dexie';
@@ -49,7 +49,7 @@ describe('AppComponent', () => {
     }));
 
     it('should produce correct extpubkey', async(() => {
-        // This test is a replicate of 'ShouldProduceCorrectExtPubKey' test in C# (City Chain)
+        // This test is a replicate of 'ShouldProduceCorrectExtPubKey' test in C# (EXOS Node)
         const passphrase = '';
         const recoveryPhrase = 'mystery problem faith negative member bottom concert bundle asthma female process twelve';
         const walletPassword = 'test';
@@ -78,7 +78,7 @@ describe('AppComponent', () => {
         // Get the "root" address.
         const address = getAddress(masterNode, network);
 
-        // Ensure that the generated address is a City Chain address and not Bitcoin.
+        // Ensure that the generated address is a EXOS Node address and not Bitcoin.
         expect(address).toEqual('CQtq75vu4bAceku6FmenWBh35i1Y4oskdu');
 
         // tslint:disable-next-line

@@ -30,16 +30,16 @@ export class ApplicationStateService {
     ) {
         if (!ApplicationStateService.singletonInstance) {
 
-            this.chain = this.getParam('chain') || 'city';
+            this.chain = this.getParam('chain') || 'exos';
 
             // TODO: These properties are deprecated, refactor!
             this.mode = localStorage.getItem('Network:Mode') || 'full';
-            this.network = localStorage.getItem('Network:Network') || 'citymain';
+            this.network = localStorage.getItem('Network:Network') || 'exosmain';
             this.path = localStorage.getItem('Network:Path') || '';
 
             this.daemon = {
                 mode: localStorage.getItem('Network:Mode') || 'full',
-                network: localStorage.getItem('Network:Network') || 'citymain',
+                network: localStorage.getItem('Network:Network') || 'exosmain',
                 path: localStorage.getItem('Network:Path') || '',
                 datafolder: localStorage.getItem('Network:DataFolder') || ''
             };

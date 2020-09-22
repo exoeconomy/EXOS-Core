@@ -59,7 +59,7 @@ var settings;
 var hasDaemon = false;
 var args = process.argv.slice(1);
 var serve = args.some(function (val) { return val === '--serve'; });
-var coin = { identity: 'city', tooltip: 'City Hub' }; // To simplify third party forks and different UIs for different coins, we'll define this constant that loads different assets.
+var coin = { identity: 'exos', tooltip: 'EXOS Core' }; // To simplify third party forks and different UIs for different coins, we'll define this constant that loads different assets.
 require('electron-context-menu')({
     showInspectElement: serve
 });
@@ -89,7 +89,7 @@ electron_1.ipcMain.on('start-daemon', function (event, arg) {
     writeLog(currentChain);
     if (arg.mode === 'manual') {
         daemonState = DaemonState.Started;
-        var msg = 'City Hub was started in development mode. This requires the user to be running the daemon manually.';
+        var msg = 'EXOS Core was started in development mode. This requires the user to be running the daemon manually.';
         writeLog(msg);
         event.returnValue = msg;
     }
@@ -127,7 +127,7 @@ electron_1.ipcMain.on('reset-database', function (event, arg) {
     shutdownDaemon(function (success, error) {
         var userDataPath = electron_1.app.getPath('userData');
         var appDataFolder = path.dirname(userDataPath);
-        var dataFolder = path.join(appDataFolder, 'CityChain', 'city', arg);
+        var dataFolder = path.join(appDataFolder, 'Blockcore', 'exos', arg);
         var folderBlocks = path.join(dataFolder, 'blocks');
         var folderChain = path.join(dataFolder, 'chain');
         var folderCoinView = path.join(dataFolder, 'coinview');
@@ -147,7 +147,7 @@ electron_1.ipcMain.on('reset-database', function (event, arg) {
 electron_1.ipcMain.on('open-data-folder', function (event, arg) {
     var userDataPath = electron_1.app.getPath('userData');
     var appDataFolder = path.dirname(userDataPath);
-    var dataFolder = path.join(appDataFolder, 'CityChain', 'city', arg);
+    var dataFolder = path.join(appDataFolder, 'Blockcore', 'exos', arg);
     electron_1.shell.openPath(dataFolder);
     event.returnValue = 'OK';
 });
@@ -220,7 +220,7 @@ function createWindow() {
         frame: true,
         minWidth: 260,
         minHeight: 400,
-        title: 'City Hub',
+        title: 'EXOS Core',
         webPreferences: { webSecurity: false, nodeIntegration: true }
     });
     contents = mainWindow.webContents;
@@ -295,7 +295,7 @@ electron_1.app.on('ready', function () {
     createWindow();
 });
 electron_1.app.on('before-quit', function () {
-    writeLog('City Hub was exited.');
+    writeLog('EXOS Core was exited.');
 });
 var shutdown = function (callback) {
     writeLog('Signal a shutdown to the daemon.');
@@ -340,8 +340,8 @@ function startDaemon(chain) {
     hasDaemon = true;
     var folderPath = chain.path || getDaemonPath();
     var daemonName;
-    if (chain.identity === 'city') {
-        daemonName = 'City.Chain';
+    if (chain.identity === 'exos') {
+        daemonName = 'OpenExo.Node';
     }
     else if (chain.identity === 'stratis') {
         daemonName = 'Stratis.StratisD';
@@ -395,7 +395,6 @@ function launchDaemon(apiPath, chain) {
     commandLineArguments.push('-rpcport=' + chain.rpcPort);
     commandLineArguments.push('-apiport=' + chain.apiPort);
     commandLineArguments.push('-wsport=' + chain.wsPort);
-    commandLineArguments.push('-txindex=1'); // Required for History (Block) explorer.
     if (chain.mode === 'light') {
         commandLineArguments.push('-light');
     }
@@ -422,26 +421,26 @@ function launchDaemon(apiPath, chain) {
         });
     }
     daemonProcess.stdout.on('data', function (data) {
-        writeDebug("City Chain: " + data);
+        writeDebug("EXOS Node: " + data);
     });
     /** Exit is triggered when the process exits. */
     daemonProcess.on('exit', function (code, signal) {
-        writeLog("City Chain daemon process exited with code " + code + " and signal " + signal + " when the state was " + daemonState + ".");
+        writeLog("EXOS Node daemon process exited with code " + code + " and signal " + signal + " when the state was " + daemonState + ".");
         // There are many reasons why the daemon process can exit, we'll show details
         // in those cases we get an unexpected shutdown code and signal.
         if (daemonState === DaemonState.Changing) {
             writeLog('Daemon exit was expected, the user is changing the network mode.');
         }
         else if (daemonState === DaemonState.Starting) {
-            contents.send('daemon-error', "CRITICAL: City Chain daemon process exited during startup with code " + code + " and signal " + signal + ".");
+            contents.send('daemon-error', "CRITICAL: EXOS Node daemon process exited during startup with code " + code + " and signal " + signal + ".");
         }
         else if (daemonState === DaemonState.Started) {
-            contents.send('daemon-error', "City Chain daemon process exited manually or crashed, with code " + code + " and signal " + signal + ".");
+            contents.send('daemon-error', "EXOS Node daemon process exited manually or crashed, with code " + code + " and signal " + signal + ".");
         }
         else {
-            // This is a normal shutdown scenario, but we'll show error dialog if the exit code was not 0 (OK).   
+            // This is a normal shutdown scenario, but we'll show error dialog if the exit code was not 0 (OK).
             if (code !== 0) {
-                contents.send('daemon-error', "City Chain daemon shutdown completed, but resulted in exit code " + code + " and signal " + signal + ".");
+                contents.send('daemon-error', "EXOS Node daemon shutdown completed, but resulted in exit code " + code + " and signal " + signal + ".");
             }
             else {
                 // Check is stopping of daemon has been requested. If so, we'll notify the UI that it has completed the exit.
@@ -451,12 +450,12 @@ function launchDaemon(apiPath, chain) {
         daemonState = DaemonState.Stopped;
     });
     daemonProcess.on('error', function (code, signal) {
-        writeError("City Chain daemon process failed to start. Code " + code + " and signal " + signal + ".");
+        writeError("EXOS Node daemon process failed to start. Code " + code + " and signal " + signal + ".");
     });
 }
 function shutdownDaemon(callback) {
     if (!hasDaemon) {
-        writeLog('City Hub is in mobile mode, no daemon to shutdown.');
+        writeLog('EXOS Core is in mobile mode, no daemon to shutdown.');
         callback(true, null);
         contents.send('daemon-exited'); // Make the app shutdown.
         return;

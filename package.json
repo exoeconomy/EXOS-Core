@@ -1,21 +1,21 @@
 {
-    "name": "cityhub",
-    "version": "1.0.27",
+    "name": "exoscore",
+    "version": "1.0.1",
     "license": "MIT",
     "author": {
-        "name": "City Chain Foundation",
+        "name": "EXOS Node Foundation",
         "email": "post@city-chain.org",
         "url": "https://www.city-chain.org"
     },
-    "description": "City Hub is your hub into everything on City Chain and the Smart City Platform.",
+    "description": " ",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/CityChainFoundation/city-hub.git"
+        "url": "git+https://github.com/Fluidchains/EXOS-Core.git"
     },
     "bugs": {
-        "url": "https://github.com/CityChainFoundation/city-hub/issues"
+        "url": "https://github.com/Fluidchains/EXOS-Core/issues"
     },
-    "homepage": "https://github.com/CityChainFoundation/city-hub#readme",
+    "homepage": "https://github.com/Fluidchains/EXOS-Core#readme",
     "main": "main.js",
     "scripts": {
         "postinstall": "npm run postinstall:electron && npx electron-builder install-app-deps",
@@ -113,6 +113,7 @@
         "electron": "9.2.0",
         "electron-builder": "22.8.0",
         "electron-reload": "1.5.0",
+        "exos-coininfo": "file:/./contrib/exos-coininfo-5.1.0.tgz",
         "enhanced-resolve": "4.3.0",
         "hammerjs": "2.0.8",
         "jasmine-core": "~3.6.0",

@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private async getLocalWalletFiles() {
         try {
             // Read accounts from localStorage.
-            const db = new DatabaseStorageService('cityhub');
+            const db = new DatabaseStorageService('exoscore');
             const list = await db.wallets.toArray();
             const wallets = list.map((item) => {
                 return { id: item.name, name: item.name };
@@ -176,12 +176,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.unlocking = true;
         this.invalidPassword = false;
 
-        const coinUnit = 'CITY';
+        const coinUnit = 'EXOS';
 
         this.globalService.setWalletName(this.selectedAccount.name);
         this.storageService.setWalletName(this.selectedAccount.name, coinUnit);
 
-        this.globalService.setCoinName('City Coin');
+        this.globalService.setCoinName('EXOS');
         this.globalService.setCoinUnit(coinUnit);
 
         this.getCurrentNetwork();
@@ -199,7 +199,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     private async loadLocalWallet(walletLoad: WalletLoad) {
-        const db = new DatabaseStorageService('cityhub');
+        const db = new DatabaseStorageService('exoscore');
         const wallet = await db.wallets.get({ name: walletLoad.name });
         const self = this;
 
@@ -254,9 +254,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
                     this.globalService.setNetwork(responseMessage.network);
 
-                    if (responseMessage.network === 'CityMain') {
-                        this.globalService.setCoinName('City');
-                        this.globalService.setCoinUnit('CITY');
+                    if (responseMessage.network === 'EXOSMain') {
+                        this.globalService.setCoinName('EXOS');
+                        this.globalService.setCoinUnit('EXOS');
                     } else if (responseMessage.network === 'CityTest') {
                         this.globalService.setCoinName('CityTest');
                         this.globalService.setCoinUnit('TCITY');

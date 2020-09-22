@@ -81,7 +81,7 @@ import { HubService } from './services/hub.service';
         // ChainService,
         ElectronService,
         // GlobalService,
-        { provide: APP_TITLE, useValue: 'City Hub' },
+        { provide: APP_TITLE, useValue: 'EXOS Core' },
     ],
     bootstrap: [RootComponent]
 })

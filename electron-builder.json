@@ -1,17 +1,17 @@
 {
-    "appId": "org.city-chain.hub",
-    "artifactName": "City.Hub-${version}-${os}-${arch}.${ext}",
-    "productName": "City Hub",
+    "appId": "org.exos-core",
+    "artifactName": "EXOS-Core-${version}-${os}-${arch}.${ext}",
+    "productName": "EXOS Core",
     "asar": true,
     "publish": [
         {
             "provider": "github",
-            "owner": "CityChainFoundation",
-            "repo": "city-hub"
+            "owner": "Fluidchains",
+            "repo": "EXOS-Core"
         }
     ],
     "releaseInfo": {
-        "releaseName": "City Hub"
+        "releaseName": "EXOS Core"
     },
     "files": [
         "dist/**",
@@ -25,14 +25,14 @@
         "target": [
             "nsis"
         ],
-        "artifactName": "City.Hub-${version}-${os}-${env.arch}.${ext}"
+        "artifactName": "EXOS.Core-${version}-${os}-${env.arch}.${ext}"
     },
     "linux": {
         "icon": "dist/assets/images/",
         "target": [
             "AppImage:x64"
         ],
-        "synopsis": "City Hub is your hub into everything on City Chain and the Smart City Platform.",
+        "synopsis": " ",
         "category": "Utility"
     },
     "mac": {
@@ -62,7 +62,7 @@
         "perMachine": true,
         "allowToChangeInstallationDirectory": true,
         "deleteAppDataOnUninstall": true,
-        "guid": "42ba105c-858b-41cc-94bc-2b8c5ee5c6b4",
+        "guid": "4766ac7c-fc9f-11ea-adc1-0242ac120002",
         "createDesktopShortcut": true,
         "createStartMenuShortcut": true,
         "license": "dist/assets/license.txt"
@@ -72,7 +72,7 @@
     },
     "extraResources": [
         "daemon/**/*",
-        "dist/assets/city/icon-tray.ico",
+        "dist/assets/exos/icon-tray.ico",
         "dist/assets/license.txt"
     ]
 }
