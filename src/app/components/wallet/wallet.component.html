@@ -6,7 +6,7 @@
         <mat-card-subtitle>The balance of: {{wallet.walletName}}</mat-card-subtitle>
         <mat-card-content>
             <p>
-                <strong>{{ (wallet.confirmedBalance | coinNotation) || (0 | coinNotation) }}</strong>
+                <strong>{{ (wallet.confirmedBalance | coinNotation | number: '1.0-8') || (0 | coinNotation) }}</strong>
                 <small class="text-uppercase"> {{ wallet.coinUnit }}</small>
 
                 <span *ngIf="walletStatistics">
@@ -49,7 +49,7 @@
             </p>
         </mat-card-content>
     </mat-card> -->
-    
+
     <!-- <mat-card>
         <mat-card-title>Details</mat-card-title>
         <mat-card-content>
@@ -61,7 +61,7 @@
         </mat-card-content>
     </mat-card> -->
 
-    <!-- 
+    <!--
     <mat-card class="wallet-split-card">
         <div class="wallet-split-left">
             <h2 class="mat-h2">Balance</h2>
@@ -115,14 +115,18 @@
             <ul>
                 <li *ngIf="wallet.isStarting">Waiting for staking to start...</li>
                 <li>Your weight is
-                    <strong>{{ wallet.stakingWeight | coinNotation | number: '1.0-0' }} {{ wallet.coinUnit }}</strong>
+                    <strong>{{ wallet.stakingWeight | coinNotation | number: '1.0-8' }} {{ wallet.coinUnit }}</strong>
                 </li>
                 <li>Network weight is
-                    <strong>{{ wallet.netStakingWeight | coinNotation | number: '1.0-0' }} {{ wallet.coinUnit }}</strong>
+                    <strong>{{ wallet.netStakingWeight | coinNotation | number: '1.0-2' }} {{ wallet.coinUnit }}</strong>
                 </li>
-                <li class="mt-2">Expected reward time is:</li>
-                <li>
+                <li class="mt-2">Expected reward time is:
                     <strong>{{ wallet.dateTime }}</strong>
+                </li>
+                <li>
+                    % Network:
+                    <strong>{{ wallet.percentNetwork | number: "1.0-2"}}%</strong>
+
                 </li>
             </ul>
 
