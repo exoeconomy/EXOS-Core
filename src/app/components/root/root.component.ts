@@ -187,6 +187,16 @@ export class RootComponent implements OnInit, OnDestroy {
         });
     }
 
+    get StakingStatus(): string {
+        if (this.walletService.stakingEnabled){
+            const walletHeight = ((this.walletService.stakingWeight / 100000000).toLocaleString('en-US', {maximumFractionDigits: 8 }));
+            const networkWeight = ((this.walletService.netStakingWeight / 100000000).toLocaleString('en-US', { maximumFractionDigits: 2 }));
+            const percertNetwork = ((this.walletService.stakingWeight / this.walletService.netStakingWeight) * 100).toLocaleString('en-US', { maximumFractionDigits: 2 });
+
+            return `Staking: Enable \nWeight: ${walletHeight} EXOS \nNetwork weight: ${networkWeight} EXOS \n% Network: ${percertNetwork}% \nExpected reward time: ${this.walletService.dateTime} `;
+        }
+    }
+
     get identityTooltip(): string {
         if (this.identityService.identity) {
             const name = this.identityService.identity.content.name || this.identityService.identity.content.identifier;

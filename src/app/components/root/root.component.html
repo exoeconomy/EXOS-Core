@@ -126,6 +126,10 @@
         <mat-icon>cloud_off</mat-icon>
       </button> -->
 
+            <button *ngIf="StakingStatus" mat-icon-button [matTooltip]="StakingStatus" routerLink="/wallet">
+                <mat-icon>star</mat-icon>
+            </button>
+
             <button *ngIf="!appState.pageMode && !appState.handset" mat-icon-button matTooltip="Notification Center" routerLink="/notifications">
                 <mat-icon [matBadge]="notifications.countUnread" matBadgeColor="warn" matBadgeOverlap="true" [matBadgeHidden]="!notifications.anyUnread">notifications</mat-icon>
             </button>
