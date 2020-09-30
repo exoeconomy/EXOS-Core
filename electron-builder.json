@@ -1,6 +1,6 @@
 {
     "appId": "org.exos-core",
-    "artifactName": "EXOS-Core-${version}-${os}-${arch}.${ext}",
+    "artifactName": "EXOS.Core-${version}-${os}-${arch}.${ext}",
     "productName": "EXOS Core",
     "asar": true,
     "publish": [
@@ -28,7 +28,7 @@
         "artifactName": "EXOS.Core-${version}-${os}-${env.arch}.${ext}"
     },
     "linux": {
-        "icon": "dist/assets/images/",
+        "icon": "dist/assets/exos/",
         "target": [
             "AppImage:x64"
         ],
