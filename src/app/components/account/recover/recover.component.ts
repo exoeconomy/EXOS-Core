@@ -37,8 +37,8 @@ export class RecoverAccountComponent {
         accountName: new FormControl('', Validators.compose([
             Validators.required,
             Validators.minLength(1),
-            Validators.maxLength(24),
-            Validators.pattern(/^[a-zA-Z0-9]*$/)
+            Validators.maxLength(42),
+            Validators.pattern(/^[a-zA-Z0-9-_.]*$/)
         ])),
     }, PasswordValidationDirective.MatchPassword);
 
