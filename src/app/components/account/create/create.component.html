@@ -7,10 +7,10 @@
                 <strong>Make sure nobody is watching your screen.</strong>
             </p>
             <p>
-                I'll generate a random 12 word <strong>recovery phrase</strong> for you. It is very important that you remember this and keep it safe.
+                I'll generate a random 12 words <strong>recovery seed</strong> for you. It is very important that you remember this and keep it safe.
             </p>
             <p>
-                The <strong>recovery phrase</strong> can be used to restore your account in the future, on this or another device. <strong>You are responsible</strong> for keeping it safe.
+                The 12 word <strong>recovery seed</strong> can be used to restore your wallet in the future, on this or another device. <strong>You are responsible</strong> for keeping it safe.
                 Nobody can restore it for you, if you lose it.
             </p>
             <div>
@@ -18,9 +18,9 @@
                 <button mat-raised-button routerLink="/login" matStepperPrevious type="button">Cancel</button>
             </div>
         </mat-step>
-        <mat-step label="Recovery phrase" editable="true">
+        <mat-step label="Recovery seed" editable="true">
             <div>
-                <strong>Your personal recovery phrase:</strong>
+                <strong>Your personal recovery seed:</strong>
                 <div class="mnemonic">{{mnemonic}}
                     <button (click)="onPrint()" mat-icon-button title="Print your mnemonic">
                         <mat-icon aria-label="Print">print</mat-icon>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <p>
-                It is important that you remember this <strong>recovery phrase</strong> (the order is important) and save it securely. You can click the printer
+                It is important that you remember this <strong>recovery seed</strong> (the order is important) and save it securely. You can click the printer
                 icon to save as PDF or print to paper, or write it down carefully and correctly.
             </p>
             <p>
@@ -43,7 +43,7 @@
         </mat-step>
         <mat-step label="Verification" editable="true">
             <p>
-                Select the correct third word from the <strong>recovery phrase</strong>:
+                Select the correct third word from the <strong>recovery seed</strong>:
             </p>
             <div>
                 <button mat-raised-button matStepperPrevious type="button">Back</button>
@@ -78,7 +78,7 @@
             <form [formGroup]="accountPasswordForm">
                 <p>
                     Provide a password that we can use to protect your wallet when it is saved.
-                    You will be prompted to enter this passord every time your start EXOS Core.</p>
+                    You will be prompted to enter this password every time your start EXOS Core.</p>
                 <p>
                     <mat-form-field class="input-full-width">
                         <input matInput type="password" [formGroup]="accountPasswordForm" [(ngModel)]="password1" placeholder="Enter your password" name="accountPassword" formControlName="accountPassword" autocomplete="new-password">
@@ -101,11 +101,11 @@
         <mat-step label="Name" editable="true" [stepControl]="accountNameForm">
             <form [formGroup]="accountNameForm">
                 <p>
-                    You can name your account here, or keep the default:
+                    You can name your wallet here, or keep the default:
                 </p>
                 <p>
                     <mat-form-field appearance="outline">
-                        <mat-label>Account name</mat-label>
+                        <mat-label>Wallet name</mat-label>
                         <input matInput [(ngModel)]="accountName" formControlName="accountName" name="accountName" placeholder="Fill out account name">
                         <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
                         <!-- <mat-hint>This is your personal password, not the 12-word phrase. Make sure you use a password you can remember, nobody else have your password and nobody can help you recover it.</mat-hint> -->
@@ -114,7 +114,7 @@
                 <div>
                     <button mat-raised-button matStepperPrevious type="button">Back</button>
                     <button type="button" color="primary" (click)="createAccount()" matStepperNext mat-raised-button [disabled]="saving || accountNameForm.invalid">Create
-                        account
+                        wallet
                     </button>
                     <div class="spinner-container" *ngIf="saving">
                         <mat-spinner [diameter]="24"></mat-spinner>
