@@ -30,7 +30,7 @@ export class ChainService {
         if (!ChainService.singletonInstance) {
 
             this.availableChains = [
-                { name: 'EXOS', identity: 'exos', tooltip: 'EXOS Core', port: 4562, rpcPort: 4561, apiPort: 39120, wsPort: 39120, network: 'exosmain', genesisDate: new Date(2018, 4, 8) },
+                { name: 'EXOS', identity: 'exos', tooltip: 'EXOS Core', port: 4562, rpcPort: 4561, apiPort: 39120, wsPort: 39120, network: 'exosmain', genesisDate: new Date(2018, 4, 18) },
                 { name: 'EXOS Core (RegTest)', identity: 'city', tooltip: 'EXOS Core', port: 14333, rpcPort: 14334, apiPort: 14335, wsPort: 14336, network: 'cityregtest', genesisDate: new Date(2018, 9, 1) },
                 { name: 'EXOS Core (Test)', identity: 'city', tooltip: 'EXOS Core', port: 24333, rpcPort: 24334, apiPort: 24335, wsPort: 24336, network: 'citytest', genesisDate: new Date(2018, 9, 1) },
 
