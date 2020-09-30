@@ -8,7 +8,7 @@
                 <mat-card-subtitle>The balance of: {{wallet.walletName}}</mat-card-subtitle>
                 <mat-card-content>
                     <p>
-                        <strong>{{ (wallet.confirmedBalance | coinNotation) || (0 | coinNotation) }}</strong>
+                        <strong>{{ (wallet.confirmedBalance | coinNotation| number: '1.0-8') || (0 | coinNotation) }}</strong>
                         <small class="text-uppercase"> {{ wallet.coinUnit }}</small>
                     </p>
                     <ul *ngIf="wallet.unconfirmedBalance">
@@ -39,11 +39,6 @@
             </mat-card> -->
         </div>
         <div fxFlex>
-
-
-
-
-
             <mat-card class="dashboard-card">
                 <mat-card-title>Notifications ({{notifications.count}})</mat-card-title>
                 <mat-card-subtitle>Summary from your Notification Center</mat-card-subtitle>
@@ -80,6 +75,7 @@
 
             </mat-card> -->
         </div>
+
     </div>
 
     <!-- <mat-grid-list class="network-grid" gutterSize="10" [cols]="columns" #grid>
