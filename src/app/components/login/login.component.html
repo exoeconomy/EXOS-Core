@@ -3,7 +3,7 @@
 
         <div class="login-accounts" *ngIf="hasWallet">
             <mat-form-field>
-                <mat-select placeholder="Select account" [(ngModel)]="selectedAccount">
+                <mat-select placeholder="Select wallet" [(ngModel)]="selectedAccount">
                     <mat-option *ngFor="let account of accounts" [value]="account">
                         {{account.name}}
                     </mat-option>
@@ -13,14 +13,14 @@
             <span *ngIf="selectedAccount != null">
                 <br>
                 <mat-form-field appearance="outline">
-                    <mat-label>Account password</mat-label>
-                    <input matInput type="password" (keyup.enter)="unlock()" [(ngModel)]="password" placeholder="Fill out to unlock account">
+                    <mat-label>Wallet password</mat-label>
+                    <input matInput type="password" (keyup.enter)="unlock()" [(ngModel)]="password" placeholder="Fill out to unlock wallet">
                     <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
                     <!-- <mat-hint>This is your personal password, not the 12-word phrase. Make sure you use a password you can remember, nobody else have your password and nobody can help you recover it.</mat-hint> -->
                 </mat-form-field>
                 <br>
                 <button class="login-unlock-button" (click)="unlock()" [disabled]="unlocking" mat-raised-button color="primary">Unlock</button>&nbsp;
-                <button class="login-cancel-button" (click)="cancel()" mat-raised-button>Cancel</button>
+                <button class="login-cancel-button" (click)="cancel()" mat-raised-button>Create</button>
                 <br>
                 <!-- <mat-progress-bar *ngIf="unlocking && appState.isSimpleMode" mode="determinate" [value]="unlockPercentage"></mat-progress-bar>
                 <mat-spinner *ngIf="unlocking && appState.isSimpleMode"></mat-spinner> -->
