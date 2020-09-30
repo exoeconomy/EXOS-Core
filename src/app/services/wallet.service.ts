@@ -39,6 +39,7 @@ export class WalletService {
     public hasBalance = false;
     public percentSyncedNumber = 0;
     public percentSynced = '0%';
+    public percentNetwork: number;
 
     public generalInfo: GeneralInfo;
     public stakingInfo: StakingInfo;
@@ -260,6 +261,8 @@ export class WalletService {
                     this.netStakingWeight = stakingResponse.netStakeWeight;
                     this.expectedTime = stakingResponse.expectedTime;
                     this.dateTime = this.secondsToString(this.expectedTime);
+
+                    this.percentNetwork = (this.stakingWeight / this.netStakingWeight) * 100;
 
                     if (this.stakingActive) {
                         this.isStarting = false;
