@@ -111,7 +111,7 @@
         "core-js": "3.6.5",
         "dexie": "3.0.2",
         "electron": "9.2.0",
-        "electron-builder": "22.8.0",
+        "electron-builder": "22.9.1",
         "electron-reload": "1.5.0",
         "exos-coininfo": "file:/./contrib/exos-coininfo-5.1.0.tgz",
         "enhanced-resolve": "4.3.0",

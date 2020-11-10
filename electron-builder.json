@@ -28,7 +28,7 @@
         "artifactName": "EXOS.Core-${version}-${os}-${env.arch}.${ext}"
     },
     "linux": {
-        "icon": "dist/assets/images/",
+        "icon": "dist/assets/exos",
         "target": [
             "AppImage:x64"
         ],
@@ -73,7 +73,8 @@
     "extraResources": [
         "daemon/**/*",
         "dist/assets/exos/icon-tray.ico",
-        "dist/assets/license.txt",
-        "dist/assets/images/**"
+        "dist/assets/exos/icon.png",
+        "dist/assets/exos/icon.ico",
+        "dist/assets/license.txt"
     ]
 }
