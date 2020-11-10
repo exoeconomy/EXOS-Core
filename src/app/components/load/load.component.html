@@ -56,11 +56,11 @@
     <ng-template #spinner>
         <mat-spinner></mat-spinner>
         <span class="load-text">Connecting... please wait.<br><br>Release {{appState.release}}</span>
-        <span *ngIf="delayed">
+        <!-- <span *ngIf="delayed">
             <br>
             <button routerLink="/advanced" mat-raised-button>Advanced</button>&nbsp;
             <button (click)="cancel()" mat-raised-button color="primary">Cancel</button>
-        </span>
+        </span> -->
     </ng-template>
 
 </div>
