@@ -73,6 +73,7 @@
     "extraResources": [
         "daemon/**/*",
         "dist/assets/exos/icon-tray.ico",
-        "dist/assets/license.txt"
+        "dist/assets/license.txt",
+        "dist/assets/images/**"
     ]
 }
