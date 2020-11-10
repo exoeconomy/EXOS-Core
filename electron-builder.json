@@ -6,7 +6,7 @@
     "publish": [
         {
             "provider": "github",
-            "owner": "Fluidchains",
+            "owner": "FluidChains",
             "repo": "EXOS-Core"
         }
     ],
@@ -28,7 +28,7 @@
         "artifactName": "EXOS.Core-${version}-${os}-${env.arch}.${ext}"
     },
     "linux": {
-        "icon": "dist/assets/icon.ico",
+        "icon": "dist/assets/images/",
         "target": [
             "AppImage:x64"
         ],
