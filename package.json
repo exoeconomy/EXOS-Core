@@ -1,11 +1,11 @@
 {
     "name": "exoscore",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "license": "MIT",
     "author": {
-        "name": "EXOS Node Foundation",
-        "email": "post@city-chain.org",
-        "url": "https://www.city-chain.org"
+        "name": "OpenExO",
+        "email": "info@openexo.com",
+        "url": "https://www.openexo.com"
     },
     "description": " ",
     "repository": {
