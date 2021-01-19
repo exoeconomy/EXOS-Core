@@ -28,7 +28,7 @@
         "artifactName": "EXOS.Core-${version}-${os}-${env.arch}.${ext}"
     },
     "linux": {
-        "icon": "dist/assets/images/",
+        "icon": "dist/assets/images",
         "target": [
             "AppImage:x64"
         ],
