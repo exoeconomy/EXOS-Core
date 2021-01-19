@@ -10,7 +10,6 @@
 
     <p>
         <button mat-stroked-button *ngIf="!appState.isSimpleMode" (click)="openDataFolder()">Open Wallet Folder</button> &nbsp;
-        <button mat-stroked-button *ngIf="!appState.isSimpleMode" (click)="resetDatabase()">Reset Blockchain Database</button> &nbsp;
         <br><br>
         <button mat-stroked-button (click)="updateService.checkForUpdate()" [disabled]="updateService.downloading">Check for Update</button> &nbsp;
         <button mat-stroked-button *ngIf="updateService.available" [disabled]="updateService.downloading" (click)="updateService.downloadUpdate()">Download Update</button> &nbsp;
