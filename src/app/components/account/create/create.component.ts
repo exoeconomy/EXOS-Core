@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, HostBinding, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, HostBinding, OnInit, ViewChild } from '@angular/core';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -18,6 +18,7 @@ import * as city from 'city-lib';
 import { HDNode } from 'city-lib';
 import * as wif from 'wif';
 import Dexie from 'dexie';
+import sha256 from 'crypto-js/sha256';
 import { DatabaseStorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -29,11 +30,15 @@ import { DatabaseStorageService } from 'src/app/services/storage.service';
 export class CreateAccountComponent implements OnInit {
     @HostBinding('class.account-create') hostClass = true;
 
+    @ViewChild('stepper') stepper;
     accountPasswordForm: FormGroup;
     accountSeedForm: FormGroup;
     accountNameForm: FormGroup;
+    accountSeedValidation: FormGroup;
     icons: string[];
     mnemonic: string;
+    verifyMnemonic: string;
+    mnemonicHash: string;
     password1 = '';
     password2 = '';
     seedExtension = '';
@@ -61,6 +66,14 @@ export class CreateAccountComponent implements OnInit {
             seedExtension: ['', { updateOn: 'blur' }]
         });
 
+        this.accountSeedValidation = this.fb.group({
+            verifyMnemonic: ['', {
+                validators: Validators.compose([
+                    Validators.required,
+                ])
+            }]
+        });
+
         this.accountPasswordForm = this.fb.group({
             accountPassword: ['', {
                 validators: Validators.compose([
@@ -79,6 +92,25 @@ export class CreateAccountComponent implements OnInit {
                 Validators.pattern(/^[a-zA-Z0-9-_.]*$/)
             ]))
         });
+    }
+
+    public validateSeed() {
+        const mnemonicNormalized = this.verifyMnemonic.split(' ');
+        mnemonicNormalized.forEach((currentValue, index) => {
+            currentValue.trim();
+            currentValue.replace(/^\s+|\s+$/g, '');
+
+            if (currentValue.length === 0) {
+                mnemonicNormalized.splice(index, 1);
+            }
+            currentValue.toLowerCase();
+        });
+
+        if (sha256(mnemonicNormalized.join(' ').toString()) === sha256(this.mnemonic).toString()) {
+            this.stepper.next();
+        } else {
+            this.accountSeedValidation.get('verifyMnemonic').setErrors({ 'server-error': 'error' });
+        }
     }
 
     public onPrint() {
@@ -108,7 +140,6 @@ export class CreateAccountComponent implements OnInit {
                 response => {
                     // if (response.status >= 200 && response.status < 400) {
                     this.mnemonic = response;
-                    this.verification = this.mnemonic.split(' ')[2];
                     // }
                 },
                 error => {

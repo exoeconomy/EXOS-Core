@@ -59,6 +59,7 @@
     "dependencies": {
         "@blockcore/message": "^1.0.0",
         "@techiediaries/ngx-qrcode": "^9.1.0",
+        "crypto-js": "4.0.0",
         "base64url": "^3.0.1",
         "bigi": "^1.2.0",
         "bitcoinjs-message": "^2.1.1",
