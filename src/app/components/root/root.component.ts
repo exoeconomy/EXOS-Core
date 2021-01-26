@@ -23,6 +23,8 @@ import { ReportComponent } from '../report/report.component';
 import { SettingsService } from 'src/app/services/settings.service';
 import { IdentityService } from 'src/app/services/identity.service';
 import { IdentityContainer } from '@models/identity';
+import { registerLocaleData } from '@angular/common';
+
 
 @Component({
     selector: 'app-root',
@@ -55,6 +57,8 @@ export class RootComponent implements OnInit, OnDestroy {
     menuMode = 'side';
     menuOpened = true;
 
+    locale: string;
+
     // TODO: Change into Observable.
     // get userActivated(): boolean {
     //   return this.authService.authenticated;
@@ -83,6 +87,9 @@ export class RootComponent implements OnInit, OnDestroy {
         this.log.info('Expanded:', localStorage.getItem('Menu:Expanded'));
 
         this.loadFiller();
+
+        this.getUsersLocale();
+
 
         this.isAuthenticated = authService.isAuthenticated();
 
@@ -238,6 +245,39 @@ export class RootComponent implements OnInit, OnDestroy {
         } else {
             this.showFiller = true;
         }
+    }
+
+    private registerLocale(locale: string) {
+        if (!locale) {
+            return;
+        }
+        locale = this.globalService.getLocale();
+        let localeId = locale;
+
+        if (localeId === 'en-US') {
+            localeId = 'en';
+        }
+        this.localeInitializer(localeId).then(() => {
+        });
+    }
+
+    localeInitializer(localeId: string): Promise<any> {
+        return import(
+            `@angular/common/locales/${localeId}.js`
+        ).then(module => registerLocaleData(module.default));
+    }
+
+    getUsersLocale() {
+        const defaultValue = this.globalService.getLocale();
+        if (typeof window === 'undefined' || typeof window.navigator === 'undefined') {
+            return defaultValue;
+        }
+        const wn = window.navigator as any;
+        let lang = wn.languages ? wn.languages[0] : defaultValue;
+        lang = lang || wn.language || wn.browserLanguage || wn.userLanguage;
+        this.globalService.setlocale(lang);
+        this.registerLocale(lang);
+        this.locale = lang;
     }
 
     checkForUpdates() {

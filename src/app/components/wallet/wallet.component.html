@@ -6,7 +6,7 @@
         <mat-card-subtitle>The balance of: {{wallet.walletName}}</mat-card-subtitle>
         <mat-card-content>
             <p>
-                <strong>{{ (wallet.confirmedBalance | coinNotation | number: '1.0-8') || (0 | coinNotation) }}</strong>
+                <strong>{{ (wallet.confirmedBalance | coinNotation | number: '1.0-8': this.globalService.locale) || (0 | coinNotation) }}</strong>
                 <small class="text-uppercase"> {{ wallet.coinUnit }}</small>
 
                 <span *ngIf="walletStatistics">
@@ -115,17 +115,17 @@
             <ul>
                 <li *ngIf="wallet.isStarting">Waiting for staking to start...</li>
                 <li>Your weight is
-                    <strong>{{ wallet.stakingWeight | coinNotation | number: '1.0-8' }} {{ wallet.coinUnit }}</strong>
+                    <strong>{{ wallet.stakingWeight | coinNotation | number: '1.0-8': this.globalService.locale }} {{ wallet.coinUnit }}</strong>
                 </li>
                 <li>Network weight is
-                    <strong>{{ wallet.netStakingWeight | coinNotation | number: '1.0-2' }} {{ wallet.coinUnit }}</strong>
+                    <strong>{{ wallet.netStakingWeight | coinNotation | number: '1.0-2': this.globalService.locale }} {{ wallet.coinUnit }}</strong>
                 </li>
                 <li class="mt-2">Expected reward time is:
                     <strong>{{ wallet.dateTime }}</strong>
                 </li>
                 <li>
                     % Network:
-                    <strong>{{ wallet.percentNetwork | number: "1.0-2"}}%</strong>
+                    <strong>{{ wallet.percentNetwork | number: '1.0-2': this.globalService.locale }}%</strong>
 
                 </li>
             </ul>
@@ -205,20 +205,20 @@
                     <td mat-cell *matCellDef="let transaction" [ngClass]="{'unconfirmed': !transaction.transactionConfirmedInBlock}">
 
                         <span *ngIf="transaction.transactionType == 'sent'">
-                            <strong>- {{ transaction.transactionAmount + transaction.transactionFee | coinNotation
-                                }}
+                            <strong>- {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.globalService.locale
+                            }}
                             </strong>
                         </span>
 
                         <span *ngIf="transaction.transactionType == 'received'">
-                            <strong>+ {{ transaction.transactionAmount + transaction.transactionFee | coinNotation
-                                }}
+                            <strong>+ {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.globalService.locale
+                            }}
                             </strong>
                         </span>
 
                         <span *ngIf="transaction.transactionType == 'staked'">
-                            <strong>+ {{ transaction.transactionAmount + transaction.transactionFee | coinNotation
-                                }}
+                            <strong>+ {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.globalService.locale
+                            }}
                             </strong>
                         </span>
 
@@ -251,7 +251,7 @@
     </div>
 
     <br>
-    <p>Your wallet was created {{wallet?.generalInfo?.creationTime | date:'short'}}. Maximum 1000 transactions is shown in this history.</p>
+    <p>Your wallet was created {{wallet?.generalInfo?.creationTime | date:'short': this.globalService.locale}}. Maximum 1000 transactions is shown in this history.</p>
 
     <p>Does the history look wrong? Are you missing some transactions? Go to <a routerLink="/tools">Tools</a> and run Resync to refresh the transaction history.</p>
 

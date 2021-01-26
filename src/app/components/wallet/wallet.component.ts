@@ -45,7 +45,7 @@ export class WalletComponent implements OnInit, OnDestroy {
 
     constructor(
         private apiService: ApiService,
-        private globalService: GlobalService,
+        public globalService: GlobalService,
         private router: Router,
         public appState: ApplicationStateService,
         private detailsService: DetailsService,
