@@ -11,7 +11,7 @@
         }
     ],
     "releaseInfo": {
-        "releaseName": "EXOS Core"
+        "releaseName": "${version}"
     },
     "files": [
         "dist/**",
@@ -73,6 +73,7 @@
     "extraResources": [
         "daemon/**/*",
         "dist/assets/exos/icon-tray.ico",
+        "dist/assets/exos/logo-tray.png",
         "dist/assets/license.txt"
     ]
 }
