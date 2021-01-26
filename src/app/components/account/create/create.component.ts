@@ -96,17 +96,16 @@ export class CreateAccountComponent implements OnInit {
 
     public validateSeed() {
         const mnemonicNormalized = this.verifyMnemonic.split(' ');
-        mnemonicNormalized.forEach((currentValue, index) => {
-            currentValue.trim();
-            currentValue.replace(/^\s+|\s+$/g, '');
-
-            if (currentValue.length === 0) {
+        mnemonicNormalized.forEach((value, index) => {
+            mnemonicNormalized[index] = value.trim().toLowerCase();
+            if (value.length === 0) {
                 mnemonicNormalized.splice(index, 1);
             }
-            currentValue.toLowerCase();
         });
 
-        if (sha256(mnemonicNormalized.join(' ').toString()) === sha256(this.mnemonic).toString()) {
+        const cleanMnemonic = mnemonicNormalized.filter(String);
+
+        if (sha256(cleanMnemonic.join(' ').trim()).toString() === sha256(this.mnemonic).toString()) {
             this.stepper.next();
         } else {
             this.accountSeedValidation.get('verifyMnemonic').setErrors({ 'server-error': 'error' });

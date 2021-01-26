@@ -67,6 +67,9 @@ export class RecoverAccountComponent {
     }
 
     private recoverWallet(recoverWallet: WalletRecovery) {
+        const normalizeSeed = this.validateSeed(recoverWallet.mnemonic);
+        this.walletRecovery.mnemonic = normalizeSeed.join(' ').toString();
+
         this.apiService
             .recoverWallet(recoverWallet)
             .subscribe(
@@ -80,5 +83,20 @@ export class RecoverAccountComponent {
                     this.apiService.handleException(error);
                 }
             );
+    }
+
+    private validateSeed(seed: string) {
+        const mnemonicNormalized = seed.split(' ');
+        mnemonicNormalized.forEach((value, index) => {
+            mnemonicNormalized[index] = value.trim().toLowerCase();
+            if (value.length === 0) {
+                mnemonicNormalized.splice(index, 1);
+            }
+        });
+
+        const cleanMnemonic = mnemonicNormalized.filter(String);
+
+        return cleanMnemonic;
+
     }
 }
