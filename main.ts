@@ -194,13 +194,23 @@ ipcMain.on('reset-database', (event, arg: string) => {
 });
 
 ipcMain.on('open-data-folder', (event, arg: string) => {
-    const userDataPath = app.getPath('userData');
-    const appDataFolder = path.dirname(userDataPath);
-    const dataFolder = path.join(appDataFolder, 'Blockcore', 'exos', arg);
+
+    let userDataPath = getAppDataPath();
+
+    let dataFolder = null;
+    if (os.platform() === 'win32') {
+        dataFolder = path.join(userDataPath, 'Blockcore', 'exos', arg);
+        writeLog(dataFolder);
+    } else {
+        dataFolder = path.join(userDataPath, '.blockcore', 'exos', arg);
+        writeLog(dataFolder);
+    }
+
     shell.openPath(dataFolder);
 
     event.returnValue = 'OK';
 });
+
 
 ipcMain.on('open-dev-tools', (event, arg: string) => {
     mainWindow.webContents.openDevTools();
@@ -277,10 +287,39 @@ function deleteFolderRecursive(folder) {
     }
 }
 
+function getAppDataPath() {
+    switch (process.platform) {
+        case 'darwin': {
+            return path.join(process.env.HOME);
+        }
+        case "win32": {
+            return path.join(process.env.APPDATA);
+        }
+        case "linux": {
+            writeLog(path.join(process.env.HOME).toString());
+            return path.join(process.env.HOME);
+
+
+        }
+        default: {
+            console.log("Unsupported platform!");
+            process.exit(1);
+        }
+    }
+}
+
+
 function createWindow() {
     // Create the browser window.
+    let iconpath;
+    if (serve) {
+        iconpath = nativeImage.createFromPath('./src/assets/' + coin.identity + '/logo-tray.png');
+    } else {
+        iconpath = nativeImage.createFromPath(path.resolve(__dirname, '..//..//resources//dist//assets//' + coin.identity + '//logo-tray.png'));
+    }
     mainWindow = new BrowserWindow({
         width: 1150,
+        icon: iconpath,
         height: 800,
         frame: true,
         minWidth: 260,
@@ -352,7 +391,7 @@ function createWindow() {
     mainWindow.on('minimize', (event) => {
         if (!settings.showInTaskbar) {
             event.preventDefault();
-            mainWindow.hide();
+            // mainWindow.hide();
         }
     });
 
@@ -579,6 +618,7 @@ function shutdownDaemon(callback) {
             hostname: 'localhost',
             port: currentChain.apiPort,
             path: '/api/node/shutdown',
+            body: 'true',
             method: 'POST'
         };
 

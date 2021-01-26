@@ -4,6 +4,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { ElectronService } from 'ngx-electron';
 import { NodeStatus } from '@models/node-status';
 import { Observable } from 'rxjs';
+import * as os from 'os';
+import * as path from 'path';
 
 @Component({
     selector: 'app-about',
@@ -24,6 +26,14 @@ export class AboutComponent implements OnInit {
     }
 
     openFolder(directory: string): void {
+
+
+        let dataFolder = null;
+        if (os.platform() === 'win32') {
+            dataFolder = path.join(directory, 'Blockcore', 'exos');
+        } else {
+            dataFolder = path.join(directory, '.blockcore', 'exos');
+        }
         this.electron.shell.showItemInFolder(directory);
     }
 }
