@@ -1,6 +1,6 @@
 {
     "name": "exoscore",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "license": "MIT",
     "author": {
         "name": "OpenExO",
@@ -107,6 +107,7 @@
         "@types/node": "^12.12.47",
         "bip39": "3.0.2",
         "city-coininfo": "5.0.0",
+        "crypto-js": "4.0.0",
         "city-lib": "5.0.0",
         "codelyzer": "^6.0.0",
         "core-js": "3.6.5",
