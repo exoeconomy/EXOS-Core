@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     constructor(
         private apiService: ApiService,
         private coin: CoinService,
-        private globalService: GlobalService,
+        public globalService: GlobalService,
         public appState: ApplicationStateService,
         public notifications: NotificationService,
         private detailsService: DetailsService,
