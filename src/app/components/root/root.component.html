@@ -102,7 +102,7 @@
 
     <div class="app-sidenav-content">
 
-        <mat-toolbar class="toolbar not-selectable" [ngClass]="{'toolbar-bottom': handset}" color="primary">
+        <mat-toolbar class="toolbar not-selectable" [ngClass]="{'toolbar-bottom': handset}">
 
             <button *ngIf="appState.pageMode" routerLinkBack mat-icon-button>
                 <mat-icon>close</mat-icon>
@@ -148,11 +148,6 @@
 
             <button *ngIf="networkShowOffline" mat-icon-button [matTooltip]="networkStatusTooltip" routerLink="/network">
                 <mat-icon>cloud_off</mat-icon>
-            </button>
-
-            <button *ngIf="appModes.enabled('identity')" mat-icon-button [matTooltip]="identityTooltip" [matMenuTriggerFor]="identityMenu">
-                <mat-icon *ngIf="!identityService.identity">person</mat-icon>
-                <img *ngIf="identityService.identity" class="mat-icon notranslate material-icons mat-icon-no-color" [src]="identityService.getImage(identityService.identity.content.image)">
             </button>
 
             <button *ngIf="!appState.pageMode && !appState.handset" mat-icon-button [matMenuTriggerFor]="moreMenu">

@@ -11,7 +11,7 @@ $app-dark-theme-background: (
     dialog:     map_get($app-dark-gray, 700),
     disabled-button: rgba(white, 0.12),
     raised-button: map-get($app-dark-gray, 700),
-    focused-button: #ffce82,
+    focused-button: #3f0f79,
     selected-button: map_get($app-dark-gray, 700),
     selected-disabled-button: map_get($app-dark-gray, 700),
     disabled-button-toggle: black,

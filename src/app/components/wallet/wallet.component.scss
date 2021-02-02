@@ -11,6 +11,17 @@
         //width: 100%;
     }
 
+    .wallet-send {
+        background-color: #3f0f79;
+        color: white;
+    }
+
+    .wallet-receive {
+        background-color: #b7e5f9;
+
+    }
+
+
     .mat-card {
         margin-bottom: 20px;
     }
@@ -99,7 +110,7 @@
     .wallet-confirmed-icon {
         font-size: 14px;
     }
-      
+
     .wallet-split-card {
         display: flex;
         flex-direction: row;

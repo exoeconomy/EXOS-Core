@@ -154,23 +154,31 @@ body {
 	border-right: 3px solid transparent;
     cursor: pointer;
     width: auto !important;
+    background-color: #3f0f79;
+    color: white !important;
 }
 
 .main-menu .mat-list-item:hover {
-	background-color: #ffce82;
+    background-color: #b7e5f9;
+    color: black !important;
 }
 
 .mat-list-item-focus {
-	border-right: 3px solid #ffce82 !important;
+    border-right: 3px solid #b7e5f9 !important;
+    background-color: #b7e5f9 !important;
+    color: black !important;
+
+
 }
 
 .main-menu .main-menu-active {
-	border-right: 3px solid #ffce82;
+    border-right: 3px solid #b7e5f9;
+    background-color: #b7e5f9 !important;
+    color: black !important;
 }
 
 :focus {
     outline: 0;
-    outline-color: #ffce82;
     outline-style: auto;
     outline-width: 1px;
 }

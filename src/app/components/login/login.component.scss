@@ -13,14 +13,17 @@
 
     .login-content
     {
-        width: 44%;
+        width: 50%;
         min-width: 240px;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: stretch;
         min-height: 260px;
-        margin-top: 10%;
+        background-color: #3f0f79;
+        background-image: url('../../../assets/exos/exoscontentr.png');
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .login-unlock-button {
@@ -29,6 +32,7 @@
 
     .login-cancel-button {
         margin-right: 10px;
+        background-color: #b7e5f9;
     }
 
     .login-logo
@@ -42,6 +46,7 @@
 
     .login-accounts {
         flex-grow: 0;
+        margin-top: 50%;
     }
 
     .login-actions
@@ -50,7 +55,7 @@
         align-items: center;
         justify-content: center;
         display: flex;
-        margin-top: 20px;
+        //margin-top: 50%;
     }
 
     .login-mode
@@ -64,9 +69,9 @@
 
     .login-banner
     {
-        background-color: #fae1a9;
-        width: 56%;
-        background-image: url('../../../assets/exos/splash-image.jpg');
+        background-color: white;
+        width: 50%;
+        background-image: url('../../../assets/exos/exoscontentg.png');
         background-repeat: no-repeat;
         background-size: cover;
         text-align: center;
@@ -74,13 +79,15 @@
 
     .login-banner-content
     {
-        margin: 20%;
+        margin: 10%;
     }
 
     .login-banner-text
     {
-        padding-top: 30px;
-        text-align: right;
+        margin-top: 70%;
+        margin-left: 20%;
+        text-align: left;
+        color: #031e4c;
     }
 
     .login-mode-mobile {
