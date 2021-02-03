@@ -49,6 +49,7 @@
         "category": "public.app-category.productivity"
     },
     "dmg": {
+        "sign": false,
         "contents": [
             {
                 "x": 110,

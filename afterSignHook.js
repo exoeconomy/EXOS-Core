@@ -12,7 +12,7 @@ module.exports = async function (params) {
     console.log('afterSign hook triggered', params);
 
     // Same appId in electron-builder.
-    let appId = 'org.exos-core'
+    let appId = context.packager.appInfo.productFilename;
 
     let appPath = path.join(params.appOutDir, `${params.packager.appInfo.productFilename}.app`);
     if (!fs.existsSync(appPath)) {
