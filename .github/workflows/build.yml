@@ -86,6 +86,12 @@ jobs:
         mkdir daemon
         tar -xvzf daemon${{ matrix.extension }} -C daemon
 
+    - name: Prepare for app notarization
+      if: startsWith(matrix.os, 'macos')
+      run: |
+        mkdir -p ~/private_keys/
+        echo '${{ secrets.api_key }}' > ~/private_keys/AuthKey_${{ secrets.api_key_id }}.p8
+
     - name: Install (npm)
       run: npm install
 
@@ -93,3 +99,7 @@ jobs:
       run: npm run publish:${{ matrix.platform }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CSC_LINK: ${{ secrets.CSC_LINK }}
+        CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+        appleId: ${{ secrets.appleId }}
+        appleIdPassword: ${{ secrets.appleIdPassword }}
