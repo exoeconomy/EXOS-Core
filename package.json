@@ -113,7 +113,7 @@
         "cross-env": "^7.0.3",
         "crypto-js": "4.0.0",
         "dexie": "3.0.2",
-        "electron": "9.2.0",
+        "electron": "9.4.0",
         "electron-builder": "22.9.1",
         "electron-reload": "1.5.0",
         "enhanced-resolve": "4.3.0",
