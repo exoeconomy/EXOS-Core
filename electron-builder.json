@@ -39,7 +39,9 @@
     "mac": {
         "icon": "dist/assets/icon.icns",
         "hardenedRuntime": true,
-        "entitlements": "./contrib/entitlements.mac.inherit.plist",
+        "gatekeeperAssess": false,
+        "entitlements": "contrib/entitlements.mac.inherit.plist",
+        "entitlementsInherit": "contrib/entitlements.mac.inherit.plist",
         "target": [
             "dmg",
             "zip"
