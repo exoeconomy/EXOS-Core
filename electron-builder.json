@@ -2,7 +2,6 @@
     "appId": "org.exos-core",
     "artifactName": "EXOS.Core-${version}-${os}-${arch}.${ext}",
     "productName": "EXOS Core",
-    "afterSign": "./afterSignHook.js",
     "asar": true,
     "publish": [
         {
@@ -38,10 +37,6 @@
     },
     "mac": {
         "icon": "dist/assets/icon.icns",
-        "hardenedRuntime": true,
-        "gatekeeperAssess": false,
-        "entitlements": "contrib/entitlements.mac.inherit.plist",
-        "entitlementsInherit": "contrib/entitlements.mac.inherit.plist",
         "target": [
             "dmg",
             "zip"
