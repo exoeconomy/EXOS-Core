@@ -40,6 +40,7 @@ export class WalletService {
     public percentSyncedNumber = 0;
     public percentSynced = '0%';
     public percentNetwork: number;
+    public isChainSynced: boolean;
 
     public generalInfo: GeneralInfo;
     public stakingInfo: StakingInfo;
@@ -286,6 +287,7 @@ export class WalletService {
                     this.log.info('Get wallet info:', response);
 
                     this.generalInfo = response;
+                    this.isChainSynced = this.generalInfo.isChainSynced;
                     this.lastBlockSyncedHeight = this.generalInfo.lastBlockSyncedHeight;
 
                     // Translate the epoch value to a proper JavaScript date.
