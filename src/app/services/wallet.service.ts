@@ -282,7 +282,7 @@ export class WalletService {
 
     private getGeneralWalletInfo() {
         const walletInfo = new WalletInfo(this.globalService.getWalletName());
-        this.getNodeInfo()
+        this.getNodeInfo();
 
         this.generalWalletInfoSubscription = this.apiService.getGeneralInfoTyped(walletInfo)
             .subscribe(
