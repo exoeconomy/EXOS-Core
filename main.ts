@@ -535,6 +535,7 @@ function launchDaemon(apiPath: string, chain: Chain) {
 
     if (os.platform() == 'darwin') {
         commandLineArguments.push('--chain=' + chain.name);
+        commandLineArguments.push('-dbtype=rocksdb');
     }
 
     if (chain.mode === 'light') {
