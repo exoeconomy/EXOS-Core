@@ -472,6 +472,10 @@ function startDaemon(chain: Chain) {
     } else if (chain.identity === 'bitcoin') {
         daemonName = 'Stratis.StratisD';
     }
+    if (os.platform() === 'darwin') {
+        daemonName = 'Blockore.Node'
+    }
+
 
     // If path is not specified and Win32, we'll append .exe
     if (!chain.path && os.platform() === 'win32') {
@@ -528,6 +532,10 @@ function launchDaemon(apiPath: string, chain: Chain) {
     commandLineArguments.push('-rpcport=' + chain.rpcPort);
     commandLineArguments.push('-apiport=' + chain.apiPort);
     commandLineArguments.push('-wsport=' + chain.wsPort);
+
+    if (os.platform() == 'darwin') {
+        commandLineArguments.push('--chain=' + chain.name);
+    }
 
     if (chain.mode === 'light') {
         commandLineArguments.push('-light');
