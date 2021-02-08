@@ -7,6 +7,7 @@ export class NodeStatus {
         processId: number,
         consensusHeight: number,
         blockStoreHeight: number,
+        bestPeerHeight: number,
         inboundPeers: [Peer],
         outbountPeers: [Peer],
         featuresData: [FeatureData],
@@ -24,6 +25,7 @@ export class NodeStatus {
         this.processId = processId;
         this.consensusHeight = consensusHeight;
         this.blockStoreHeight = blockStoreHeight;
+        this.bestPeerHeight = bestPeerHeight;
         this.inboundPeers = inboundPeers;
         this.outbountPeers = outbountPeers;
         this.featuresData = featuresData;
@@ -43,6 +45,7 @@ export class NodeStatus {
     public processId: number;
     public consensusHeight: number;
     public blockStoreHeight: number;
+    public bestPeerHeight: number;
     public inboundPeers: [Peer];
     public outbountPeers: [Peer];
     public featuresData: [FeatureData];

@@ -8,6 +8,7 @@ import { ApiService } from './api.service';
 import { GeneralInfo } from '../classes/general-info';
 import { Logger } from './logger.service';
 import { StakingInfo } from '../classes/staking-info';
+import { NodeStatus } from '../classes/node-status';
 
 @Injectable({
     providedIn: 'root'
@@ -44,6 +45,7 @@ export class WalletService {
 
     public generalInfo: GeneralInfo;
     public stakingInfo: StakingInfo;
+    public nodeStatus: NodeStatus;
     public activeWallet: any;
 
     // tslint:disable-next-line: variable-name
@@ -280,6 +282,7 @@ export class WalletService {
 
     private getGeneralWalletInfo() {
         const walletInfo = new WalletInfo(this.globalService.getWalletName());
+        this.getNodeInfo()
 
         this.generalWalletInfoSubscription = this.apiService.getGeneralInfoTyped(walletInfo)
             .subscribe(
@@ -294,13 +297,27 @@ export class WalletService {
                     this.generalInfo.creationTime = new Date(this.generalInfo.creationTime * 1000);
 
                     if (this.generalInfo.lastBlockSyncedHeight) {
-                        this.percentSyncedNumber = ((this.generalInfo.lastBlockSyncedHeight / this.generalInfo.chainTip) * 100);
-                        if (this.percentSyncedNumber.toFixed(0) === '100' && this.generalInfo.lastBlockSyncedHeight !== this.generalInfo.chainTip) {
+                        this.percentSyncedNumber = ((this.nodeStatus.bestPeerHeight / this.nodeStatus.blockStoreHeight) * 100);
+                        if (this.percentSyncedNumber.toFixed(0) === '100' && this.nodeStatus.bestPeerHeight !== this.nodeStatus.blockStoreHeight) {
                             this.percentSyncedNumber = 99;
                         }
 
                         this.percentSynced = this.percentSyncedNumber.toFixed(0) + '%';
                     }
+                }, error => {
+                    this.apiService.handleException(error);
+                    this.reactivate();
+                }
+            );
+    }
+
+    private getNodeInfo() {
+        this.generalWalletInfoSubscription = this.apiService.getNodeStatus()
+            .subscribe(
+                response => {
+                    this.log.info('Get node info:', response);
+                    this.nodeStatus = response;
+
                 }, error => {
                     this.apiService.handleException(error);
                     this.reactivate();

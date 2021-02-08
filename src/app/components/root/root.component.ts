@@ -227,7 +227,7 @@ export class RootComponent implements OnInit, OnDestroy {
 
     /** Whenever we are fully synced, show done icon. */
     get networkShowDone(): boolean {
-        return !this.appState.pageMode && this.walletService.generalInfo && this.walletService.isChainSynced && this.walletService.generalInfo.connectedNodes !== 0 && this.walletService.percentSyncedNumber === 100;
+        return !this.appState.pageMode && this.walletService.generalInfo && this.walletService.generalInfo.connectedNodes !== 0 && this.walletService.percentSyncedNumber === 100;
     }
 
     /** Whenever we have zero connections on the network, show the offline icon. */
