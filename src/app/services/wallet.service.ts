@@ -20,6 +20,7 @@ export class WalletService {
     private walletHistorySubscription: Subscription;
     private stakingInfoSubscription: Subscription;
     private generalWalletInfoSubscription: Subscription;
+    private nodeStatusSuscription: Subscription;
 
     /** Set to true to make the wallet update wallet status at higher frequency. Set to false when high refresh rate is not needed. */
     public active = false;
@@ -159,6 +160,10 @@ export class WalletService {
         if (this.generalWalletInfoSubscription) {
             this.generalWalletInfoSubscription.unsubscribe();
         }
+
+        if (this.nodeStatusSuscription) {
+            this.nodeStatusSuscription.unsubscribe();
+        }
     }
 
     private startSubscriptions() {
@@ -166,6 +171,7 @@ export class WalletService {
         this.getHistory();
         this.getStakingInfo();
         this.getGeneralWalletInfo();
+        this.getNodeInfo();
     }
 
     /** Called to cancel and restart all subscriptions. */
@@ -282,7 +288,6 @@ export class WalletService {
 
     private getGeneralWalletInfo() {
         const walletInfo = new WalletInfo(this.globalService.getWalletName());
-        this.getNodeInfo();
 
         this.generalWalletInfoSubscription = this.apiService.getGeneralInfoTyped(walletInfo)
             .subscribe(
@@ -312,7 +317,7 @@ export class WalletService {
     }
 
     private getNodeInfo() {
-        this.generalWalletInfoSubscription = this.apiService.getNodeStatus()
+        this.nodeStatusSuscription = this.apiService.getNodeStatus()
             .subscribe(
                 response => {
                     this.log.info('Get node info:', response);

@@ -473,7 +473,7 @@ function startDaemon(chain: Chain) {
         daemonName = 'Stratis.StratisD';
     }
     if (os.platform() === 'darwin') {
-        daemonName = 'Blockore.Node'
+        daemonName = 'Blockcore.Node'
     }
 
 
@@ -498,7 +498,7 @@ function getDaemonPath() {
     } else if (os.platform() === 'linux') {
         apiPath = path.resolve(__dirname, '..//..//resources//daemon//');
     } else {
-        apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishRocksDb');
+        apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishRocksDb//');
     }
 
     return apiPath;
@@ -531,10 +531,9 @@ function launchDaemon(apiPath: string, chain: Chain) {
     commandLineArguments.push('-port=' + chain.port);
     commandLineArguments.push('-rpcport=' + chain.rpcPort);
     commandLineArguments.push('-apiport=' + chain.apiPort);
-    commandLineArguments.push('-wsport=' + chain.wsPort);
 
     if (os.platform() == 'darwin') {
-        commandLineArguments.push('--chain=' + chain.name);
+        commandLineArguments.push('--chain=EXOS');
         commandLineArguments.push('-dbtype=rocksdb');
     }
 
