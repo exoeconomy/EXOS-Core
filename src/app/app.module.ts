@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootComponent } from './components/root/root.component';
 import { MaterialModule } from './material.module';
@@ -23,14 +23,13 @@ import { GlobalService } from './services/global.service';
 import { LoadModule } from './components/load/load.module';
 import { NetworkModule } from './components/network/network.module';
 import { DetailsModule } from './components/details/details.module';
-import { MerchantsModule } from './components/merchants/merchants.module';
 import { environment } from '../environments/environment';
 import { ChainService } from './services/chain.service';
+import { LocaleService } from './services/locale.service';
 import { UpdateModule } from './components/update/update.module';
 import { HistoryModule } from './components/history/history.module';
 import { AdvancedModule } from './components/advanced/advanced.module';
 import { Logger } from './services/logger.service';
-import { PaperWalletModule } from './components/paperwallet/paperwallet.module';
 import { httpInterceptorProviders } from './shared/http-interceptors';
 import { HttpErrorHandler } from './services/http-error-handler.service';
 import { ToolsModule } from './components/tools/tools.module';
@@ -38,6 +37,16 @@ import { NotificationsModule } from './components/notifications/notifications.mo
 import { ReportModule } from './components/report/report.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HubService } from './services/hub.service';
+import localeEN from '@angular/common/locales/en';
+import localeES from '@angular/common/locales/es';
+import localezFR from '@angular/common/locales/fr';
+import localezIT from '@angular/common/locales/it';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEN);
+registerLocaleData(localeES);
+registerLocaleData(localezFR);
+registerLocaleData(localezIT);
 
 @NgModule({
     declarations: [
@@ -62,11 +71,9 @@ import { HubService } from './services/hub.service';
         NotFoundModule,
         ReportModule,
         UpdateModule,
-        MerchantsModule,
         DetailsModule,
         AdvancedModule,
         ToolsModule,
-        PaperWalletModule,
         HistoryModule,
         AppRoutingModule,
         FlexLayoutModule,
@@ -82,6 +89,11 @@ import { HubService } from './services/hub.service';
         ElectronService,
         // GlobalService,
         { provide: APP_TITLE, useValue: 'EXOS Core' },
+        {
+            provide: LOCALE_ID,
+            deps: [LocaleService],
+            useFactory: (Locale: { locale: any; }) => Locale.locale
+        }
     ],
     bootstrap: [RootComponent]
 })

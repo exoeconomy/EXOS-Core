@@ -8,21 +8,13 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { LoadComponent } from './components/load/load.component';
 import { NetworkComponent } from './components/network/network.component';
-import { MerchantsComponent } from './components/merchants/merchants.component';
 import { UpdateComponent } from './components/update/update.component';
 import { HistoryComponent } from './components/history/history.component';
 import { AdvancedComponent } from './components/advanced/advanced.component';
-import { PaperWalletComponent } from './components/paperwallet/paperwallet.component';
 import { ToolsComponent } from './components/tools/tools.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { NetworkDetailsComponent } from './components/network/network-details.component';
-import { IdentityComponent } from './components/identity/identity.component';
-import { IdentityViewComponent } from './components/identity/identity-view.component';
 import { HubDetailsComponent } from './components/settings/hub-details.component';
-import { IdentityEditComponent } from './components/identity/identity-edit.component';
-import { IdentityLookupComponent } from './components/identity/identity-lookup.component';
-import { IdentityUnlockComponent } from './components/identity/identity-unlock.component';
-import { IdentityExportComponent } from './components/identity/identity-export.component';
 
 const routes: Routes = [
     {
@@ -59,75 +51,6 @@ const routes: Routes = [
         data: {
             title: 'Dashboard'
         }
-    },
-    {
-        path: 'paperwallet',
-        component: PaperWalletComponent,
-        canActivate: [AuthenticatedUserGuard],
-        data: {
-            title: 'Paperwallet'
-        }
-    },
-    {
-        path: 'identity',
-        component: IdentityComponent,
-        canActivate: [AuthenticatedUserGuard],
-        data: {
-            title: 'Identity'
-        },
-    },
-    {
-        path: 'identity/:id',
-        component: IdentityViewComponent,
-        canActivate: [AuthenticatedUserGuard],
-        data: {
-            title: 'Identity',
-            prefix: 'View'
-        },
-    },
-    {
-        path: 'identity/:id/edit',
-        component: IdentityEditComponent,
-        canActivate: [AuthenticatedUserGuard],
-        data: {
-            title: 'Identity',
-            prefix: 'Edit'
-        },
-    },
-    {
-        path: 'identity/:id/unlock',
-        component: IdentityUnlockComponent,
-        canActivate: [AuthenticatedUserGuard],
-        data: {
-            title: 'Identity',
-            prefix: 'Unlock'
-        },
-    },
-    {
-        path: 'identity/:id/export',
-        component: IdentityExportComponent,
-        canActivate: [AuthenticatedUserGuard],
-        data: {
-            title: 'Identity',
-            prefix: 'Export'
-        },
-    },
-    {
-        path: 'identity/:id/search',
-        component: IdentityLookupComponent,
-        canActivate: [AuthenticatedUserGuard],
-        data: {
-            title: 'Identity',
-            prefix: 'Lookup'
-        },
-    },
-    {
-        path: 'merchants',
-        component: MerchantsComponent,
-        canActivate: [AuthenticatedUserGuard],
-        data: {
-            title: 'Merchants'
-        },
     },
     {
         path: 'settings',
