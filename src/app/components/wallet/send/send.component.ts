@@ -50,7 +50,7 @@ export class SendComponent implements OnInit, OnDestroy {
         private location: Location,
         private router: Router,
         private wallet: WalletService,
-        private globalService: GlobalService,
+        public globalService: GlobalService,
         private fb: FormBuilder,
         public localeService: LocaleService
     ) {
