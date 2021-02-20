@@ -313,12 +313,12 @@ function createWindow() {
     // Create the browser window.
     let iconpath;
     if (serve) {
-        iconpath = nativeImage.createFromPath('./src/assets/' + coin.identity + '/logo-tray.png');
+        iconpath = nativeImage.createFromPath('./src/assets/exos-core/logo-tray.png');
     } else {
-        iconpath = nativeImage.createFromPath(path.resolve(__dirname, '..//..//resources//dist//assets//' + coin.identity + '//logo-tray.png'));
+        iconpath = nativeImage.createFromPath(path.resolve(__dirname, '..//..//resources//dist//assets//exos-core//logo-tray.png'));
     }
     mainWindow = new BrowserWindow({
-        width: 1150,
+        width: 1500,
         icon: iconpath,
         height: 800,
         frame: true,
@@ -657,9 +657,9 @@ function createTray() {
     // Put the app in system tray
     let trayIcon;
     if (serve) {
-        trayIcon = nativeImage.createFromPath('./src/assets/' + coin.identity + '/icon-tray.ico');
+        trayIcon = nativeImage.createFromPath('./src/assets/exos-core/icon-tray.ico');
     } else {
-        trayIcon = nativeImage.createFromPath(path.resolve(__dirname, '../../resources/dist/assets/' + coin.identity + '/icon-tray.ico'));
+        trayIcon = nativeImage.createFromPath(path.resolve(__dirname, '../../resources/dist/assets/exos-core/icon-tray.ico'));
     }
 
     const systemTray = new Tray(trayIcon);

@@ -241,13 +241,13 @@ function createWindow() {
     // Create the browser window.
     var iconpath;
     if (serve) {
-        iconpath = electron_1.nativeImage.createFromPath('./src/assets/' + coin.identity + '/logo-tray.png');
+        iconpath = electron_1.nativeImage.createFromPath('./src/assets/exos-core/logo-tray.png');
     }
     else {
-        iconpath = electron_1.nativeImage.createFromPath(path.resolve(__dirname, '..//..//resources//dist//assets//' + coin.identity + '//logo-tray.png'));
+        iconpath = electron_1.nativeImage.createFromPath(path.resolve(__dirname, '..//..//resources//dist//assets//exos-core//logo-tray.png'));
     }
     mainWindow = new electron_1.BrowserWindow({
-        width: 1150,
+        width: 1500,
         icon: iconpath,
         height: 800,
         frame: true,
@@ -309,7 +309,7 @@ function createWindow() {
     mainWindow.on('minimize', function (event) {
         if (!settings.showInTaskbar) {
             event.preventDefault();
-            mainWindow.hide();
+            // mainWindow.hide();
         }
     });
     // Emitted when the window is closed.
@@ -382,6 +382,9 @@ function startDaemon(chain) {
     else if (chain.identity === 'bitcoin') {
         daemonName = 'Stratis.StratisD';
     }
+    if (os.platform() === 'darwin') {
+        daemonName = 'Blockcore.Node';
+    }
     // If path is not specified and Win32, we'll append .exe
     if (!chain.path && os.platform() === 'win32') {
         daemonName += '.exe';
@@ -402,7 +405,7 @@ function getDaemonPath() {
         apiPath = path.resolve(__dirname, '..//..//resources//daemon//');
     }
     else {
-        apiPath = path.resolve(__dirname, '..//..//resources//daemon//');
+        apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishRocksDb//');
     }
     return apiPath;
 }
@@ -427,7 +430,10 @@ function launchDaemon(apiPath, chain) {
     commandLineArguments.push('-port=' + chain.port);
     commandLineArguments.push('-rpcport=' + chain.rpcPort);
     commandLineArguments.push('-apiport=' + chain.apiPort);
-    commandLineArguments.push('-wsport=' + chain.wsPort);
+    if (os.platform() == 'darwin') {
+        commandLineArguments.push('--chain=EXOS');
+        commandLineArguments.push('-dbtype=rocksdb');
+    }
     if (chain.mode === 'light') {
         commandLineArguments.push('-light');
     }
@@ -533,10 +539,10 @@ function createTray() {
     // Put the app in system tray
     var trayIcon;
     if (serve) {
-        trayIcon = electron_1.nativeImage.createFromPath('./src/assets/' + coin.identity + '/icon-tray.ico');
+        trayIcon = electron_1.nativeImage.createFromPath('./src/assets/exos-core/icon-tray.ico');
     }
     else {
-        trayIcon = electron_1.nativeImage.createFromPath(path.resolve(__dirname, '../../resources/dist/assets/' + coin.identity + '/icon-tray.ico'));
+        trayIcon = electron_1.nativeImage.createFromPath(path.resolve(__dirname, '../../resources/dist/assets/exos-core/icon-tray.ico'));
     }
     var systemTray = new electron_1.Tray(trayIcon);
     var contextMenu = electron_1.Menu.buildFromTemplate([
