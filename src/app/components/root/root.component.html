@@ -30,28 +30,8 @@
 
                 <div class="menu-top">
 
-                    <img src="assets/{{appState.chain}}/logo.png" class="menu-top-logo">
+                    <img src="assets/exos-core/logo.png" class="menu-top-logo">
                     <span *ngIf="showFiller" class="menu-top-text" mat-line>{{coinName}}</span>
-
-                    <!-- <button mat-button [matMenuTriggerFor]="menu">
-
-                    </button>
-
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
-                            <mat-icon>dialpad</mat-icon>
-                            <span>Redial</span>
-                        </button>
-                        <button mat-menu-item disabled>
-                            <mat-icon>voicemail</mat-icon>
-                            <span>Check voice mail</span>
-                        </button>
-                        <button mat-menu-item>
-                            <mat-icon>notifications_off</mat-icon>
-                            <span>Disable alerts</span>
-                        </button>
-                    </mat-menu> -->
-
                 </div>
 
                 <mat-list-item *ngIf="appModes.enabled('dashboard')" routerLinkActive="main-menu-active" routerLink="/dashboard">
@@ -118,14 +98,6 @@
 
             <span class="fill-remaining-vertical"></span>
 
-            <!-- <button mat-icon-button>
-        <mat-icon>cloud</mat-icon>
-      </button>
-
-      <button mat-icon-button>
-        <mat-icon>cloud_off</mat-icon>
-      </button> -->
-
             <button *ngIf="StakingStatus" mat-icon-button [matTooltip]="StakingStatus" routerLink="/wallet">
                 <mat-icon>star</mat-icon>
             </button>
@@ -150,12 +122,8 @@
                 <mat-icon>cloud_off</mat-icon>
             </button>
 
-            <button *ngIf="!appState.pageMode && !appState.handset" mat-icon-button [matMenuTriggerFor]="moreMenu">
+            <button mat-icon-button [matMenuTriggerFor]="moreMenu">
                 <mat-icon>more_vert</mat-icon>
-            </button>
-
-            <button *ngIf="!appState.pageMode && appState.handset" mat-icon-button (click)="openMenu()">
-                <mat-icon>apps</mat-icon>
             </button>
 
             <mat-menu #moreMenu="matMenu">

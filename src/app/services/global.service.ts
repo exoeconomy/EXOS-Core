@@ -24,19 +24,7 @@ export class GlobalService {
     private coinUnit: string;
     private network: string;
     private decimalLimit = 8;
-    public locale: string;
 
-    setlocale(value: string) {
-        this.locale = value;
-    }
-
-    getLocale(): string {
-        if (this.locale === null) {
-            console.log('Locale  null');
-            return 'en-US';
-        }
-        return this.locale;
-    }
 
     getWalletPath() {
         return this.walletPath;

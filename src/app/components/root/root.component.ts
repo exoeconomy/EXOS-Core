@@ -24,6 +24,8 @@ import { SettingsService } from 'src/app/services/settings.service';
 import { IdentityService } from 'src/app/services/identity.service';
 import { IdentityContainer } from '@models/identity';
 import { registerLocaleData } from '@angular/common';
+import { LocaleService } from 'src/app/services/locale.service';
+
 
 
 @Component({
@@ -57,8 +59,6 @@ export class RootComponent implements OnInit, OnDestroy {
     menuMode = 'side';
     menuOpened = true;
 
-    locale: string;
-
     // TODO: Change into Observable.
     // get userActivated(): boolean {
     //   return this.authService.authenticated;
@@ -76,6 +76,7 @@ export class RootComponent implements OnInit, OnDestroy {
         public detailsService: DetailsService,
         public identityService: IdentityService,
         public settings: SettingsService,
+        public localeService: LocaleService,
         private apiService: ApiService,
         private walletService: WalletService,
         private readonly cd: ChangeDetectorRef,
@@ -87,9 +88,6 @@ export class RootComponent implements OnInit, OnDestroy {
         this.log.info('Expanded:', localStorage.getItem('Menu:Expanded'));
 
         this.loadFiller();
-
-        this.getUsersLocale();
-
 
         this.isAuthenticated = authService.isAuthenticated();
 
@@ -196,43 +194,33 @@ export class RootComponent implements OnInit, OnDestroy {
 
     get StakingStatus(): string {
         if (this.walletService.stakingEnabled){
-            const walletHeight = ((this.walletService.stakingWeight / 100000000).toLocaleString('en-US', {maximumFractionDigits: 8 }));
-            const networkWeight = ((this.walletService.netStakingWeight / 100000000).toLocaleString('en-US', { maximumFractionDigits: 2 }));
-            const percertNetwork = ((this.walletService.stakingWeight / this.walletService.netStakingWeight) * 100).toLocaleString('en-US', { maximumFractionDigits: 2 });
+            const walletHeight = ((this.walletService.stakingWeight / 100000000).toLocaleString(this.localeService.locale, { maximumFractionDigits: 8 }));
+            const networkWeight = ((this.walletService.netStakingWeight / 100000000).toLocaleString(this.localeService.locale, { maximumFractionDigits: 2 }));
+            const percertNetwork = ((this.walletService.stakingWeight / this.walletService.netStakingWeight) * 100).toLocaleString(this.localeService.locale, { maximumFractionDigits: 2 });
 
             return `Staking: Enable \nWeight: ${walletHeight} EXOS \nNetwork weight: ${networkWeight} EXOS \n% Network: ${percertNetwork}% \nExpected reward time: ${this.walletService.dateTime} `;
         }
     }
 
-    get identityTooltip(): string {
-        if (this.identityService.identity) {
-            const name = this.identityService.identity.content.name || this.identityService.identity.content.identifier;
-            const alias = this.identityService.identity.content.alias ? ' (@' + this.identityService.identity.content.alias + ')' : '';
-            const title = this.identityService.identity.content.title ? '\n' + this.identityService.identity.content.title : '';
-
-            return `${name}${alias}\nID: ${this.identityService.identity.content.identifier}${title}`;
-        }
-    }
-
     get networkStatusTooltip(): string {
         if (this.walletService.generalInfo) {
-            return `Connections: ${this.walletService.generalInfo.connectedNodes}\nBlock Height: ${this.walletService.generalInfo.chainTip}\nSynced: ${this.walletService.percentSynced}`;
+            return `Connections: ${this.walletService.generalInfo.connectedNodes}\nBlock Height: ${this.walletService.generalInfo.chainTip.toLocaleString(this.localeService.locale)}\nSynced: ${this.walletService.percentSynced}`;
         }
     }
 
     /** Whenever we are downloading, show the download icon. */
     get networkShowDownload(): boolean {
-        return !this.appState.pageMode && this.walletService.generalInfo && !this.walletService.isChainSynced && this.walletService.generalInfo.connectedNodes !== 0 && this.walletService.percentSyncedNumber !== 100;
+        return this.walletService.generalInfo && this.walletService.generalInfo.connectedNodes !== 0 && this.walletService.percentSyncedNumber !== 100;
     }
 
     /** Whenever we are fully synced, show done icon. */
     get networkShowDone(): boolean {
-        return !this.appState.pageMode && this.walletService.generalInfo && this.walletService.generalInfo.connectedNodes !== 0 && this.walletService.percentSyncedNumber === 100;
+        return this.walletService.generalInfo && this.walletService.generalInfo.connectedNodes !== 0 && this.walletService.percentSyncedNumber === 100;
     }
 
     /** Whenever we have zero connections on the network, show the offline icon. */
     get networkShowOffline(): boolean {
-        return !this.appState.pageMode && this.walletService.generalInfo && this.walletService.generalInfo.connectedNodes === 0;
+        return this.walletService.generalInfo && this.walletService.generalInfo.connectedNodes === 0;
     }
 
     get appTitle$(): Observable<string> {
@@ -245,39 +233,6 @@ export class RootComponent implements OnInit, OnDestroy {
         } else {
             this.showFiller = true;
         }
-    }
-
-    private registerLocale(locale: string) {
-        if (!locale) {
-            return;
-        }
-        locale = this.globalService.getLocale();
-        let localeId = locale;
-
-        if (localeId === 'en-US') {
-            localeId = 'en';
-        }
-        this.localeInitializer(localeId).then(() => {
-        });
-    }
-
-    localeInitializer(localeId: string): Promise<any> {
-        return import(
-            `@angular/common/locales/${localeId}.js`
-        ).then(module => registerLocaleData(module.default));
-    }
-
-    getUsersLocale() {
-        const defaultValue = this.globalService.getLocale();
-        if (typeof window === 'undefined' || typeof window.navigator === 'undefined') {
-            return defaultValue;
-        }
-        const wn = window.navigator as any;
-        let lang = wn.languages ? wn.languages[0] : defaultValue;
-        lang = lang || wn.language || wn.browserLanguage || wn.userLanguage;
-        this.globalService.setlocale(lang);
-        this.registerLocale(lang);
-        this.locale = lang;
     }
 
     checkForUpdates() {

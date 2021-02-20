@@ -8,6 +8,8 @@ import { ChainService, Chain } from 'src/app/services/chain.service';
 import { ApplicationStateService } from 'src/app/services/application-state.service';
 import { NetworkAddNodeComponent } from './network-add-node.component';
 import { NetworkBanNodeComponent } from './network-ban-node.component';
+import { LocaleService } from 'src/app/services/locale.service';
+
 
 @Component({
     selector: 'app-network-details',
@@ -43,7 +45,8 @@ export class NetworkDetailsComponent implements OnInit, OnDestroy {
         private chains: ChainService,
         public router: Router,
         public dialog: MatDialog,
-        public walletService: WalletService) {
+        public walletService: WalletService,
+        public localeService: LocaleService) {
 
         this.chain = this.chains.getChain(this.appState.chain, this.appState.network);
     }

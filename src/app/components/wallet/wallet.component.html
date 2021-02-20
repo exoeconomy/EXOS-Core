@@ -6,22 +6,22 @@
         <mat-card-subtitle>The balance of: {{wallet.walletName}}</mat-card-subtitle>
         <mat-card-content>
             <p>
-                <strong>{{ (wallet.confirmedBalance | coinNotation | number: '1.0-8': this.globalService.locale) || (0 | coinNotation) }}</strong>
-                <small class="text-uppercase"> {{ wallet.coinUnit }}</small>
+                <strong>{{ (wallet.confirmedBalance | coinNotation | number: '1.0-8': this.localeService.locale) || (0 | coinNotation) }}</strong>
+                <small class="text-uppercase"><b> {{ wallet.coinUnit }} </b></small>
 
                 <span *ngIf="walletStatistics">
                     <span class="vertical-spacer">|</span>
-                    <strong>{{walletStatistics.totalUtxoCount}}</strong>
+                    <strong>{{walletStatistics.totalUtxoCount | number: '1.0-8': this.localeService.locale}}</strong>
                     <small class="text-uppercase"> UTXOs</small>
                     <span class="vertical-spacer">|</span>
-                    <strong>{{walletStatistics.uniqueTransactionCount}}</strong>
+                    <strong>{{walletStatistics.uniqueTransactionCount | number: '1.0-8': this.localeService.locale}}</strong>
                     <small class="text-uppercase"> TRXs</small>
                 </span>
 
             </p>
             <ul *ngIf="wallet.unconfirmedBalance">
                 <li>
-                    <strong>{{ (wallet.unconfirmedBalance | coinNotation) || (0 | coinNotation) }}</strong>
+                    <strong>{{ (wallet.unconfirmedBalance | coinNotation | number: '1.0-8': this.localeService.locale) || (0 | coinNotation) }}</strong>
                     <em> (unconfirmed)</em>
                 </li>
             </ul>
@@ -32,62 +32,6 @@
             </p>
         </mat-card-content>
     </mat-card>
-
-    <!-- <mat-card *ngIf="walletStatistics">
-        <mat-card-title>Manage Wallet</mat-card-title>
-        <mat-card-subtitle>Advanced management of your wallet</mat-card-subtitle>
-        <mat-card-content>
-            <p>
-                <strong>{{walletStatistics.totalUtxoCount}}</strong>
-                <small class="text-uppercase"> UTXOs</small>
-                |
-                <strong>{{walletStatistics.uniqueTransactionCount}}</strong>
-                <small class="text-uppercase"> TRXs</small>
-            </p>
-            <p>
-                <button mat-stroked-button color="primary" (click)="openDialog()">Set UTXO count</button>
-            </p>
-        </mat-card-content>
-    </mat-card> -->
-
-    <!-- <mat-card>
-        <mat-card-title>Details</mat-card-title>
-        <mat-card-content>
-            <p>Your wallet was created {{wallet.generalInfo.creationTime | date:'short'}}.
-                <br>You received your first coins on {{firstTransactionDate | date:'short'}}.
-                <br>You have received {{countReceived}} incoming transactions, and sent coins {{countSent}} times.
-            </p>
-            <p></p>
-        </mat-card-content>
-    </mat-card> -->
-
-    <!--
-    <mat-card class="wallet-split-card">
-        <div class="wallet-split-left">
-            <h2 class="mat-h2">Balance</h2>
-            <p>
-                <strong>{{ (wallet.confirmedBalance | coinNotation) || (0 | coinNotation) }}</strong>
-                <small class="text-uppercase"> {{ wallet.coinUnit }}</small>
-            </p>
-            <ul>
-                <li>
-                    <strong>{{ (wallet.unconfirmedBalance | coinNotation) || (0 | coinNotation) }}</strong>
-                    <em> (unconfirmed)</em>
-                </li>
-            </ul>
-
-            <p>
-                <button mat-stroked-button color="primary" routerLink="/wallet/send">Send</button>&nbsp;
-                <button mat-stroked-button color="primary" routerLink="/wallet/receive">Receive</button>&nbsp;
-            </p>
-
-        </div>
-
-        <div class="wallet-split-right mat-caption">
-            When you send coins, due to the nature of how blockchain technology works, your existing coins can go from confirmed to unconfirmed.<br>
-            This is normal and expected. Within a few minutes, your balance should be updated.
-        </div>
-    </mat-card> -->
 
     <mat-card *ngIf="wallet.hasBalance && appModes.enabled('staking')" class="wallet-split-card">
 
@@ -115,17 +59,17 @@
             <ul>
                 <li *ngIf="wallet.isStarting">Waiting for staking to start...</li>
                 <li>Your weight is
-                    <strong>{{ wallet.stakingWeight | coinNotation | number: '1.0-8': this.globalService.locale }} {{ wallet.coinUnit }}</strong>
+                    <strong>{{ wallet.stakingWeight | coinNotation | number: '1.0-8': this.localeService.locale }} {{ wallet.coinUnit }}</strong>
                 </li>
                 <li>Network weight is
-                    <strong>{{ wallet.netStakingWeight | coinNotation | number: '1.0-2': this.globalService.locale }} {{ wallet.coinUnit }}</strong>
+                    <strong>{{ wallet.netStakingWeight | coinNotation | number: '1.0-2': this.localeService.locale }} {{ wallet.coinUnit }}</strong>
                 </li>
                 <li class="mt-2">Expected reward time is:
                     <strong>{{ wallet.dateTime }}</strong>
                 </li>
                 <li>
                     % Network:
-                    <strong>{{ wallet.percentNetwork | number: '1.0-2': this.globalService.locale }}%</strong>
+                    <strong>{{ wallet.percentNetwork | number: '1.0-2': this.localeService.locale }}%</strong>
 
                 </li>
             </ul>
@@ -150,7 +94,7 @@
                     CurrentBlockSize: {{wallet.stakingInfo.currentBlockSize}}<br>
                     CurrentBlockTx: {{wallet.stakingInfo.currentBlockTx}}<br>
                     PooledTx: {{wallet.stakingInfo.pooledTx}}<br>
-                    Difficulty: {{wallet.stakingInfo.difficulty}}<br>
+                    Difficulty: {{wallet.stakingInfo.difficulty.toLocaleString(this.localeService.locale)}}<br>
                     Search interval: {{wallet.stakingInfo.searchInterval}}<br>
 
                 </mat-expansion-panel>
@@ -205,19 +149,19 @@
                     <td mat-cell *matCellDef="let transaction" [ngClass]="{'unconfirmed': !transaction.transactionConfirmedInBlock}">
 
                         <span *ngIf="transaction.transactionType == 'sent'">
-                            <strong>- {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.globalService.locale
+                            <strong>- {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.localeService.locale
                             }}
                             </strong>
                         </span>
 
                         <span *ngIf="transaction.transactionType == 'received'">
-                            <strong>+ {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.globalService.locale
+                            <strong>+ {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.localeService.locale
                             }}
                             </strong>
                         </span>
 
                         <span *ngIf="transaction.transactionType == 'staked'">
-                            <strong>+ {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.globalService.locale
+                            <strong>+ {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.localeService.locale
                             }}
                             </strong>
                         </span>
@@ -228,19 +172,13 @@
                 <ng-container matColumnDef="transactionTimestamp">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
                     <td mat-cell *matCellDef="let transaction" [ngClass]="{'unconfirmed': !transaction.transactionConfirmedInBlock}">
-                        <span *ngIf="!appState.handset">{{ transaction.transactionTimestamp * 1000 | date:'medium'
-                            }}</span>
-                        <span *ngIf="appState.handset">{{ transaction.transactionTimestamp * 1000 | date:'short'
-                            }}</span>
+                        <span *ngIf="!appState.handset">{{ transaction.transactionTimestamp * 1000 | date:'medium': this.localeService.locale
+                        }}</span>
+                        <span *ngIf="appState.handset">{{ transaction.transactionTimestamp * 1000 | date:'short': this.localeService.locale
+                        }}</span>
                     </td>
                 </ng-container>
 
-                <!-- <ng-container matColumnDef="actions">
-                    <th mat-header-cell *matHeaderCellDef> Actions </th>
-                    <td mat-cell *matCellDef="let transaction">
-                        <a class="link" (click)="openTransactionDetails(transaction)">view</a>
-                    </td>
-                </ng-container> -->
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openTransactionDetails(row)"></tr>
@@ -251,7 +189,7 @@
     </div>
 
     <br>
-    <p>Your wallet was created {{wallet?.generalInfo?.creationTime | date:'short': this.globalService.locale}}. Maximum 1000 transactions is shown in this history.</p>
+    <p>Your wallet was created {{wallet?.generalInfo?.creationTime | date:'short': this.localeService.locale}}. Maximum 1000 transactions is shown in this history.</p>
 
     <p>Does the history look wrong? Are you missing some transactions? Go to <a routerLink="/tools">Tools</a> and run Resync to refresh the transaction history.</p>
 

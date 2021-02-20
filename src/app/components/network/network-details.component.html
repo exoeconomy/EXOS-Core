@@ -108,7 +108,7 @@
         <h3 mat-subheader>Details</h3>
         <mat-list-item>
             <mat-icon mat-list-icon>share</mat-icon>
-            <h4 mat-line>{{walletService.generalInfo?.chainTip}}</h4>
+            <h4 mat-line>{{walletService.generalInfo?.chainTip.toLocaleString(this.localeService.locale)}}</h4>
             <p mat-line>Network Height (Chain Tip)</p>
         </mat-list-item>
         <mat-list-item>
@@ -123,7 +123,7 @@
         </mat-list-item>
         <mat-list-item>
             <mat-icon mat-list-icon>share</mat-icon>
-            <h4 mat-line>{{walletService.generalInfo?.lastBlockSyncedHeight}}</h4>
+            <h4 mat-line>{{walletService.generalInfo?.lastBlockSyncedHeight.toLocaleString(this.localeService.locale)}}</h4>
             <p mat-line>Wallet Height</p>
         </mat-list-item>
         <mat-list-item>

@@ -4,6 +4,8 @@ import { ApiService } from '../../services/api.service';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { WalletService } from '../../services/wallet.service';
 import { Router } from '@angular/router';
+import { LocaleService } from 'src/app/services/locale.service';
+
 
 @Component({
     selector: 'app-network',
@@ -32,7 +34,8 @@ export class NetworkComponent implements OnInit, OnDestroy, AfterContentInit {
         private readonly cd: ChangeDetectorRef,
         public mediaObserver: MediaObserver,
         public router: Router,
-        public walletService: WalletService) {
+        public walletService: WalletService,
+        public localeService: LocaleService) {
 
     }
 

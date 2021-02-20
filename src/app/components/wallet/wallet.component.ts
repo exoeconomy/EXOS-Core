@@ -16,6 +16,8 @@ import { Subscription } from 'rxjs';
 import { WalletInfo } from '@models/wallet-info';
 import { WalletUtxoCountDialogComponent } from './wallet-utxo-count-dialog';
 import { WalletSplit } from '@models/wallet-split';
+import { LocaleService } from 'src/app/services/locale.service';
+
 
 @Component({
     selector: 'app-wallet',
@@ -53,7 +55,8 @@ export class WalletComponent implements OnInit, OnDestroy {
         public appModes: AppModes,
         public dialog: MatDialog,
         private fb: FormBuilder,
-        private ref: ChangeDetectorRef
+        private ref: ChangeDetectorRef,
+        public localeService: LocaleService
     ) {
         this.buildStakingForm();
         this.appState.pageMode = false;
