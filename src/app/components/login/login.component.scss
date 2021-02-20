@@ -21,7 +21,7 @@
         align-items: stretch;
         min-height: 260px;
         background-color: #3f0f79;
-        background-image: url('../../../assets/exos/exoscontentr.png');
+        background-image: url('../../../assets/exos-core/exoscontentr.png');
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -55,7 +55,6 @@
         align-items: center;
         justify-content: center;
         display: flex;
-        //margin-top: 50%;
     }
 
     .login-mode
@@ -71,7 +70,7 @@
     {
         background-color: white;
         width: 50%;
-        background-image: url('../../../assets/exos/exoscontentg.png');
+        background-image: url('../../../assets/exos-core/exoscontentg.png');
         background-repeat: no-repeat;
         background-size: cover;
         text-align: center;

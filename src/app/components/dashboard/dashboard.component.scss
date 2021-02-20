@@ -10,6 +10,12 @@
         }
     }
 
+    p {
+        text-align: justify;
+    }
+
+
+
     div[fxLayoutAlign] { padding:10px; padding-left: 25px; padding-top:15px;}
 
     .dashboard-card {
@@ -17,6 +23,60 @@
         //margin: 20px;
         min-height: 150px;
         //width: 100%;
+    }
+
+    .text-uppercase {
+        font-size: medium;
+    }
+
+    .internal-cards {
+        background: #3f0f79 !important;
+        color: white;
+        height: 300px !important;
+    }
+
+    .mat-card-actions {
+        margin-left: 0px;
+    }
+
+    .card-image {
+        width: 200px;
+        height: 200px;
+        float: right;
+    }
+
+    .card-image-laptop {
+        width: 200px;
+        height: 200px;
+        float: right;
+        margin-top: 15px;
+    }
+
+    .internal-content {
+        margin-bottom: 10px;
+        height: 150px;
+    }
+
+    .cancel-button {
+        color: #3f0f79 !important;
+        margin-bottom: 20px;
+        margin-left: 0px !important;
+        background: #b7e5f9;
+
+    }
+
+
+
+    .dashboard-card-know-us {
+        height: 180px;
+        background: white !important;
+        width: 609px;
+
+        .card-logo {
+            position: absolute;
+            width: inherit;
+            height: inherit;
+        }
     }
 
     .mat-grid-tile .mat-figure
@@ -61,8 +121,9 @@
         cursor: pointer;
     }
 
-    mat-card {
+    .mat-card {
         margin-bottom: 20px;
+        height: 180px;
     }
 
     .dashboard-split-card {

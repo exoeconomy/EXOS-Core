@@ -1,3 +1,9 @@
+.mat-tooltip {
+    /* your own custom styles here */
+    /* e.g. */
+    background-color: #3f0f79 !important;
+    }
+
 .root {
   .daemon-shutdown-status {
     z-index: 10000;
@@ -40,9 +46,15 @@
       justify-content: center;
   }
 
+  .mat-drawer {
+    background: #031e4c;
+    color: white;
+  }
+
   .menu-top-logo {
       width: 32px;
       height: 32px;
+
   }
 
   .toolbar {
@@ -50,6 +62,14 @@
     color: white;
 
    }
+
+   .mat-card {
+    border: 55px !important;
+    border-radius: 25px !important;
+   }
+
+
+
 
   .menu-top-text {
     margin-left: 20px;
