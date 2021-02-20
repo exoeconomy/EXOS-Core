@@ -9,6 +9,7 @@
     "editor.tabSize": 4,
     "files.insertFinalNewline": true,
     "editor.renderIndentGuides": true,
+    "js/ts.implicitProjectConfig.experimentalDecorators": true,
     "html.format.wrapLineLength": 0,
     "[typescript]": {
         "editor.formatOnSave": false,
