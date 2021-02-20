@@ -8,12 +8,12 @@
                 <mat-card-subtitle>The balance of: {{wallet.walletName}}</mat-card-subtitle>
                 <mat-card-content>
                     <p>
-                        <strong>{{ (wallet.confirmedBalance | coinNotation| number: '1.0-8': this.globalService.locale) || (0 | coinNotation) }}</strong>
-                        <small class="text-uppercase"> {{ wallet.coinUnit }}</small>
+                        <strong>{{ (wallet.confirmedBalance | coinNotation| number: '1.0-8': this.localeService.locale) || (0 | coinNotation) }}</strong>
+                        <small class="text-uppercase"><b> {{ wallet.coinUnit }} </b></small>
                     </p>
                     <ul *ngIf="wallet.unconfirmedBalance">
                         <li>
-                            <strong>{{ (wallet.unconfirmedBalance | coinNotation | number: '1.0-8': this.globalService.locale) || (0 | coinNotation) }}</strong>
+                            <strong>{{ (wallet.unconfirmedBalance | coinNotation | number: '1.0-8': this.localeService.locale) || (0 | coinNotation) }}</strong>
                             <em> (unconfirmed)</em>
                         </li>
                     </ul>
@@ -24,103 +24,61 @@
                     </p>
                 </mat-card-content>
             </mat-card>
-
-
-
-            <!-- <mat-card class="dashboard-card">
-                <mat-card-title>Make a paper wallet</mat-card-title>
-                <mat-card-content>
-                    <p>
-                        If you need to store coins safely for an extended time, or if you want to give away coins as a gift, you can do so with a paperwallet.
-                    </p>
-
-                    <button mat-stroked-button routerLink="/paperwallet">Create Paper Wallet</button>
-                </mat-card-content>
-            </mat-card> -->
         </div>
         <div fxFlex>
-            <mat-card class="dashboard-card">
-                <mat-card-title>Notifications ({{notifications.count}})</mat-card-title>
-                <mat-card-subtitle>Summary from your Notification Center</mat-card-subtitle>
-
-                <mat-card-content>
-
-                    <p *ngFor="let tile of notifications.notifications.slice().reverse()">
-                        - {{tile.title}}
-                    </p>
-
-                    <button mat-stroked-button class="dashboard-send" routerLink="/notifications">Open Notification Center</button>
-                </mat-card-content>
-
+            <mat-card class="dashboard-card-know-us">
+                <img src="assets/exos-core/exos-dashboard.png" class="card-logo">
             </mat-card>
-
-            <app-identity-lookup-widget *ngIf="appModes.enabled('hubs')"></app-identity-lookup-widget>
-
-            <!-- <mat-card>
-                <mat-card-title>Sweep paper wallet</mat-card-title>
-                <mat-card-subtitle>Supported formats: WIF, BIP38, Mini private key.</mat-card-subtitle>
-
-                <mat-card-content>
-                    <p>
-                        You can add more coins to your wallet by sweeping paper wallets. When you sweep a paper wallet, all the coins are moved from
-                        the original address and into your current wallet.
-                    </p>
-
-                    <p>
-                        After the transfer is complete, you should avoid reusing the paper wallet for security reasons.
-                    </p>
-
-                    <button mat-stroked-button disabled>Sweep Wallet</button> (Coming soon)
-                </mat-card-content>
-
-            </mat-card> -->
         </div>
-
     </div>
+</div>
 
-    <!-- <mat-grid-list class="network-grid" gutterSize="10" [cols]="columns" #grid>
-        <mat-grid-tile>
-            <mat-card class="dashboard-card">
-                <mat-icon class="dashboard-info-icon" [matTooltip]="walletInfo">info</mat-icon>
+<div class="content">
+    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex fxLayoutGap="20px grid" fxLayoutGap.xs="0px grid" fxLayoutGap.sm="0px grid">
+        <div fxFlex>
+            <mat-card  class="internal-cards">
+                <mat-card-title>CONNECT</mat-card-title>
+                <br>
+                <mat-card-content class="internal-content">
+                    <p>Join the ExO Economy newsletter to digitize your path to becoming an exponential entrepreneur and organization</p>
+                    <img src="assets/exos-core/dblaptop.png" class="card-image-laptop">
+                </mat-card-content>
+                <mat-card-actions>
+                    <br>
+                <button class="cancel-button" mat-stroked-button color="primary" onclick="window.open('https://economy.openexo.com/contact')">SUBSCRIBE</button>&nbsp;
 
-                <h2>Balance</h2>
-
+            </mat-card-actions>
             </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-
-        </mat-grid-tile>
-        <mat-grid-tile>
-
-        </mat-grid-tile>
-        <mat-grid-tile>
-
-        </mat-grid-tile>
-    </mat-grid-list> -->
-
-    <!-- <mat-card>
-    <h2 class="mat-h2">Sellers in your region</h2>
-    <p>No sellers in your current area.</p>
-    <em>Delivered in partnership with coinmap by Trezor.</em>
-  </mat-card> -->
-
-    <!-- <mat-card>
-    <h2 class="mat-h2">Add coins</h2>
-
-    <p>
-      If you received an e-mail with City Coins, you can fill out the key you received in the e-mail to add those coins to your
-      wallet.
-    </p>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Coin code</mat-label>
-      <input matInput type="text" id="inputCode" placeholder="Fill out code">
-    </mat-form-field>
-
-    <br>
-
-    <button mat-stroked-button disabled>Add Coins</button> (Coming soon)
-  </mat-card> -->
-
+        </div>
+        <div fxFlex>
+            <mat-card  class="internal-cards">
+                <mat-card-title>COMMUNITY</mat-card-title>
+                <br>
+                <mat-card-content class="internal-content">
+                    <p>Join the greater ecosystem with more than 7,000 coaches, investors, consultants to unlock abundance and change the world</p>
+                    <img src="assets/exos-core/dbconnect.png" class="card-image">
+                </mat-card-content>
+                <mat-card-actions>
+                    <br>
+                <button class="cancel-button" mat-stroked-button color="primary" onclick="window.open('https://www.openexo.com')">JOIN</button>&nbsp;
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <div fxFlex>
+            <mat-card  class="internal-cards">
+                <mat-card-title>Decentralize , Autonomous</mat-card-title>
+                <br>
+                <mat-card-content class="internal-content">
+                    <p>This community-driven utility token is the heartbeat, the nervous system, the mind of the new economy.
+                       For people, organizations, developers, even cities & municipalities
+                    </p>
+                    <img src="assets/exos-core/dbbrain.png" class="card-image">
+                </mat-card-content>
+                <mat-card-actions >
+                    <br>
+                <button class="cancel-button" mat-stroked-button color="primary" onclick="window.open('https://economy.openexo.com/tools')">VIEW</button>&nbsp;
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
 </div>

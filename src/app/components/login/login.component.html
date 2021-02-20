@@ -1,7 +1,7 @@
 <div class="login-container not-selectable">
     <div class="login-banner">
         <div class="login-banner-content">
-            <img src="assets/{{appState.chain}}/logo-full-light.png" class="login-logo">
+            <img src="assets/exos-core/logo-full-light.png" class="login-logo">
             <br>
             <br>
             <p class="login-banner-text">Release {{appState.version}}<br>
@@ -29,15 +29,12 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Wallet password</mat-label>
                     <input matInput type="password" (keyup.enter)="unlock()" [(ngModel)]="password" placeholder="Fill out to unlock wallet">
-                    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-                    <!-- <mat-hint>This is your personal password, not the 12-word phrase. Make sure you use a password you can remember, nobody else have your password and nobody can help you recover it.</mat-hint> -->
                 </mat-form-field>
                 <br>
-                <button class="login-unlock-button" (click)="unlock()" [disabled]="unlocking" mat-raised-button color="primary">Unlock</button>&nbsp;
                 <button class="login-cancel-button" (click)="cancel()" mat-raised-button>Create</button>
+                <button class="login-unlock-button" (click)="unlock()" [disabled]="unlocking" mat-raised-button color="primary">Unlock</button>&nbsp;
+
                 <br>
-                <!-- <mat-progress-bar *ngIf="unlocking && appState.isSimpleMode" mode="determinate" [value]="unlockPercentage"></mat-progress-bar>
-                <mat-spinner *ngIf="unlocking && appState.isSimpleMode"></mat-spinner> -->
                 <br>
                 <div *ngIf="invalidPassword">The password is not correct.</div>
             </span>
