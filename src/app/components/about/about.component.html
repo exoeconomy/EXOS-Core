@@ -1,6 +1,6 @@
 <div class="content not-selectable centered" *ngIf="nodeStatusSubscription$ | async as node">
     <mat-card class="about-card">
-        <img src="assets/exos/exosletralogo.png" class="about-logo" alt="EXOS Core">
+        <img src="assets/exos-core/exosletralogo.png" class="about-logo" alt="EXOS Core">
         <mat-card-header>
             <mat-card-title>Release {{appState.version}}</mat-card-title>
             <mat-card-subtitle>
@@ -51,20 +51,20 @@
                     <em>{{ node.dataDirectoryPath }}</em>
                 </span>
                 <ng-template #directoryLink>
-                    <a (click)="openFolder(node.dataDirectoryPath)" href="javascript:void(0)">
+                    <a (click)="openDataFolder()" href="javascript:void(0)">
                         <em>{{ node.dataDirectoryPath }}</em>
                     </a>
                 </ng-template>
                 <br>
             </p>
 
-            <a mat-stroked-button href="https://economy.openexo.com/" target="_blank">OpenExo Economy Website</a>
-            <a mat-stroked-button href="https://github.com/exoeconomy" target="_blank">Source Code</a>
-            <button mat-stroked-button (click)="openFolder(node.dataDirectoryPath)">Open Wallet Folder</button> &nbsp;
-
+            <div class="button-block">
+                <button class="cancel-button" mat-stroked-button onclick="window.open('https://economy.openexo.com/')">OpenExo Economy Website</button> &nbsp;
+                <button class="cancel-button" mat-stroked-button onclick="window.open('https://github.com/exoeconomy')">Source Code</button> &nbsp;
+                <button class="cancel-button" mat-stroked-button (click)="openDataFolder()">Open Wallet Folder</button> &nbsp;
+            </div>
         </mat-card-content>
 
     </mat-card>
 
-    <div class="about-heart">Crafted with 💖</div>
 </div>

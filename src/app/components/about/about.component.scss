@@ -7,38 +7,39 @@
         margin-right: auto;
       }
 
+      .mat-card-subtitle {
+        color: black;
+    }
+
+      p {
+        margin-left: 12px;
+      }
+
       a {
-          color: white;
+          color: black;
       }
 
       a:hover {
-          color: silver;
+          color: rgb(70, 5, 252)
       }
 
-      .about-heart {
-        max-width: 600px;
-        margin-bottom: 20px;
-        padding-top: 0px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-      }
-    
+      .button-block {
+        margin-left: 12px;
+    }
+
     .about-card .mat-card-image:first-child
     {
         margin-top: -8px;
         margin-left: 0 !important;
         margin-right: 0 !important;
-
-        
-
     }
-    
+
      .about-nav-title {
         flex: 1 1 auto;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        font-weight: bol;
     }
 
     .about-logo {
@@ -46,11 +47,11 @@
         margin-right: 10px;
         width: calc(100% - 20px);
     }
-    
+
     .about-nav-caret {
         flex: 0 0 auto;
     }
-    
+
     .about-card .mat-stroked-button {
         margin-right: 10px;
         margin-top: 10px;
