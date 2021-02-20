@@ -531,10 +531,10 @@ function launchDaemon(apiPath: string, chain: Chain) {
     commandLineArguments.push('-port=' + chain.port);
     commandLineArguments.push('-rpcport=' + chain.rpcPort);
     commandLineArguments.push('-apiport=' + chain.apiPort);
+    commandLineArguments.push('-dbtype=rocksdb');
 
     if (os.platform() == 'darwin') {
         commandLineArguments.push('--chain=EXOS');
-        commandLineArguments.push('-dbtype=rocksdb');
     }
 
     if (chain.mode === 'light') {
