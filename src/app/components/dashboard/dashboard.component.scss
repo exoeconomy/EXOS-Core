@@ -25,6 +25,14 @@
         //width: 100%;
     }
 
+    .balance-card {
+        //height: 100%;
+        //margin: 20px;
+        min-height: 150px;
+        min-width: 670px;
+        //width: 100%;
+    }
+
     .text-uppercase {
         font-size: medium;
     }
@@ -70,7 +78,7 @@
     .dashboard-card-know-us {
         height: 180px;
         background: white !important;
-        width: 609px;
+        width: 480px;
 
         .card-logo {
             position: absolute;

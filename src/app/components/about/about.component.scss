@@ -7,6 +7,17 @@
         margin-right: auto;
       }
 
+      .mat-divider {
+        border-top-color: rgba(0,0,0,.12);
+        display: inline-block;
+        border-top-width: 1px;
+        border-top-style: solid;
+        position: absolute;
+        margin: 0;
+        width: calc(100% - 64px);
+        margin-left: 25px;
+    }
+
       .mat-card-subtitle {
         color: black;
     }

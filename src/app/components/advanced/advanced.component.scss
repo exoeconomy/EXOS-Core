@@ -1,4 +1,10 @@
-.paragraph-margin {
-    padding-left: 30px;
-    padding-right: 30px;
+.splash-container {
+    background-image: url('../../../assets/exos-core/init-background.png') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .paragraph-margin {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 }
