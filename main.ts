@@ -472,9 +472,10 @@ function startDaemon(chain: Chain) {
     } else if (chain.identity === 'bitcoin') {
         daemonName = 'Stratis.StratisD';
     }
-    if (os.platform() === 'darwin') {
+    if (os.platform() !== 'win32') {
         daemonName = 'Blockcore.Node'
     }
+
 
 
     // If path is not specified and Win32, we'll append .exe
@@ -496,7 +497,7 @@ function getDaemonPath() {
     if (os.platform() === 'win32') {
         apiPath = path.resolve(__dirname, '..\\..\\resources\\daemon\\');
     } else if (os.platform() === 'linux') {
-        apiPath = path.resolve(__dirname, '..//..//resources//daemon//');
+        apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishLinux');
     } else {
         apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishRocksDb//');
     }
@@ -533,7 +534,7 @@ function launchDaemon(apiPath: string, chain: Chain) {
     commandLineArguments.push('-apiport=' + chain.apiPort);
     commandLineArguments.push('-dbtype=rocksdb');
 
-    if (os.platform() == 'darwin') {
+    if (os.platform() != 'win32') {
         commandLineArguments.push('--chain=EXOS');
     }
 

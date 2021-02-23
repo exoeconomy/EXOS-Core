@@ -402,7 +402,7 @@ function getDaemonPath() {
         apiPath = path.resolve(__dirname, '..\\..\\resources\\daemon\\');
     }
     else if (os.platform() === 'linux') {
-        apiPath = path.resolve(__dirname, '..//..//resources//daemon//');
+        apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishLinux');
     }
     else {
         apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishRocksDb//');
@@ -430,9 +430,9 @@ function launchDaemon(apiPath, chain) {
     commandLineArguments.push('-port=' + chain.port);
     commandLineArguments.push('-rpcport=' + chain.rpcPort);
     commandLineArguments.push('-apiport=' + chain.apiPort);
+    commandLineArguments.push('-dbtype=rocksdb');
     if (os.platform() == 'darwin') {
         commandLineArguments.push('--chain=EXOS');
-        commandLineArguments.push('-dbtype=rocksdb');
     }
     if (chain.mode === 'light') {
         commandLineArguments.push('-light');
