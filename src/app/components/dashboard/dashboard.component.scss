@@ -29,7 +29,7 @@
         //height: 100%;
         //margin: 20px;
         min-height: 150px;
-        min-width: 670px;
+        min-width: 480px;
         //width: 100%;
     }
 
@@ -78,11 +78,8 @@
     .dashboard-card-know-us {
         height: 180px;
         background: white !important;
-        width: 480px;
 
         .card-logo {
-            position: absolute;
-            width: inherit;
             height: inherit;
         }
     }
