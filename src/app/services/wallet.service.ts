@@ -8,7 +8,6 @@ import { ApiService } from './api.service';
 import { GeneralInfo } from '../classes/general-info';
 import { Logger } from './logger.service';
 import { StakingInfo } from '../classes/staking-info';
-import { NodeStatus } from '../classes/node-status';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +19,6 @@ export class WalletService {
     private walletHistorySubscription: Subscription;
     private stakingInfoSubscription: Subscription;
     private generalWalletInfoSubscription: Subscription;
-    private nodeStatusSuscription: Subscription;
 
     /** Set to true to make the wallet update wallet status at higher frequency. Set to false when high refresh rate is not needed. */
     public active = false;
@@ -42,11 +40,9 @@ export class WalletService {
     public percentSyncedNumber = 0;
     public percentSynced = '0%';
     public percentNetwork: number;
-    public isChainSynced: boolean;
 
     public generalInfo: GeneralInfo;
     public stakingInfo: StakingInfo;
-    public nodeStatus: NodeStatus;
     public activeWallet: any;
 
     // tslint:disable-next-line: variable-name
@@ -160,10 +156,6 @@ export class WalletService {
         if (this.generalWalletInfoSubscription) {
             this.generalWalletInfoSubscription.unsubscribe();
         }
-
-        if (this.nodeStatusSuscription) {
-            this.nodeStatusSuscription.unsubscribe();
-        }
     }
 
     private startSubscriptions() {
@@ -171,7 +163,6 @@ export class WalletService {
         this.getHistory();
         this.getStakingInfo();
         this.getGeneralWalletInfo();
-        this.getNodeInfo();
     }
 
     /** Called to cancel and restart all subscriptions. */
@@ -295,34 +286,19 @@ export class WalletService {
                     this.log.info('Get wallet info:', response);
 
                     this.generalInfo = response;
-                    this.isChainSynced = this.generalInfo.isChainSynced;
                     this.lastBlockSyncedHeight = this.generalInfo.lastBlockSyncedHeight;
 
                     // Translate the epoch value to a proper JavaScript date.
                     this.generalInfo.creationTime = new Date(this.generalInfo.creationTime * 1000);
 
                     if (this.generalInfo.lastBlockSyncedHeight) {
-                        this.percentSyncedNumber = ((this.nodeStatus.bestPeerHeight / this.nodeStatus.blockStoreHeight) * 100);
-                        if (this.percentSyncedNumber.toFixed(0) === '100' && this.nodeStatus.bestPeerHeight !== this.nodeStatus.blockStoreHeight) {
+                        this.percentSyncedNumber = ((this.generalInfo.lastBlockSyncedHeight / this.generalInfo.chainTip) * 100);
+                        if (this.percentSyncedNumber.toFixed(0) === '100' && this.generalInfo.lastBlockSyncedHeight !== this.generalInfo.chainTip) {
                             this.percentSyncedNumber = 99;
                         }
 
                         this.percentSynced = this.percentSyncedNumber.toFixed(0) + '%';
                     }
-                }, error => {
-                    this.apiService.handleException(error);
-                    this.reactivate();
-                }
-            );
-    }
-
-    private getNodeInfo() {
-        this.nodeStatusSuscription = this.apiService.getNodeStatus()
-            .subscribe(
-                response => {
-                    this.log.info('Get node info:', response);
-                    this.nodeStatus = response;
-
                 }, error => {
                     this.apiService.handleException(error);
                     this.reactivate();
