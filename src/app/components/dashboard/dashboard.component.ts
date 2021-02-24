@@ -12,6 +12,8 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { P2pb2bAsset } from 'src/app/classes/p2pb2b2-asset';
 import { AppModes } from 'src/app/shared/app-modes';
 import { LocaleService } from 'src/app/services/locale.service';
+import { ElectronService } from 'ngx-electron';
+
 
 
 @Component({
@@ -41,7 +43,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
         public wallet: WalletService,
         public appModes: AppModes,
         private fb: FormBuilder,
-        public localeService: LocaleService) {
+        public localeService: LocaleService,
+        private electronService: ElectronService) {
 
         // Make sure we update wallet at higher frequency.
         this.wallet.active = true;
@@ -49,6 +52,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         // this.startSubscriptions();
+        this.electronService.ipcRenderer.send('resize-main');
     }
 
     changeTicker(change) {

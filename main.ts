@@ -193,6 +193,20 @@ ipcMain.on('reset-database', (event, arg: string) => {
     event.returnValue = 'OK';
 });
 
+ipcMain.on('resize-main', (event, arg) => {
+    mainWindow.maximize();
+    mainWindow.maximizable= true;
+    mainWindow.resizable = true;
+});
+
+ipcMain.on('resize-login', (event, arg) => {
+    mainWindow.setSize(1100,800);
+    mainWindow.setResizable(false);
+    mainWindow.setMinimumSize(1100,800);
+    mainWindow.setMaximumSize(1100,800);
+    mainWindow.center();
+});
+
 ipcMain.on('open-data-folder', (event, arg: string) => {
 
     let userDataPath = getAppDataPath();
@@ -318,12 +332,17 @@ function createWindow() {
         iconpath = nativeImage.createFromPath(path.resolve(__dirname, '..//..//resources//dist//assets//exos-core//logo-tray.png'));
     }
     mainWindow = new BrowserWindow({
-        width: 1500,
+        width: 1100,
         icon: iconpath,
         height: 800,
         frame: true,
-        minWidth: 260,
-        minHeight: 400,
+        center: true,
+        minHeight: 800,
+        minWidth: 1100,
+        maxHeight: 800,
+        maxWidth: 1200,
+        resizable: false,
+
         title: 'EXOS Core',
         webPreferences: { webSecurity: false, nodeIntegration: true }
     });
@@ -357,6 +376,8 @@ function createWindow() {
     if (serve) {
         mainWindow.webContents.openDevTools();
     }
+
+    autoUpdater.checkForUpdatesAndNotify();
 
     // Emitted when the window is going to close.
     mainWindow.on('close', (event) => {
@@ -532,6 +553,7 @@ function launchDaemon(apiPath: string, chain: Chain) {
     commandLineArguments.push('-port=' + chain.port);
     commandLineArguments.push('-rpcport=' + chain.rpcPort);
     commandLineArguments.push('-apiport=' + chain.apiPort);
+    commandLineArguments.push('-wsport=' + chain.wsPort);
     commandLineArguments.push('-dbtype=rocksdb');
 
     if (os.platform() != 'win32') {
@@ -619,7 +641,6 @@ function shutdownDaemon(callback) {
         return;
     }
 
-    if (process.platform !== 'darwin') {
         writeLog('Sending POST request to shut down daemon.');
 
         const http = require('http');
@@ -651,7 +672,7 @@ function shutdownDaemon(callback) {
         req.setHeader('content-type', 'application/json-patch+json');
         req.write('true');
         req.end();
-    }
+
 }
 
 function createTray() {

@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.loadWallets();
+        this.electronService.ipcRenderer.send('resize-login');
     }
 
     ngOnDestroy() {
