@@ -83,6 +83,7 @@ let contents = null;
 let currentChain: Chain;
 let settings: Settings;
 let hasDaemon = false;
+let daemons = [];
 
 const args = process.argv.slice(1);
 const serve = args.some(val => val === '--serve');
@@ -95,6 +96,10 @@ require('electron-context-menu')({
 process.on('uncaughtException', (error) => {
     writeLog('Uncaught exception happened:');
     writeLog('Error: ' + error);
+});
+
+process.on('exit', function (code) {
+    return console.log(`About to exit with code ${code}`);
 });
 
 ipcMain.on('start-daemon', (event, arg: Chain) => {
@@ -194,16 +199,14 @@ ipcMain.on('reset-database', (event, arg: string) => {
 });
 
 ipcMain.on('resize-main', (event, arg) => {
-    mainWindow.maximize();
-    mainWindow.maximizable= true;
+    mainWindow.setSize(1366, 768);
+    mainWindow.maximizable = true;
     mainWindow.resizable = true;
+    mainWindow.center();
 });
 
 ipcMain.on('resize-login', (event, arg) => {
-    mainWindow.setSize(1100,800);
-    mainWindow.setResizable(false);
-    mainWindow.setMinimumSize(1100,800);
-    mainWindow.setMaximumSize(1100,800);
+
     mainWindow.center();
 });
 
@@ -331,20 +334,19 @@ function createWindow() {
     } else {
         iconpath = nativeImage.createFromPath(path.resolve(__dirname, '..//..//resources//dist//assets//exos-core//logo-tray.png'));
     }
+
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
     mainWindow = new BrowserWindow({
-        width: 1100,
+        width: 1366,
         icon: iconpath,
-        height: 800,
+        height: 768,
         frame: true,
         center: true,
-        minHeight: 800,
-        minWidth: 1100,
-        maxHeight: 800,
-        maxWidth: 1200,
-        resizable: false,
+        resizable: true,
 
         title: 'EXOS Core',
-        webPreferences: { webSecurity: false, nodeIntegration: true }
+        webPreferences: { webSecurity: false, nodeIntegration: true, contextIsolation: false }
     });
 
     contents = mainWindow.webContents;
@@ -435,6 +437,8 @@ app.on('ready', () => {
 
 app.on('before-quit', () => {
     writeLog('EXOS Core was exited.');
+    exitGuard();
+
 });
 
 const shutdown = (callback) => {
@@ -465,12 +469,9 @@ const shutdown = (callback) => {
     });
 };
 
-const quit = () => {
-    app.quit();
-};
 
 app.on('window-all-closed', () => {
-    quit();
+    app.quit();
 });
 
 app.on('activate', () => {
@@ -487,16 +488,8 @@ function startDaemon(chain: Chain) {
     let daemonName;
 
     if (chain.identity === 'exos') {
-        daemonName = 'OpenExo.Node';
-    } else if (chain.identity === 'stratis') {
-        daemonName = 'Stratis.StratisD';
-    } else if (chain.identity === 'bitcoin') {
-        daemonName = 'Stratis.StratisD';
+        daemonName = 'Blockcore.Node';
     }
-    if (os.platform() !== 'win32') {
-        daemonName = 'Blockcore.Node'
-    }
-
 
 
     // If path is not specified and Win32, we'll append .exe
@@ -525,6 +518,24 @@ function getDaemonPath() {
 
     return apiPath;
 }
+
+function exitGuard() {
+    console.log('Exit Guard is processing...');
+    console.log(daemons[0])
+    if (daemons && daemons.length > 0) {
+        for (var i = 0; i < daemons.length; i++) {
+            try {
+                console.log('Killing (' + daemons[i].pid + '): ' + daemons[i].spawnfile);
+                daemons[i].kill();
+            }
+            catch (err) {
+                console.log('Failed to kill daemon: ' + err);
+                console.log(daemons[i]);
+            }
+        }
+    }
+}
+
 
 function launchDaemon(apiPath: string, chain: Chain) {
     let daemonProcess;
@@ -556,9 +567,7 @@ function launchDaemon(apiPath: string, chain: Chain) {
     commandLineArguments.push('-wsport=' + chain.wsPort);
     commandLineArguments.push('-dbtype=rocksdb');
 
-    if (os.platform() != 'win32') {
         commandLineArguments.push('--chain=EXOS');
-    }
 
     if (chain.mode === 'light') {
         commandLineArguments.push('-light');
@@ -588,6 +597,9 @@ function launchDaemon(apiPath: string, chain: Chain) {
             detached: true
         });
     }
+
+    daemons.push(daemonProcess);
+
 
     daemonProcess.stdout.on('data', (data) => {
         writeDebug(`EXOS Node: ${data}`);

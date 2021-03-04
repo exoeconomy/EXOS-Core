@@ -57,6 +57,7 @@ var contents = null;
 var currentChain;
 var settings;
 var hasDaemon = false;
+var daemons = [];
 var args = process.argv.slice(1);
 var serve = args.some(function (val) { return val === '--serve'; });
 var coin = { identity: 'exos', tooltip: 'EXOS Core' }; // To simplify third party forks and different UIs for different coins, we'll define this constant that loads different assets.
@@ -66,6 +67,9 @@ require('electron-context-menu')({
 process.on('uncaughtException', function (error) {
     writeLog('Uncaught exception happened:');
     writeLog('Error: ' + error);
+});
+process.on('exit', function (code) {
+    return console.log("About to exit with code " + code);
 });
 electron_1.ipcMain.on('start-daemon', function (event, arg) {
     if (daemonState === DaemonState.Started) {
@@ -145,15 +149,12 @@ electron_1.ipcMain.on('reset-database', function (event, arg) {
     event.returnValue = 'OK';
 });
 electron_1.ipcMain.on('resize-main', function (event, arg) {
-    mainWindow.maximize();
+    mainWindow.setSize(1366, 768);
     mainWindow.maximizable = true;
     mainWindow.resizable = true;
+    mainWindow.center();
 });
 electron_1.ipcMain.on('resize-login', function (event, arg) {
-    mainWindow.setSize(1100, 800);
-    mainWindow.setResizable(false);
-    mainWindow.setMinimumSize(1100, 800);
-    mainWindow.setMaximumSize(1100, 800);
     mainWindow.center();
 });
 electron_1.ipcMain.on('open-data-folder', function (event, arg) {
@@ -258,19 +259,16 @@ function createWindow() {
     else {
         iconpath = electron_1.nativeImage.createFromPath(path.resolve(__dirname, '..//..//resources//dist//assets//exos-core//logo-tray.png'));
     }
+    var _a = electron_1.screen.getPrimaryDisplay().workAreaSize, width = _a.width, height = _a.height;
     mainWindow = new electron_1.BrowserWindow({
-        width: 1100,
+        width: 1366,
         icon: iconpath,
-        height: 800,
+        height: 768,
         frame: true,
         center: true,
-        minHeight: 800,
-        minWidth: 1100,
-        maxHeight: 800,
-        maxWidth: 1200,
-        resizable: false,
+        resizable: true,
         title: 'EXOS Core',
-        webPreferences: { webSecurity: false, nodeIntegration: true }
+        webPreferences: { webSecurity: false, nodeIntegration: true, contextIsolation: false }
     });
     contents = mainWindow.webContents;
     mainWindow.setMenu(null);
@@ -346,6 +344,7 @@ electron_1.app.on('ready', function () {
 });
 electron_1.app.on('before-quit', function () {
     writeLog('EXOS Core was exited.');
+    exitGuard();
 });
 var shutdown = function (callback) {
     writeLog('Signal a shutdown to the daemon.');
@@ -373,11 +372,8 @@ var shutdown = function (callback) {
         }
     });
 };
-var quit = function () {
-    electron_1.app.quit();
-};
 electron_1.app.on('window-all-closed', function () {
-    quit();
+    electron_1.app.quit();
 });
 electron_1.app.on('activate', function () {
     // On OS X it's common to re-create a window in the app when the
@@ -391,15 +387,6 @@ function startDaemon(chain) {
     var folderPath = chain.path || getDaemonPath();
     var daemonName;
     if (chain.identity === 'exos') {
-        daemonName = 'OpenExo.Node';
-    }
-    else if (chain.identity === 'stratis') {
-        daemonName = 'Stratis.StratisD';
-    }
-    else if (chain.identity === 'bitcoin') {
-        daemonName = 'Stratis.StratisD';
-    }
-    if (os.platform() !== 'win32') {
         daemonName = 'Blockcore.Node';
     }
     // If path is not specified and Win32, we'll append .exe
@@ -426,6 +413,22 @@ function getDaemonPath() {
     }
     return apiPath;
 }
+function exitGuard() {
+    console.log('Exit Guard is processing...');
+    console.log(daemons[0]);
+    if (daemons && daemons.length > 0) {
+        for (var i = 0; i < daemons.length; i++) {
+            try {
+                console.log('Killing (' + daemons[i].pid + '): ' + daemons[i].spawnfile);
+                daemons[i].kill();
+            }
+            catch (err) {
+                console.log('Failed to kill daemon: ' + err);
+                console.log(daemons[i]);
+            }
+        }
+    }
+}
 function launchDaemon(apiPath, chain) {
     var daemonProcess;
     // TODO: Consider a future improvement that would ensure we don't loose a reference to an existing spawned process.
@@ -449,9 +452,7 @@ function launchDaemon(apiPath, chain) {
     commandLineArguments.push('-apiport=' + chain.apiPort);
     commandLineArguments.push('-wsport=' + chain.wsPort);
     commandLineArguments.push('-dbtype=rocksdb');
-    if (os.platform() != 'win32') {
-        commandLineArguments.push('--chain=EXOS');
-    }
+    commandLineArguments.push('--chain=EXOS');
     if (chain.mode === 'light') {
         commandLineArguments.push('-light');
     }
@@ -477,6 +478,7 @@ function launchDaemon(apiPath, chain) {
             detached: true
         });
     }
+    daemons.push(daemonProcess);
     daemonProcess.stdout.on('data', function (data) {
         writeDebug("EXOS Node: " + data);
     });
