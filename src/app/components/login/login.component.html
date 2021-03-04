@@ -36,6 +36,8 @@
 
                 <br>
                 <br>
+
+
                 <div *ngIf="invalidPassword">The password is not correct.</div>
             </span>
 
@@ -44,7 +46,12 @@
                 {{errorMessage}}
             </span>
 
+
+
         </div>
+
+
+
 
         <div class="login-actions" *ngIf="selectedAccount == null">
             <div>
@@ -54,10 +61,16 @@
             </div>
         </div>
         <div class="login-mode">
-            <button style="color:white" mat-button routerLink="/advanced">
+            <button *ngIf="selectedAccount == null" style="color:white" mat-button routerLink="/advanced">
+                <mat-icon mat-list-icon>settings</mat-icon>
+                Advanced
+            </button>
+            <button *ngIf="hasWallet" style="color:black" mat-button routerLink="/advanced">
                 <mat-icon mat-list-icon>settings</mat-icon>
                 Advanced
             </button>
          </div>
+
+
     </div>
 </div>
