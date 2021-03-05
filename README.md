@@ -49,7 +49,7 @@ npm install
 ```
 
 # License
-MIT @ Fluid Chains, Inc 
-MIT @ OpenExO
-MIT @ City Chain Foundation   
+MIT @ Fluid Chains, Inc     
+MIT @ OpenExO   
+MIT @ City Chain Foundation 
 MIT @ Stratisplatform   
