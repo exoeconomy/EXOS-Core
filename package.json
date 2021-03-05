@@ -10,12 +10,12 @@
     "description": " ",
     "repository": {
         "type": "git",
-        "url": "https://github.com/FluidChains/EXOS-Core.git"
+        "url": "https://github.com/exoeconomy/EXOS-Core.git"
     },
     "bugs": {
-        "url": "https://github.com/FluidChains/EXOS-Core/issues"
+        "url": "https://github.com/exoeconomy/EXOS-Core/issues"
     },
-    "homepage": "https://github.com/FluidChains/EXOS-Core#readme",
+    "homepage": "https://github.com/exoeconomy/EXOS-Core#readme",
     "main": "main.js",
     "scripts": {
         "postinstall": "npm run postinstall:electron && npx electron-builder install-app-deps",
