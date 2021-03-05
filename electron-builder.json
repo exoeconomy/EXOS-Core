@@ -6,7 +6,7 @@
     "publish": [
         {
             "provider": "github",
-            "owner": "FluidChains",
+            "owner": "exoeconomy",
             "repo": "EXOS-Core"
         }
     ],
