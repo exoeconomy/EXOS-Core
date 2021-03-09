@@ -262,6 +262,7 @@ function createWindow() {
     var _a = electron_1.screen.getPrimaryDisplay().workAreaSize, width = _a.width, height = _a.height;
     mainWindow = new electron_1.BrowserWindow({
         width: 1366,
+        minWidth: 1100,
         icon: iconpath,
         height: 768,
         frame: true,
