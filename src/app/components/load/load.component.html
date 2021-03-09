@@ -50,7 +50,7 @@
         <br>
         <div class="bar-progress">
             <mat-progress-bar color="black" mode="determinate"  [value]="progressbarValue"></mat-progress-bar>
-            <h1 style="text-align: center">{{progressbarValue}} %</h1>
+            <h1 style="text-align: center">{{progressbarValue | number: '1.0-0'}} %</h1>
         </div>
     </ng-template>
 
