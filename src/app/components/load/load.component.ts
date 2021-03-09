@@ -7,7 +7,7 @@ import { ApiService } from '../../services/api.service';
 import { delay, retryWhen, tap } from 'rxjs/operators';
 import { Logger } from '../../services/logger.service';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { NodeStatus } from '@models/node-status';
 import { ElectronService } from 'ngx-electron';
 import { environment } from 'src/environments/environment';
@@ -37,6 +37,11 @@ export class LoadComponent implements OnDestroy {
     connection: signalR.HubConnection;
     delayed = false;
     apiSubscription: any;
+    progressbarValue = 0;
+    curSec = 0;
+    moduleState = null;
+
+
 
     private subscription: Subscription;
     private statusIntervalSubscription: Subscription;
@@ -169,9 +174,9 @@ export class LoadComponent implements OnDestroy {
         this.zone.run(() => {
             setTimeout(() => {
                 this.delayed = true;
-            }, 60000); // 60000 Make sure it is fairly high, we don't want users to immediatly perform advanced reset options when they don't need to.
+            }, 1200000); // 60000 Make sure it is fairly high, we don't want users to immediatly perform advanced reset options when they don't need to.
         });
-
+        this.startTimer(100);
         this.tryStart();
     }
 
@@ -197,16 +202,10 @@ export class LoadComponent implements OnDestroy {
                 this.statusIntervalSubscription = this.apiService.getNodeStatusInterval()
                     .subscribe(
                         response => {
-                            let statusResponse = response.featuresData.filter(x => x.namespace === 'Blockcore.Base.BaseFeature');
+                            const statusResponse = response.featuresData.filter(x => x.namespace === 'Blockcore.Features.Wallet.WalletFeature');
                             if (statusResponse.length > 0 && statusResponse[0].state === 'Initialized') {
                                 this.statusIntervalSubscription.unsubscribe();
-                                this.start();
-                            }
-
-                            // TODO: Remove this when Stratis based node is removed.
-                            statusResponse = response.featuresData.filter(x => x.namespace === 'Stratis.Bitcoin.Base.BaseFeature');
-                            if (statusResponse.length > 0 && statusResponse[0].state === 'Initialized') {
-                                this.statusIntervalSubscription.unsubscribe();
+                                this.moduleState = 'Initialized';
                                 this.start();
                             }
                         }
@@ -219,6 +218,24 @@ export class LoadComponent implements OnDestroy {
         );
     }
 
+    private startTimer(seconds: number) {
+        const time = seconds;
+        const timer$ = interval(1000);
+
+        const sub = timer$.subscribe((sec) => {
+            this.progressbarValue = 0 + sec * 90 / seconds;
+            this.curSec = sec;
+
+            if (this.curSec === seconds) {
+                if (this.moduleState === 'Initialized') {
+                    this.progressbarValue = 100;
+                }
+                sub.unsubscribe();
+            }
+
+        });
+    }
+
     start() {
         // this.simpleWalletConnect();
 
@@ -227,6 +244,7 @@ export class LoadComponent implements OnDestroy {
 
         this.loading = false;
         this.appState.connected = true;
+        this.progressbarValue = 100;
         this.router.navigateByUrl('/login');
     }
 
