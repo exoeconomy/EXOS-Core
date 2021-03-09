@@ -339,6 +339,7 @@ function createWindow() {
 
     mainWindow = new BrowserWindow({
         width: 1366,
+        minWidth: 1100,
         icon: iconpath,
         height: 768,
         frame: true,
