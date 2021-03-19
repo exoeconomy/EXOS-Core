@@ -98,6 +98,14 @@
 
             <span class="fill-remaining-vertical"></span>
 
+            <p *ngIf="updateService.available" >
+                A new version is available!
+            </p>
+
+            <button mat-icon-button *ngIf="updateService.available" matTooltip="Update available. Click to view details." routerLink="/update">
+                <mat-icon [matBadge]="1">file_download</mat-icon>
+            </button>
+
             <button *ngIf="StakingStatus" mat-icon-button [matTooltip]="StakingStatus" routerLink="/wallet">
                 <mat-icon>star</mat-icon>
             </button>
@@ -106,9 +114,7 @@
                 <mat-icon [matBadge]="notifications.countUnread" matBadgeColor="warn" matBadgeOverlap="true" [matBadgeHidden]="!notifications.anyUnread">notifications</mat-icon>
             </button>
 
-            <button mat-icon-button *ngIf="updateService.available" matTooltip="Update available. Click to view details." routerLink="/update">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
+
 
             <button *ngIf="networkShowDownload" mat-icon-button [matTooltip]="networkStatusTooltip" routerLink="/network">
                 <mat-icon>cloud_download</mat-icon>

@@ -7,7 +7,9 @@
         {
             "provider": "github",
             "owner": "FluidChains",
-            "repo": "EXOS-Core"
+            "repo": "EXOS-Core",
+            "vPrefixedTagName": false
+
         }
     ],
     "releaseInfo": {
