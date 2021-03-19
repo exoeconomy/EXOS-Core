@@ -52,7 +52,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         // this.startSubscriptions();
-        this.electronService.ipcRenderer.send('resize-main');
     }
 
     changeTicker(change) {

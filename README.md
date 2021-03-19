@@ -1,6 +1,8 @@
 EXOS Core
 ===============
 
+[![Build](https://github.com/exoeconomy/EXOS-Core/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/exoeconomy/EXOS-Core/actions/workflows/build.yml)
+
 ## 💿 Installation
 
 You'll find the latest releases on the [releases](https://github.com/exoeconomy/EXOS-Core/releases) tab. Make sure you pick the latest release.

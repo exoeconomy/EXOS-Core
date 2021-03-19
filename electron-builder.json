@@ -7,7 +7,8 @@
         {
             "provider": "github",
             "owner": "exoeconomy",
-            "repo": "EXOS-Core"
+            "repo": "EXOS-Core",
+            "vPrefixedTagName": false
         }
     ],
     "releaseInfo": {
