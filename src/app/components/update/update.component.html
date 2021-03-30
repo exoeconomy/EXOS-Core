@@ -3,7 +3,7 @@
     <mat-card *ngIf="updateService.info && updateService.available" class="update-card">
         <mat-card-header>
             <div mat-card-avatar class="update-card-header-image"></div>
-            <mat-card-title>Available: {{updateService.info.releaseName}}</mat-card-title>
+            <mat-card-title>Available: {{updateService.info.version}}</mat-card-title>
             <mat-card-subtitle>Version: {{updateService.info.version}} ({{updateService.info.releaseDate}})</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>

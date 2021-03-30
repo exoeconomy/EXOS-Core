@@ -15,6 +15,17 @@
     justify-content: center;
   }
 
+  .icon-download {
+      animation: blinker 2s linear infinite;
+  }
+
+  @keyframes blinker {
+      50% {
+          opacity: 0;
+      }
+
+  }
+
   .daemon-shutdown-content {
     display: flex;
     align-items: center;

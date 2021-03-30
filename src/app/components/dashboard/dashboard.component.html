@@ -10,6 +10,7 @@
                     <p>
                         <strong>{{ (wallet.confirmedBalance | coinNotation| number: '1.0-8': this.localeService.locale) || (0 | coinNotation) }}</strong>
                         <small class="text-uppercase"><b> {{ wallet.coinUnit }} </b></small>
+                        <em *ngIf="isIBD">Wallet is updating</em>
                     </p>
                     <ul *ngIf="wallet.unconfirmedBalance">
                         <li>
@@ -37,47 +38,38 @@
     <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex fxLayoutGap="20px grid" fxLayoutGap.xs="0px grid" fxLayoutGap.sm="0px grid">
         <div fxFlex>
             <mat-card  class="internal-cards">
-                <mat-card-title>CONNECT</mat-card-title>
+                <img src="assets/exos-core/demonetize.png" class="card-image">
+                <br>
+                <mat-card-title>Demonetize</mat-card-title>
                 <br>
                 <mat-card-content class="internal-content">
-                    <p>Join the ExO Economy newsletter to digitize your path to becoming an exponential entrepreneur and organization</p>
-                    <img src="assets/exos-core/dblaptop.png" class="card-image-laptop">
+                    <p>As technology becomes cheaper moving toward no/low cost development, money is increasingly removed from the equation. DeFi is holy grail in unlocking value creation as a model for value-exchange of services, smart contracts and staking incentives to name a few.</p>
                 </mat-card-content>
-                <mat-card-actions>
-                    <br>
-                <button class="cancel-button" mat-stroked-button color="primary" onclick="window.open('https://economy.openexo.com/contact')">Subscribe</button>&nbsp;
 
-            </mat-card-actions>
             </mat-card>
         </div>
         <div fxFlex>
             <mat-card  class="internal-cards">
-                <mat-card-title>COMMUNITY</mat-card-title>
+                <img src="assets/exos-core/democratize.png" class="card-image">
+                <br>
+                <mat-card-title>Democratize</mat-card-title>
                 <br>
                 <mat-card-content class="internal-content">
-                    <p>Join the greater ecosystem with more than 7,000 coaches, investors, consultants to unlock abundance and change the world</p>
-                    <img src="assets/exos-core/dbconnect.png" class="card-image">
+                    <p>ExO Economy is an emerging DAO, to accelerate, democratize and internationalize the Innovation ecosystem. The goal is to increase the knowledge and adoption of blockchain technology to generate business and purpose-driven opportunities.</p>
                 </mat-card-content>
-                <mat-card-actions>
-                    <br>
-                <button class="cancel-button" mat-stroked-button color="primary" onclick="window.open('https://www.openexo.com/community#/')">Join</button>&nbsp;
-                </mat-card-actions>
+
             </mat-card>
         </div>
         <div fxFlex>
             <mat-card  class="internal-cards">
-                <mat-card-title>DECENTRALIZE</mat-card-title>
+                <img src="assets/exos-core/decentralize.png" class="card-image">
+                <br>
+                <mat-card-title>Decentralize</mat-card-title>
                 <br>
                 <mat-card-content class="internal-content">
-                    <p>This community-driven utility token is the heartbeat, the nervous system, the mind of the new economy.
-                       For people, organizations, developers, even cities & municipalities
+                    <p>This community-driven utility token EXOS is the heartbeat, the nervous system, the mind of the new economy. A decentralized model works toward a more fair and equitable society for everyone, regardless of social status or economic standing.
                     </p>
-                    <img src="assets/exos-core/dbbrain.png" class="card-image">
                 </mat-card-content>
-                <mat-card-actions >
-                    <br>
-                <button class="cancel-button" mat-stroked-button color="primary" onclick="window.open('https://economy.openexo.com/tools')">View</button>&nbsp;
-                </mat-card-actions>
             </mat-card>
         </div>
     </div>

@@ -58,6 +58,7 @@
                             "browserify-aes",
                             "bip32",
                             "city-coininfo",
+                            "city-lib",
                             "exos-coininfo",
                             "lodash",
                             "bip39",
