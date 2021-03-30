@@ -33,6 +33,10 @@
         //width: 100%;
     }
 
+    .mat-card-title {
+        text-align: center;
+    }
+
     .text-uppercase {
         font-size: medium;
     }
@@ -48,21 +52,18 @@
     }
 
     .card-image {
-        width: 200px;
-        height: 200px;
-        float: right;
-    }
+        text-align: center !important;
+        width: 20%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
 
-    .card-image-laptop {
-        width: 200px;
-        height: 200px;
-        float: right;
-        margin-top: 15px;
     }
 
     .internal-content {
         margin-bottom: 10px;
         height: 150px;
+        text-align: center !important;
     }
 
     .cancel-button {
@@ -80,7 +81,7 @@
         background: white !important;
 
         .card-logo {
-            height: inherit;
+            height: 180px !important;
         }
     }
 
