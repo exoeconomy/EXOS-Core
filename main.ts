@@ -616,7 +616,7 @@ function getDaemonPath() {
     } else if (os.platform() === 'linux') {
         apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishLinux');
     } else {
-        apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishRocksDb//');
+        apiPath = path.resolve(__dirname, '..//..//Resources//daemon//publishRocksDb//');
     }
 
     return apiPath;
