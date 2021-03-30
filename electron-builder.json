@@ -40,7 +40,8 @@
     "mac": {
         "icon": "dist/assets/icon.icns",
         "target": [
-            "pkg"
+            "pkg",
+            "zip"
         ],
         "category": "public.app-category.productivity"
     },
