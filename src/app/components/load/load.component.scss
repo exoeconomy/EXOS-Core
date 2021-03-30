@@ -29,3 +29,72 @@
 .custom-file-mode {
     width: 186px;
 }
+
+.path {
+    overflow-wrap: break-word;
+    max-width: 300px;
+}
+
+.setup-headers-align {
+    padding-bottom: 2em;
+    padding-top: 2em;
+}
+
+.setup-headers-align .mat-expansion-panel-header-title,
+.setup-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+}
+
+.setup-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.start-button {
+    margin-bottom: 2em;
+}
+
+.advanced-form-field {
+    width: 100%;
+}
+
+.load-feature-status {
+    text-align: left;
+    color: silver;
+    margin-left: 6em;
+    margin-bottom: 0.1em;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 2em 2em;
+    grid-template-areas: "name status";
+}
+
+.load-feature-status .name {
+    grid-area: name;
+    height: 24px;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.load-feature-status .status {
+    grid-area: status;
+    text-align: left;
+    height: 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.load-feature-status mat-icon {
+    font-size: 24px !important;
+    color: green;
+}
+
+.mat-expansion-panel {
+    background-color: white;
+}

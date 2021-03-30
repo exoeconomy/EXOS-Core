@@ -5,24 +5,7 @@
     </div>
 
     <ng-template [ngIf]="!loading" [ngIfElse]="spinner">
-        <mat-form-field>
-            <mat-select placeholder="Select mode" [(ngModel)]="selectedMode">
-                <mat-option *ngFor="let mode of modes" [value]="mode">
-                    {{mode.name}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
 
-        <div *ngIf="selectedMode?.id == 'local'">
-            <br>
-            Daemon folder:<br>
-            <input class="custom-file-mode" type="file" (change)="onDaemonFolderChange($event)" webkitdirectory="true" />
-            <br><br>
-            Data folder:<br>
-            <input class="custom-file-mode" type="file" (change)="onDataFolderChange($event)" webkitdirectory="true" />
-            <br><br>
-        </div>
-        <br>
         <mat-form-field>
             <mat-select placeholder="Select network" [(ngModel)]="selectedNetwork">
                 <mat-option *ngFor="let network of networks" [value]="network">
@@ -30,28 +13,74 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
+
+        <button (click)="launch()" [disabled]="selectedNetwork == null" mat-raised-button color="primary">Start</button>
         <br>
-        <mat-checkbox class="example-margin" [(ngModel)]="remember">Remember</mat-checkbox>
-        <br>
-        <br>
-        <button (click)="launch()" [disabled]="selectedMode == null || selectedNetwork == null" mat-raised-button color="primary">Start</button>
-        <br>
+        <mat-checkbox [(ngModel)]="remember">Remember</mat-checkbox>
+        <mat-accordion class="setup-headers-align" multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-description>
+                        Advanced
+                        <mat-icon>build</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div>
+                    <button [disabled]="downloading || unpacking" (click)="downloadAndUnpack()" mat-raised-button>Download and unpack</button>
+                    <br>
+                    <br>
+                    <a onclick="window.open('https://link.exos.to/fullchain')">More about downloading the fullchain</a>
+                    <div *ngIf="downloading && downloadProgress">
+                        <br><br>
+                        Downloading:<br><br>
+                        <mat-progress-bar mode="determinate" [value]="downloadProgress.progress"></mat-progress-bar>
+                        <br>
+                        {{humanFileSize(downloadProgress.downloaded) }} of {{humanFileSize(downloadProgress.size) }}
+                        <br><br>
+                        <button (click)="cancelDownload()" mat-raised-button>Cancel</button>
+                    </div>
+
+                    <div *ngIf="unpacking">
+                        <br><br>
+                        Unpacking:<br><br>
+                        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </div>
+
+                    <div *ngIf="unpacked">
+                        <br><br>
+                        Download and unpacking completed.<br>
+                        You can now continue by clicking Start.
+                    </div>
+
+                </div>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+
+        <mat-accordion class="setup-headers-align" multi>
+
+        </mat-accordion>
+
         <!-- <p class="mat-caption">
             During PREVIEW RELEASE testing, <br>these options are set by default.
         </p> -->
 
     </ng-template>
     <ng-template #spinner>
-        <span class="load-text">
-            Release {{appState.version}}
-        </span>
-        <br>
         <span>Loading Modules...</span>
         <br>
         <div class="bar-progress">
             <mat-progress-bar color="black" mode="determinate"  [value]="progressbarValue"></mat-progress-bar>
             <h1 style="text-align: center">{{progressbarValue | number: '1.0-0'}} %</h1>
         </div>
+            <br>Release {{appState.version}}
+        <span *ngIf="delayed">
+            <br>
+            <button routerLink="/advanced" mat-raised-button>Advanced</button>&nbsp;
+            <button (click)="cancel()" mat-raised-button color="primary">Cancel</button>
+        </span>
     </ng-template>
 
 </div>
