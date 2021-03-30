@@ -40,24 +40,20 @@
     "mac": {
         "icon": "dist/assets/icon.icns",
         "target": [
-            "dmg",
-            "zip"
+            "pkg"
         ],
         "category": "public.app-category.productivity"
     },
-    "dmg": {
-        "contents": [
-            {
-                "x": 150,
-                "y": 150
-            },
-            {
-                "x": 400,
-                "y": 150,
-                "type": "link",
-                "path": "/Applications"
-            }
-        ]
+    "pkg": {
+        "allowAnywhere": false,
+        "license": "dist/assets/license.txt",
+        "welcome": "dist/assets/welcome.rtf",
+        "conclusion": "dist/assets/readme.rtf",
+        "background": {
+            "file": "dist/assets/exos-core/exos-core-wallet.png",
+            "alignment": "left",
+            "scaling": "tofit"
+        }
     },
     "nsis": {
         "oneClick": false,
