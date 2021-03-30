@@ -109,6 +109,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         // Make sure we shut down the existing node when user choose the change mode action.
         this.apiService.shutdownNode().subscribe(response => {
         });
+        this.electronService.ipcRenderer.send('kill-process');
 
         this.router.navigateByUrl('/load');
     }
