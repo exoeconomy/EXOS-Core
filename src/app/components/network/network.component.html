@@ -17,12 +17,14 @@
             <span class="network-value">{{walletService.generalInfo?.network}}</span>
         </mat-grid-tile>
         <mat-grid-tile>
-            <span class="network-label" *ngIf="walletService.percentSyncedNumber === 100">Chain Synced</span>
-            <span class="network-label" *ngIf="walletService.percentSyncedNumber !== 100">Chain Syncing</span>
-            <span class="network-value" *ngIf="walletService.percentSyncedNumber === 100">
+            <span class="network-label" *ngIf="walletService.generalInfo.isChainSynced">Chain Synced</span>
+            <span class="network-label" *ngIf="!walletService.generalInfo.isChainSynced">Chain Syncing</span>
+            <span class="network-value" *ngIf="walletService.generalInfo.isChainSynced">
                 <mat-icon>cloud_done</mat-icon>
             </span>
-            <span class="network-value" *ngIf="walletService.percentSyncedNumber !== 100">{{walletService.percentSynced}}</span>
+            <span class="network-value" *ngIf="!walletService.generalInfo.isChainSynced">
+                <mat-icon>cloud_download</mat-icon>
+            </span>
         </mat-grid-tile>
         <mat-grid-tile>
             <span class="network-label">Account date</span>

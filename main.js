@@ -156,10 +156,14 @@ electron_1.ipcMain.on('resize-main', function (event, arg) {
 });
 function parseDataFolder(arg) {
     console.log('parseDataFolder: ', arg);
+    var blockcorePlatform = '.blockcore';
+    if (os.platform() !== 'win32') {
+        blockcorePlatform = 'Blockcore';
+    }
     // If the first argument is empty string, we must add the user data path.
     if (arg[0] === '') {
         // Build the node data folder, the userData includes app of the UI-app, so we must navigate down one folder.
-        var nodeDataFolder = path.join(electron_1.app.getPath('userData'), '..', 'Blockcore');
+        var nodeDataFolder = path.join(electron_1.app.getPath('userData'), '..', blockcorePlatform);
         arg.unshift(nodeDataFolder);
     }
     var dataFolder = path.join.apply(path, arg);

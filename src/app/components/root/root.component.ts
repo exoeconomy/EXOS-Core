@@ -210,12 +210,12 @@ export class RootComponent implements OnInit, OnDestroy {
 
     /** Whenever we are downloading, show the download icon. */
     get networkShowDownload(): boolean {
-        return this.walletService.generalInfo && this.walletService.generalInfo.connectedNodes !== 0 && this.walletService.percentSyncedNumber !== 100;
+        return this.walletService.generalInfo && this.walletService.generalInfo.connectedNodes !== 0 && !this.walletService.generalInfo.isChainSynced;
     }
 
     /** Whenever we are fully synced, show done icon. */
     get networkShowDone(): boolean {
-        return this.walletService.generalInfo && this.walletService.generalInfo.isChainSynced && this.walletService.generalInfo.connectedNodes !== 0 && this.walletService.percentSyncedNumber === 100;
+        return this.walletService.generalInfo && this.walletService.generalInfo.isChainSynced && this.walletService.generalInfo.connectedNodes !== 0 ;
     }
 
     /** Whenever we have zero connections on the network, show the offline icon. */
