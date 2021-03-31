@@ -207,11 +207,14 @@ ipcMain.on('resize-main', (event, arg) => {
 
 function parseDataFolder(arg: any) {
     console.log('parseDataFolder: ', arg);
-
+    let blockcorePlatform = '.blockcore';
+    if (os.platform() !== 'win32') {
+        blockcorePlatform = 'Blockcore';
+    }
     // If the first argument is empty string, we must add the user data path.
     if (arg[0] === '') {
         // Build the node data folder, the userData includes app of the UI-app, so we must navigate down one folder.
-        const nodeDataFolder = path.join(app.getPath('userData'), '..', 'Blockcore');
+        const nodeDataFolder = path.join(app.getPath('userData'), '..', blockcorePlatform);
 
         arg.unshift(nodeDataFolder);
     }

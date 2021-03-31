@@ -298,7 +298,7 @@ export class LoadComponent implements OnInit, OnDestroy {
 
     unpack(source: string) {
         // Send array of path information to be used in path.join to get native full path in the main process.
-        const pathInfo = [this.appState.daemon.datafolder];
+        const pathInfo = [this.appState.daemon.datafolder, 'exos', 'EXOSMain'];
 
         const downloadInfo = {
             source,
