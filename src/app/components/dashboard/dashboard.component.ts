@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     get isIBD(): boolean {
-        return this.wallet.generalInfo && !this.wallet.generalInfo.isChainSynced && this.wallet.generalInfo.connectedNodes !== 0 && this.wallet.percentSyncedNumber !== 100;
+        return this.wallet.generalInfo && !this.wallet.generalInfo.isChainSynced && this.wallet.generalInfo.connectedNodes !== 0;
     }
 
     private startSubscriptions() {
