@@ -8,8 +8,7 @@
             <p>
                 <strong>{{ (wallet.confirmedBalance | coinNotation | number: '1.0-8': this.localeService.locale) || (0 | coinNotation) }}</strong>
                 <small class="text-uppercase"><b> {{ wallet.coinUnit }} </b></small>
-                <em *ngIf="isIBD">Wallet is updating</em>
-
+                <em *ngIf="isIBD">Updating the chain</em>
                 <span *ngIf="walletStatistics">
                     <span class="vertical-spacer">|</span>
                     <strong>{{walletStatistics.totalUtxoCount | number: '1.0-8': this.localeService.locale}}</strong>
