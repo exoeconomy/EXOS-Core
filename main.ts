@@ -208,7 +208,7 @@ ipcMain.on('resize-main', (event, arg) => {
 function parseDataFolder(arg: any) {
     console.log('parseDataFolder: ', arg);
     let blockcorePlatform = '.blockcore';
-    if (os.platform() !== 'win32') {
+    if (os.platform() === 'win32') {
         blockcorePlatform = 'Blockcore';
     }
     // If the first argument is empty string, we must add the user data path.
