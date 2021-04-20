@@ -9,6 +9,7 @@ export interface ReportDialogData {
     animal: string;
     name: string;
     lines: any[];
+    specific: any[];
 }
 
 @Component({
@@ -36,6 +37,13 @@ export class ReportComponent {
 
     public onCopiedClick() {
         this.clipboard.copy(document.getElementById('error-lines').innerText);
+
+        this.snackBar.open('The error log has been copied to your clipboard.', null, { duration: 3000 });
+        return false;
+    }
+
+    public causeOnCopiedClick() {
+        this.clipboard.copy(document.getElementById('error-cause-lines').innerText);
 
         this.snackBar.open('The error log has been copied to your clipboard.', null, { duration: 3000 });
         return false;
