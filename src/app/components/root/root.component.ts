@@ -27,7 +27,6 @@ import { registerLocaleData } from '@angular/common';
 import { LocaleService } from 'src/app/services/locale.service';
 
 
-
 @Component({
     selector: 'app-root',
     templateUrl: './root.component.html',
@@ -282,6 +281,10 @@ export class RootComponent implements OnInit, OnDestroy {
             // We'll check for updates in the startup of the app.
             this.checkForUpdates();
         }, 12000);
+
+        setInterval(() => {
+            this.checkForUpdates();
+        }, 60000 * 60 * 6);
 
         if (this.router.url !== '/load') {
             this.router.navigateByUrl('/load');
