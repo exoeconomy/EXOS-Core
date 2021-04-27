@@ -1,4 +1,5 @@
 import { Injectable, ChangeDetectorRef } from '@angular/core';
+import {Router} from '@angular/router';
 import { ElectronService } from 'ngx-electron';
 import { UpdateInfo } from '../components/update/update-info';
 import { ApplicationStateService } from './application-state.service';
@@ -17,6 +18,7 @@ export interface NotificationTile {
 export interface NotificationMessage {
     title: string;
     body: string;
+    command: string;
 }
 
 @Injectable({
@@ -47,7 +49,7 @@ export class NotificationService {
         return this.notifications.length;
     }
 
-    constructor() {
+    constructor(private router: Router) {
         this.notifications = new Array<NotificationTile>();
 
         // this.notifications.push(
@@ -135,12 +137,16 @@ export class NotificationService {
         const notification = {
             title: tile.title,
             body: tile.body,
+            coomand: tile.command,
             icon: require('path').join(__dirname, '../../../assets/city/logo.png')
         };
 
         const nativeNotification = new window.Notification(notification.title, notification);
 
         nativeNotification.onclick = () => {
+            if (tile.command === 'ToUpdate'){
+                this.router.navigate(['/update']);
+            }
             console.log('Notification clicked');
         };
     }
