@@ -69,11 +69,9 @@
 
     </ng-template>
     <ng-template #spinner>
-        <mat-spinner></mat-spinner>
         <span class="load-text">Loading <strong>{{appState.chain}}</strong> Modules... please wait.<br><br>
             <div class="load-feature-status" *ngFor="let feature of featureStatus">
-                <div class="name" *ngIf="feature.initialized">{{feature.name}} - <strong class="feature-init">{{feature.initialized}}</strong></div>
-                <div class="status"><mat-icon *ngIf="feature.initialized">task_alt</mat-icon></div>
+                <div class="name"><mat-spinner diameter="20" *ngIf="!feature.initialized"></mat-spinner><mat-icon *ngIf="feature.initialized" [ngStyle]="{'color':'green'}">done</mat-icon>  {{feature.name}}</div>
             </div>
         </span>
         <br>
