@@ -131,7 +131,7 @@ export class RootComponent implements OnInit, OnDestroy {
                         title: 'Failed to start EXOS Node background daemon',
                         error,
                         lines: this.log.lastEntries(),
-                        specific: this.checkDaemonLogs(this.log.lastEntries())
+                        specific: this.log.catchErrorLogs()
                     }
                 });
 
@@ -225,18 +225,6 @@ export class RootComponent implements OnInit, OnDestroy {
 
     get appTitle$(): Observable<string> {
         return this.titleService.$title;
-    }
-
-    checkDaemonLogs(logs){
-        const focusLogs: string[] = [];
-        const catcher1: any = /EXOS/g;
-        const catcher2: any = /Exception/g;
-        for (const index of logs) {
-            if (index.search(catcher1) !== -1 || index.search(catcher2) !== -1) {
-                focusLogs.push(index);
-            }
-        }
-        return focusLogs;
     }
 
     loadFiller() {
