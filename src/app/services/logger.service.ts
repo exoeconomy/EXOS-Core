@@ -55,11 +55,8 @@ export class Logger {
         const array = [];
         const data = this.lastEntries();
         const catchers = [/Exception/g, /CRITICAL/g, /FATAL/g];
-        // ACA LOS TENEMOS LISTOS PARA MAPEAR
         const result = Object.values(data);
-        // const onJson = JSON.stringify(result);
         for (const key of result) {
-            // array.push(key.message);
             const val = JSON.stringify(key);
             if (val.search(catchers[0]) !== -1 || val.search(catchers[1]) !== -1 || val.search(catchers[2]) !== -1) {
                 array.push(key);
