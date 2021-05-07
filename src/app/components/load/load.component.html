@@ -59,6 +59,10 @@
                         <br>
                         Reset done!
                     </div>
+                    <div *ngIf="noSpace">
+                        <br>
+                         No space left on device, you need 5GB free minimum.
+                    </div>
 
                 </div>
             </mat-expansion-panel>
@@ -70,9 +74,6 @@
 
         </mat-accordion>
 
-        <!-- <p class="mat-caption">
-            During PREVIEW RELEASE testing, <br>these options are set by default.
-        </p> -->
 
     </ng-template>
     <ng-template #spinner>

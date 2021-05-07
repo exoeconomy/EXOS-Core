@@ -168,6 +168,18 @@ ipcMain.on('daemon-change', (event, arg: any) => {
     daemonState = DaemonState.Changing;
 });
 
+ipcMain.on('check-storage', (event, arg: string) => {
+    var diskspace = require('diskspace');
+    let diskUnit = '/';
+    if (os.platform() === 'win32') {
+        diskUnit = 'C'
+    }
+
+    diskspace.check(diskUnit, function (err, result) {
+        event.returnValue = result.free;
+    });
+});
+
 // Called when the app needs to reset the blockchain database. It will delete the "blocks", "chain" and "coinview" folders.
 ipcMain.on('reset-database', (event, arg: string) => {
 
@@ -216,7 +228,8 @@ ipcMain.on('download-blockchain-package', (event, arg: any) => {
 
     console.log('download-blockchain-package');
 
-    const dataFolder = parseDataFolder(arg.path);
+    const appDataFolder = parseDataFolder([]);
+    const dataFolder = path.join(appDataFolder, 'exos','EXOSMain');
 
     // Get the folder to download zip to:
     const targetFolder = path.dirname(dataFolder);
@@ -235,7 +248,6 @@ ipcMain.on('download-blockchain-package', (event, arg: any) => {
                 console.log('FINISHED!!');
             }
             else {
-                console.log('Progress: ' + progress.status);
             }
         });
     }
@@ -266,17 +278,18 @@ ipcMain.on('unpack-blockchain-package', (event, arg: any) => {
 
     console.log('CALLED!!!! - unpack-blockchain-package');
 
-    let targetFolder = parseDataFolder(arg.path);
+    const appDataFolder = parseDataFolder([]);
+    const targetFolder = path.join(appDataFolder, 'exos', 'EXOSMain');
     let sourceFile = arg.source;
 
-    console.log('targetFolder: ' + targetFolder);
-    console.log('sourceFile: ' + sourceFile);
 
     const extract = require('extract-zip');
     extract(sourceFile, { dir: targetFolder }).then(() => {
+        fs.unlinkSync(sourceFile);
         console.log('FINISHED UNPACKING!');
         contents.send('unpack-blockchain-package-finished', null);
     }).catch(err => {
+        fs.unlinkSync(sourceFile);
         console.error('Failed to unpack: ', err);
         contents.send('unpack-blockchain-package-finished', err);
     });
@@ -883,10 +896,6 @@ function downloadFile(fileUrl, folder, callback) {
             callback(true, { size: 0, downloaded: 0, progress: 0, status: 'Timeout' }, "File transfer timeout!");
         };
     };
-
-    console.log(blockchainDownloadRequest)
-
-
 
     blockchainDownloadRequest = http.get(fileUrl).on('response', function (res) {
         var len = parseInt(res.headers['content-length'], 10);

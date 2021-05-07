@@ -70,6 +70,7 @@
         "buffer-xor": "^1.0.2",
         "conventional-changelog-cli": "2.0.34",
         "create-hash": "^1.1.1",
+        "diskspace": "^2.0.0",
         "ecurve": "^1.0.0",
         "electron-context-menu": "2.3.0",
         "electron-log": "4.2.2",
