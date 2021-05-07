@@ -6,6 +6,17 @@
             them to the development team for support.</span>
     </p>
 
+    <h3>Possible cause(s) of the problem:</h3>
+    <div id="error-cause-lines">
+        <p class="log-line" *ngFor="let specific of data.specific">
+            {{specific.timestamp | date:'HH:mm'}}: {{specific.message | json}}
+
+            <span *ngFor="let arg of specific.args">
+                {{arg | json}}
+            </span>
+        </p>
+    </div>
+
     <h3>Last {{data.lines.length}} log messages:</h3>
 
     <div id="error-lines">
@@ -20,6 +31,7 @@
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
+    <button mat-button ngbTooltip="Copy to clipboard" (click)="causeOnCopiedClick()">Copy cause</button>
     <button mat-button ngbTooltip="Copy to clipboard" (click)="onCopiedClick()">Copy</button>
     <button mat-button [mat-dialog-close]="true">Close</button>
     <button mat-button color="primary" [mat-dialog-close]="true" (click)="shutdown()" cdkFocusInitial>Exit</button>
