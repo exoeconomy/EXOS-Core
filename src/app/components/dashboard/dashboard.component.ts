@@ -13,6 +13,7 @@ import { P2pb2bAsset } from 'src/app/classes/p2pb2b2-asset';
 import { AppModes } from 'src/app/shared/app-modes';
 import { LocaleService } from 'src/app/services/locale.service';
 import { ElectronService } from 'ngx-electron';
+import { UpdateService } from '../../services/update.service';
 
 
 
@@ -44,14 +45,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
         public appModes: AppModes,
         private fb: FormBuilder,
         public localeService: LocaleService,
-        private electronService: ElectronService) {
+        private electronService: ElectronService,
+        public updateService: UpdateService) {
 
         // Make sure we update wallet at higher frequency.
         this.wallet.active = true;
     }
 
+    checkForUpdates() {
+        this.updateService.checkForUpdate();
+    }
+
     ngOnInit() {
         // this.startSubscriptions();
+        this.checkForUpdates();
     }
 
     changeTicker(change) {

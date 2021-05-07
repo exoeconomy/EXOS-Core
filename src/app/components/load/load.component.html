@@ -27,6 +27,9 @@
                 </mat-expansion-panel-header>
 
                 <div>
+                    <button (click)="resetDatabase()" mat-raised-button>Reset Database</button>
+                    <br>
+                    <br>
                     <button [disabled]="downloading || unpacking" (click)="downloadAndUnpack()" mat-raised-button>Download and unpack</button>
                     <br>
                     <br>
@@ -52,6 +55,14 @@
                         Download and unpacking completed.<br>
                         You can now continue by clicking Start.
                     </div>
+                    <div *ngIf="resetDone">
+                        <br>
+                        Reset done!
+                    </div>
+                    <div *ngIf="noSpace">
+                        <br>
+                         No space left on device, you need 5GB free minimum.
+                    </div>
 
                 </div>
             </mat-expansion-panel>
@@ -63,13 +74,14 @@
 
         </mat-accordion>
 
-        <!-- <p class="mat-caption">
-            During PREVIEW RELEASE testing, <br>these options are set by default.
-        </p> -->
 
     </ng-template>
     <ng-template #spinner>
-        <span>Loading Modules...</span>
+        <span class="load-text">Loading <strong>{{appState.chain}}</strong> Modules... please wait.<br><br>
+            <div class="load-feature-status" *ngFor="let feature of featureStatus">
+                <div class="name"><mat-spinner diameter="20" *ngIf="!feature.initialized"></mat-spinner><mat-icon *ngIf="feature.initialized" [ngStyle]="{'color':'green'}">done</mat-icon>  {{feature.name}}</div>
+            </div>
+        </span>
         <br>
         <div class="bar-progress">
             <mat-progress-bar color="black" mode="determinate"  [value]="progressbarValue"></mat-progress-bar>

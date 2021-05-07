@@ -51,6 +51,20 @@ export class Logger {
         return this.messages;
     }
 
+    catchErrorLogs() {
+        const array = [];
+        const data = this.lastEntries();
+        const catchers = [/Error message:/g, /Exception/g, /CRITICAL/g, /FATAL/g];
+        const result = Object.values(data);
+        for (const key of result) {
+            const val = JSON.stringify(key);
+            if (val.search(catchers[0]) !== -1 || val.search(catchers[1]) !== -1 || val.search(catchers[2]) !== -1) {
+                array.push(key);
+            }
+        }
+        return array;
+    }
+
     private log(logLevel: LogLevel, message: string, ...args: any[]) {
 
         if (this.messages.length > 29) {
