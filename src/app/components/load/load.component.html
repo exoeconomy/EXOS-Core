@@ -27,6 +27,9 @@
                 </mat-expansion-panel-header>
 
                 <div>
+                    <button (click)="resetDatabase()" mat-raised-button>Reset Database</button>
+                    <br>
+                    <br>
                     <button [disabled]="downloading || unpacking" (click)="downloadAndUnpack()" mat-raised-button>Download and unpack</button>
                     <br>
                     <br>
@@ -51,6 +54,10 @@
                         <br><br>
                         Download and unpacking completed.<br>
                         You can now continue by clicking Start.
+                    </div>
+                    <div *ngIf="resetDone">
+                        <br>
+                        Reset done!
                     </div>
 
                 </div>

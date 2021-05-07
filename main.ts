@@ -174,14 +174,11 @@ ipcMain.on('reset-database', (event, arg: string) => {
     writeLog('reset-database: User want to reset database, first attempting to shutdown the node.');
 
     // Make sure the daemon is shut down first:
-    shutdownDaemon((success, error) => {
-        const userDataPath = app.getPath('userData');
-        const appDataFolder = path.dirname(userDataPath);
-
-        const dataFolder = path.join(appDataFolder, 'Blockcore', 'exos', arg);
+        const appDataFolder = parseDataFolder([]);
+        const dataFolder = path.join(appDataFolder, 'exos', 'EXOSMain');
         const folderBlocks = path.join(dataFolder, 'blocks');
         const folderChain = path.join(dataFolder, 'chain');
-        const folderCoinView = path.join(dataFolder, 'coinview');
+        const folderCoinView = path.join(dataFolder, 'coindb');
         const folderCommon = path.join(dataFolder, 'common');
         const folderProvenHeaders = path.join(dataFolder, 'provenheaders');
         const folderFinalizedBlock = path.join(dataFolder, 'finalizedBlock');
@@ -193,7 +190,6 @@ ipcMain.on('reset-database', (event, arg: string) => {
         deleteFolderRecursive(folderCommon);
         deleteFolderRecursive(folderProvenHeaders);
         deleteFolderRecursive(folderFinalizedBlock);
-    });
 
     event.returnValue = 'OK';
 });
@@ -206,33 +202,15 @@ ipcMain.on('resize-main', (event, arg) => {
 });
 
 function parseDataFolder(arg: any) {
-    console.log('parseDataFolder: ', arg);
     let blockcorePlatform = '.blockcore';
     if (os.platform() === 'win32') {
         blockcorePlatform = 'Blockcore';
     }
-    // If the first argument is empty string, we must add the user data path.
-    if (arg[0] === '') {
-        // Build the node data folder, the userData includes app of the UI-app, so we must navigate down one folder.
-        const nodeDataFolder = path.join(app.getPath('userData'), '..', blockcorePlatform);
-
-        arg.unshift(nodeDataFolder);
-    }
-
+    const nodeDataFolder = path.join(getAppDataPath(), blockcorePlatform);
+    arg.unshift(nodeDataFolder);
     const dataFolder = path.join(...arg);
-
     return dataFolder;
 }
-
-ipcMain.on('open-data-folder', (event, arg: any) => {
-
-    const dataFolder = parseDataFolder(arg);
-
-    shell.openPath(dataFolder);
-
-    event.returnValue = 'OK';
-});
-
 
 ipcMain.on('download-blockchain-package', (event, arg: any) => {
 

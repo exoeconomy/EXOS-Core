@@ -40,6 +40,7 @@ export class LoadComponent implements OnInit, OnDestroy {
     remember: boolean;
     connection: signalR.HubConnection;
     delayed = false;
+    resetDone = false;
     apiSubscription: any;
     routingSubscription: any;
     downloadUrl: string;
@@ -176,6 +177,17 @@ export class LoadComponent implements OnInit, OnDestroy {
 
     }
 
+    resetDatabase() {
+        this.unpacked = false;
+        this.resetDone = false;
+        this.noSpace = false;
+        // Send array of path information to be used in path.join to get native full path in the main process.
+        this.log.info('Reset Blockchain Database...');
+
+        const path = this.electronService.ipcRenderer.sendSync('reset-database');
+        this.log.info('Reset completed');
+        this.resetDone = true;
+    }
     initialize() {
         this.apiService.initialize();
 
