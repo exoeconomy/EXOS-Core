@@ -40,6 +40,9 @@ export class LoadComponent implements OnInit, OnDestroy {
     remember: boolean;
     connection: signalR.HubConnection;
     delayed = false;
+    freeSpace: any;
+    resetDone = false;
+    noSpace = false;
     apiSubscription: any;
     routingSubscription: any;
     downloadUrl: string;
@@ -103,7 +106,7 @@ export class LoadComponent implements OnInit, OnDestroy {
 
         this.selectedMode = this.modes.find(mode => mode.id === this.appState.mode);
         this.selectedNetwork = this.networks.find(network => network.id === this.appState.network);
-        this.remember = true;
+        this.remember = false;
 
         this.log.info('Mode:', this.selectedMode);
         this.log.info('Network:', this.selectedNetwork);
@@ -174,6 +177,26 @@ export class LoadComponent implements OnInit, OnDestroy {
         });
 
 
+    }
+
+    resetDatabase() {
+        this.unpacked = false;
+        this.resetDone = false;
+        this.noSpace = false;
+        // Send array of path information to be used in path.join to get native full path in the main process.
+        this.log.info('Reset Blockchain Database...');
+
+        const path = this.electronService.ipcRenderer.sendSync('reset-database');
+        this.log.info('Reset completed');
+        this.resetDone = true;
+    }
+
+    checkStorage() {
+        this.unpacked = false;
+        this.resetDone = false;
+        this.noSpace = false;
+        const free = this.electronService.ipcRenderer.sendSync('check-storage');
+        this.freeSpace = free;
     }
 
     initialize() {
@@ -267,28 +290,36 @@ export class LoadComponent implements OnInit, OnDestroy {
     }
 
     downloadAndUnpack() {
-        // If user does "Copy as path" we must ensure we replace the quotes.
-        const url = 'https://s3.amazonaws.com/exos.blockchain/EXOS-main.zip';
-        const isAbsolute = new RegExp('^([a-z]+://|//)', 'i');
+        this.checkStorage();
+        this.unpacked = false;
+        this.resetDone = false;
+        this.noSpace = false;
 
-        if (isAbsolute.test(url)) {
-            console.log('Download: ' + url);
-            this.downloading = true;
+        if (this.freeSpace > 5368709120) {
+            // If user does "Copy as path" we must ensure we replace the quotes.
+            const url = 'https://s3.amazonaws.com/exos.blockchain/EXOS-main.zip';
+            const isAbsolute = new RegExp('^([a-z]+://|//)', 'i');
 
-            // Send array of path information to be used in path.join to get native full path in the main process.
-            const pathInfo = [this.appState.daemon.datafolder];
+            if (isAbsolute.test(url)) {
+                console.log('Download: ' + url);
+                this.downloading = true;
 
-            const downloadInfo = {
-                url,
-                path: pathInfo
-            };
+                // Send array of path information to be used in path.join to get native full path in the main process.
 
-            this.log.info('Target Folder...', downloadInfo);
-            this.electronService.ipcRenderer.sendSync('download-blockchain-package', downloadInfo);
+                const downloadInfo = {
+                    url
+                };
+
+                this.log.info('Target Folder...', downloadInfo);
+                this.electronService.ipcRenderer.sendSync('download-blockchain-package', downloadInfo);
+            }
+            else {
+                // If the user supplies an relative / local path, we'll go ahead and unpack directly.
+                this.unpack(url);
+            }
         }
         else {
-            // If the user supplies an relative / local path, we'll go ahead and unpack directly.
-            this.unpack(url);
+            this.noSpace = true;
         }
     }
 

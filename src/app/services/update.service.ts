@@ -33,7 +33,7 @@ export class UpdateService {
                 });
 
                 this.ipc.on('update-available', (event, info: UpdateInfo) => {
-                    // notificationService.show({ title: 'Update available!', body: JSON.stringify(info)});
+                    notificationService.show({ title: 'Update available!', body: JSON.stringify(info), command: 'ToUpdate'});
                     console.log('update-available: ', info);
                     this.info = info;
                     this.available = true;
@@ -57,7 +57,7 @@ export class UpdateService {
                 });
 
                 this.ipc.on('update-error', (event, error) => {
-                    // notificationService.show({ title: 'Update error', body: error.message });
+                    // notificationService.show({ title: 'Update error', body: error.message, command: 'printError' });
                     console.log('update-error: ', error);
                 });
 

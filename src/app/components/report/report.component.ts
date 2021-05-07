@@ -45,7 +45,7 @@ export class ReportComponent {
     public causeOnCopiedClick() {
         this.clipboard.copy(document.getElementById('error-cause-lines').innerText);
 
-        this.snackBar.open('The error log has been copied to your clipboard.', null, { duration: 3000 });
+        this.snackBar.open('The error cause log has been copied to your clipboard.', null, { duration: 3000 });
         return false;
     }
 }

@@ -27,7 +27,6 @@ import { registerLocaleData } from '@angular/common';
 import { LocaleService } from 'src/app/services/locale.service';
 
 
-
 @Component({
     selector: 'app-root',
     templateUrl: './root.component.html',
@@ -132,7 +131,7 @@ export class RootComponent implements OnInit, OnDestroy {
                         title: 'Failed to start EXOS Node background daemon',
                         error,
                         lines: this.log.lastEntries(),
-                        specific: this.checkDaemonLogs(this.log.lastEntries())
+                        specific: this.log.catchErrorLogs()
                     }
                 });
 
@@ -228,18 +227,6 @@ export class RootComponent implements OnInit, OnDestroy {
         return this.titleService.$title;
     }
 
-    checkDaemonLogs(logs){
-        const focusLogs: string[] = [];
-        const catcher1: any = /EXOS/g;
-        const catcher2: any = /Exception/g;
-        for (const index of logs) {
-            if (index.search(catcher1) !== -1 || index.search(catcher2) !== -1) {
-                focusLogs.push(index);
-            }
-        }
-        return focusLogs;
-    }
-
     loadFiller() {
         if (localStorage.getItem('Menu:Expanded') === 'false') {
             this.showFiller = false;
@@ -282,6 +269,10 @@ export class RootComponent implements OnInit, OnDestroy {
             // We'll check for updates in the startup of the app.
             this.checkForUpdates();
         }, 12000);
+
+        setInterval(() => {
+            this.checkForUpdates();
+        }, 60000 * 60 * 6);
 
         if (this.router.url !== '/load') {
             this.router.navigateByUrl('/load');

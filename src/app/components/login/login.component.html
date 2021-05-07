@@ -49,11 +49,13 @@
 
 
         </div>
-        <div class="login-actions" *ngIf="selectedAccount == null">
+        <div class="login-actions">
             <div>
-                <button routerLink="/account/create" mat-stroked-button class="login-unlock-button">Create</button> or
-                <button routerLink="/account/recover" mat-stroked-button class="login-cancel-button">Restore</button>
-                your account
+                <div *ngIf="selectedAccount == null">
+                    <button routerLink="/account/create" mat-stroked-button class="login-unlock-button">Create</button> or
+                    <button routerLink="/account/recover" mat-stroked-button class="login-cancel-button">Restore</button>
+                    your account
+                </div>
                 <br>
 
                 <div class="login-mode">
@@ -65,13 +67,5 @@
                  </div>
             </div>
         </div>
-
-        <div *ngIf="hasWallet" class="login-mode">
-            <button mat-button (click)="changeMode()"><span class="material-icons">public</span> Change Mode</button> &nbsp;
-            <button style="color:black" mat-button routerLink="/advanced">
-                <mat-icon mat-list-icon>settings</mat-icon>
-                Advanced
-            </button>
-         </div>
     </div>
 </div>
