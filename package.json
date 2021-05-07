@@ -1,6 +1,6 @@
 {
     "name": "exoscore",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "license": "MIT",
     "author": {
         "name": "OpenExO",
@@ -59,7 +59,6 @@
     "dependencies": {
         "@blockcore/message": "^1.0.0",
         "@techiediaries/ngx-qrcode": "^9.1.0",
-        "crypto-js": "4.0.0",
         "angular-pipes": "10.0.0",
         "base64url": "^3.0.1",
         "bigi": "^1.2.0",
@@ -70,6 +69,7 @@
         "buffer-xor": "^1.0.2",
         "conventional-changelog-cli": "2.0.34",
         "create-hash": "^1.1.1",
+        "crypto-js": "4.0.0",
         "diskspace": "^2.0.0",
         "ecurve": "^1.0.0",
         "electron-context-menu": "2.3.0",
@@ -118,9 +118,9 @@
         "dexie": "3.0.2",
         "electron": "9.2.0",
         "electron-builder": "22.9.1",
+        "electron-notarize": "^1.0.0",
         "electron-reload": "1.5.0",
         "enhanced-resolve": "4.3.0",
-        "electron-notarize": "^1.0.0",
         "exos-coininfo": "file:/./contrib/exos-coininfo-5.1.0.tgz",
         "hammerjs": "2.0.8",
         "jasmine-core": "~3.6.0",
