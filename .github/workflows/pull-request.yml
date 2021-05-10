@@ -35,6 +35,8 @@ jobs:
       PROJECT_NAME: 'OpenExo.Node'
       DAEMON: '1.0.17'
       ARCH: 'x64'
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+
 
     steps:
 
