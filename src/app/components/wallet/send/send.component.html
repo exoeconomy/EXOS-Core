@@ -1,7 +1,7 @@
 <div class="content content-centered">
   <h1 class="mat-h1" *ngIf="appState.handset">{{appState.appTitle$ | async}}</h1>
 
-  <mat-card>
+  <mat-card class="send-card">
     <h4>Wallet Name: <strong>{{this.globalService.getWalletName()}} </strong> </h4>
     <h2 class="mat-h2">
       Amount available:
@@ -9,7 +9,7 @@
     </h2>
   </mat-card>
 
-  <mat-card *ngIf="showInputField">
+  <mat-card class="send-card" *ngIf="showInputField">
     <form [formGroup]="sendForm">
       <mat-form-field appearance="outline">
         <mat-label>Amount</mat-label>
@@ -87,20 +87,21 @@
 
       <div *ngIf="apiError" class="text-danger">{{ apiError }}</div>
     </form>
-
-    <button mat-raised-button color="primary" [disabled]="!sendForm.valid || isSending || !estimatedFee" (click)="send()">Send</button>&nbsp;
-    <button mat-stroked-button [disabled]="isSending" (click)="cancel()">Cancel</button>
+    <p>
+        <button mat-stroked-button class="wallet-send" [disabled]="!sendForm.valid || isSending || !estimatedFee" (click)="send()">Send</button>&nbsp;
+        <button mat-stroked-button class="wallet-cancel" (click)="cancel()">Cancel</button>
+    </p>
 
   </mat-card>
 
-  <mat-card *ngIf="showSendingField">
+  <mat-card class="send-card" *ngIf="showSendingField">
     <div class="spinner-container">
       <mat-spinner [diameter]="24"></mat-spinner>
     </div>
     &nbsp;&nbsp; Sending transaction ...
   </mat-card>
 
-  <mat-card *ngIf="showConfirmationField">
+  <mat-card class="send-card" *ngIf="showConfirmationField">
     <!-- Unable to use coinNotation on this binding, figure out why. The amount is string type. -->
     <h1 class="mat-h1">Sent: {{ transaction.recipients[0].amount | number:'1.8-8' }} <small>{{ coinUnit }}</small></h1>
     <p>Fee: {{transaction.feeAmount | number:'1.8-8'}} <small>{{ coinUnit }}</small></p>
