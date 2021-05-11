@@ -58,7 +58,7 @@
   }
 
   .mat-drawer {
-    background: #031e4c;
+    background: #1a053d;
     color: white;
   }
 
@@ -69,9 +69,8 @@
   }
 
   .toolbar {
-    background-color: #031e4c;
+    background-color: #1a053d;
     color: white;
-
    }
 
    .mat-card {
@@ -79,8 +78,15 @@
     border-radius: 25px !important;
    }
 
+   .mat-list .mat-list-item {
+       border-radius: 10px;
+       border-right: 0;
+   }
 
-
+   mat-list-item > h4 {
+    color: white;
+    font-weight: bold;
+}
 
   .menu-top-text {
     margin-left: 20px;
@@ -91,9 +97,7 @@
 }
 
     .app-sidenav-content {
-        background-color: #b7e5f9;
+        background-color: #120030;
+        // background: url('../../../assets/exos-core/Dashboard/Background/Dashboard_Background-WithoutShadow.jpg');
     }
-
-
-
 }
