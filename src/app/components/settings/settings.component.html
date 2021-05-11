@@ -10,8 +10,8 @@
 
             <h3 class="mat-h3">Localization (Number and dates format)</h3>
 
-            <mat-form-field>
-                <mat-select (selectionChange)="onLocaleChange($event)" [(ngModel)]="selectedLocale" [(value)]="selectedLocale">
+            <mat-form-field class="settings-select">
+                <mat-select placeholder="Choose Localization" (selectionChange)="onLocaleChange($event)" [(ngModel)]="selectedLocale" [(value)]="selectedLocale">
                     <mat-option value="en">English</mat-option>
                     <mat-option value="es">Español</mat-option>
                     <mat-option value="fr">French</mat-option>
@@ -21,7 +21,7 @@
 
             <h3 class="mat-h3">Mode</h3>
 
-            <mat-form-field>
+            <mat-form-field class="settings-select">
                 <mat-select (selectionChange)="onChanged($event)" [(ngModel)]="selectedMode">
                     <mat-option *ngFor="let mode of appModes.available" [value]="mode.id">
                         {{mode.name}}
@@ -39,7 +39,7 @@
 
             <h3 class="mat-h3">Language</h3>
 
-            <mat-form-field>
+            <mat-form-field class="settings-select">
                 <mat-select placeholder="Choose language" (selectionChange)="onChanged($event)" [(ngModel)]="selectedLanguage">
                     <mat-option value="es-MX">Español</mat-option>
                     <mat-option value="en-US">English</mat-option>
@@ -56,7 +56,7 @@
             <mat-card-subtitle>Explore the EXOS-Core API</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <button mat-raised-button color="primary" onclick="window.open('http://localhost:39120/docs/index.html')">Open API </button>
+            <button mat-raised-button color="primary" onclick="window.open('http://localhost:39120/docs/index.html')" class="open-api-button">Open API </button>
         </mat-card-content>
     </mat-card>
 
