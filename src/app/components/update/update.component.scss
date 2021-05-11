@@ -2,12 +2,18 @@
 
 
     .update-card {
-
+        background-image: url('../../../assets/exos-core/Balance_Block.png');
+        background-size: cover;
+        color: white;
     }
 
     .update-card-header-image {
-        background-image: url('../../../assets/exos-core/exos-blue.png');
+        background-image: url('../../../assets/exos-core/ExOEconomy-Logo-Symbol.png');
         background-size: cover;
       }
+
+      .update-card .mat-card-header , .update-card .mat-card-header .mat-card-header-text .mat-card-subtitle {
+        color: white;
+    }
 
 }
