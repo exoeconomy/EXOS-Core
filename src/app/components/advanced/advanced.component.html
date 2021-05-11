@@ -1,23 +1,26 @@
-<div class="splash-container not-selectable">
+<div class="advanced-container not-selectable">
+    <div class="advanced-content">
+        <div class="inner-content">
+            <h1>Advanced Tools</h1>
 
-    <div class="">
-        <img src="assets/exos-core/exosletralogo.png" class="load-logo">
+            <p class="paragraph-margin">If you have problems with EXOS Core, we have these tools to help investigate and fix potential issues that might occur.</p>
+            <br>
+            <div class="advanced-buttons">
+                <button class="advanced-button" mat-flat-button *ngIf="!appState.isSimpleMode" (click)="openDataFolder()">Open Wallet Folder</button> &nbsp;
+                <br><br>
+                <button class="advanced-button" mat-flat-button (click)="updateService.checkForUpdate()" [disabled]="updateService.downloading">Check for Update</button> &nbsp;
+                <button class="advanced-button" mat-flat-button *ngIf="updateService.available" [disabled]="updateService.downloading" (click)="updateService.downloadUpdate()">Download Update</button> &nbsp;
+                <button class="advanced-button" mat-flat-button *ngIf="updateService.downloaded" (click)="updateService.installUpdate()">Install Update</button>
+            </div>
+            <br>
+            <p>
+                <button class="advanced-button" routerLink="/login" mat-flat-button>Go back</button>
+            </p>
+        </div>
     </div>
 
-    <h2>Advanced Tools</h2>
-
-    <p class="paragraph-margin">If you have problems with EXOS Core, we have these tools to help investigate and fix potential issues that might occur.</p>
-
-    <p>
-        <button mat-stroked-button *ngIf="!appState.isSimpleMode" (click)="openDataFolder()">Open Wallet Folder</button> &nbsp;
-        <br><br>
-        <button mat-stroked-button (click)="updateService.checkForUpdate()" [disabled]="updateService.downloading">Check for Update</button> &nbsp;
-        <button mat-stroked-button *ngIf="updateService.available" [disabled]="updateService.downloading" (click)="updateService.downloadUpdate()">Download Update</button> &nbsp;
-        <button mat-stroked-button *ngIf="updateService.downloaded" (click)="updateService.installUpdate()">Install Update</button>
-    </p>
-
-    <p>
-        <button routerLink="/login" mat-raised-button color="primary">Go back</button>
-    </p>
+    <div class="advanced-banner">
+        <img src="assets\exos-core\Coin.png" class="advanced-logo">
+    </div>
 
 </div>
