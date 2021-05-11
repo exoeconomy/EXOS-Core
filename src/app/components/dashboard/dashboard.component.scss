@@ -16,7 +16,7 @@
 
 
 
-    div[fxLayoutAlign] { padding:10px; padding-left: 25px; padding-top:15px;}
+    // div[fxLayoutAlign] { padding:10px; padding-left: 25px; padding-top:15px;}
 
     .dashboard-card {
         //height: 100%;
@@ -28,13 +28,23 @@
     .balance-card {
         //height: 100%;
         //margin: 20px;
+        color: white;
+        padding: 40px;
         min-height: 150px;
         min-width: 480px;
         //width: 100%;
     }
 
     .mat-card-title {
-        text-align: center;
+        text-align: left;
+    }
+
+    .mat-card-subtitle > h4 {
+        color: white;
+    }
+
+    .mat-card-content > p {
+        font-size: 2rem;
     }
 
     .text-uppercase {
@@ -42,9 +52,57 @@
     }
 
     .internal-cards {
-        background: #3f0f79 !important;
         color: white;
-        height: 300px !important;
+        padding: 40px;
+        height: 260px !important;
+    }
+
+    .connect {
+        background-image: url('../../../assets/exos-core/Connect-Block.png') !important;
+        background-size: cover;
+    }
+
+    .community {
+        background-image: url('../../../assets/exos-core/Community_Block.png') !important;
+        background-size: cover;
+    }
+
+    .learn {
+        background-image: url('../../../assets/exos-core/Learn-Block.png') !important;
+        background-size: cover;
+    }
+
+    .notifications {
+        background-image: url('../../../assets/exos-core/Exo-Block.png') !important;
+        background-size: cover;
+    }
+
+    .balance {
+        background-image: url('../../../assets/exos-core/Balance_Block.png') !important;
+        background-size: cover;
+    }
+
+    .colored {
+        background-color: #3f0f79;
+    }
+
+    .balance-buttons {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .balance-card > a , .internal-cards > a , .dashboard-send , .dashboard-receive {
+        width: 150px;
+        background-image: url('../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 100;
+        text-decoration: none;
+    }
+
+    .dashboard-receive {
+        margin-top: -6px;
     }
 
     .mat-card-actions {
@@ -61,9 +119,9 @@
     }
 
     .internal-content {
-        margin-bottom: 10px;
-        height: 150px;
-        text-align: center !important;
+        margin-bottom: 70px !important;
+        height: 100px;
+        text-align: left !important;
     }
 
     .cancel-button {
@@ -71,7 +129,6 @@
         margin-bottom: 20px;
         margin-left: 0px !important;
         background: #b7e5f9;
-
     }
 
 
@@ -99,16 +156,6 @@
         cursor: default;
     }
 
-    .dashboard-send {
-        background-color: #3f0f79;
-        color: white;
-    }
-
-    .dashboard-receive {
-        background-color: #b7e5f9;
-
-    }
-
     .transaction-details-button
     {
         height: 10px;
@@ -129,7 +176,7 @@
 
     .mat-card {
         margin-bottom: 20px;
-        height: 180px;
+        height: 150px;
     }
 
     .dashboard-split-card {
