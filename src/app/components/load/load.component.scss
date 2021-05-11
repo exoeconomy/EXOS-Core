@@ -1,17 +1,19 @@
 .splash-container {
-    background-image: url('../../../assets/exos-core/init-background.png');
-    background-repeat: no-repeat;
+    background-image: url('../../../assets/exos-core/ExOEconomyVideo.gif');
     background-size: cover;
+    align-items: flex-start;
+}
+
+.network-load {
+    margin-left: 150px;
 }
 
 .load {
 
     .bar-progress {
-        width: 50%;
+        width: 60%;
     }
 
-    background-image: url('../../../assets/exos-core/init-background.png');
-    background-repeat: no-repeat;
     background-size: cover;
 
     .load-text
@@ -21,13 +23,13 @@
     }
 
     .load-logo {
-        width: 200px;
+        width: 350px;
         margin-bottom: 20px;
     }
 }
 
 .name{
-    color: black;
+    color: white;
 }
 
 .custom-file-mode {
@@ -55,7 +57,22 @@
 }
 
 .start-button {
-    margin-bottom: 2em;
+    background-image: url('../../../assets/exos-core/Button.png');
+    background-size: cover;
+    font-size: 1.2rem;
+    color: white !important;
+}
+
+.button-confirm {
+    background-image: url('../../../assets/exos-core/Button.png');
+    background-size: cover;
+    color: white !important;
+}
+
+.button-cancel {
+    background-image: url('../../../assets/exos-core/Wallet-Button.png');
+    background-size: cover;
+    color: white !important;
 }
 
 .advanced-form-field {
@@ -101,4 +118,57 @@
 
 .mat-expansion-panel {
     background-color: white;
+}
+
+.network-start {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    color: white;
+}
+
+.mat-form-field-flex {
+    border-radius: 5px !important;
+    color: white;
+    font-weight: bold;
+}
+
+.loading-screen {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    color: white;
+}
+
+/* mat-form-field styling */
+::-webkit-input-placeholder { /* Edge */
+    color: rgba(255, 255, 255, 0.70) !important;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 0.70) !important;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.70) !important;
+}
+
+/* mat-form Border */
+.mat-form-field .mat-form-field-label {
+    color: white;
+}
+.mat-form-field .mat-form-field-wrapper .mat-form-field-underline , .mat-form-field.mat-focused .mat-form-field-wrapper .mat-form-field-underline {
+    background-color: white;
+    height: 1px;
+}
+.mat-select .mat-select-value , .mat-select .mat-select-arrow{
+    color: white;
+}
+
+.mat-checkbox .mat-checkbox-inner-container .mat-checkbox-frame ,
+.mat-checkbox.mat-checkbox-checked .mat-checkbox-inner-container .mat-checkbox-frame , 
+.mat-checkbox.mat-checkbox-checked .mat-checkbox-inner-container .mat-checkbox-background {
+    border-color: white;
+    background-color: transparent;
 }
