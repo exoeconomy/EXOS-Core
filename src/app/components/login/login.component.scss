@@ -1,6 +1,17 @@
 .login
 {
-    background: #3f0f79 !important;
+
+    .header {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 80px;
+    }
+
+    .subheader {
+        color: white;
+        font-size: 1.4rem;
+        margin-bottom: 40px;
+    }
 
     .login-container
     {
@@ -12,29 +23,71 @@
 
     .login-content
     {
-        width: 50%;
+        width: 55%;
         min-width: 240px;
-        text-align: center;
-        flex-direction: column;
-        align-items: stretch;
+        display: flex;
         background-color: #3f0f79;
-        background-image: url('../../../assets/exos-core/exoscontentr.png');
+        background-image: url('../../../assets/exos-core/Left-Block-Gradient.jpg');
         background-repeat: no-repeat;
         background-size: cover;
     }
 
-    .login-unlock-button {
-        margin-bottom: 20px;
+    .inner-content {
+        display: flex;
+        flex-flow: column;
+        padding: 10%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
     }
 
-    .login-cancel-button {
-        margin-right: 10px;
-        background-color: #b7e5f9;
+    .login-buttons{
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+    }
+
+    .login-unlock-button , .login-cancel-button {
+        padding: 10px 0;
+        border-radius: 10px;
+        width: 45%;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .login-create-button , .login-restore-button {
+        padding: 10px 0;
+        border-radius: 10px;
+        width: 90px;
+        font-size: 1rem;
+        font-weight: bold;
     }
 
     .login-logo
     {
+        width: 50%; 
+    }
+
+    mat-form-field {
         width: 100%;
+    }
+
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+        background: white;
+        border-radius: 10px;
+    }
+
+    .mat-form-field-underline {
+        display: none;
+    }
+
+    mat-label, .mat-select .mat-select-value, input, .mat-select-arrow {
+        font-size: 1rem;
+        color: black !important;
+    }
+
+    .error-messages {
+        color: white;
     }
 
     .login-header{
@@ -42,18 +95,19 @@
     }
 
     .login-accounts {
+        width: 60%;
         flex-grow: 0;
-        margin-top: 50%;
+        color: white;
     }
 
     .login-actions
     {
+        width: 60%;
+        margin-bottom: 30px;
         flex-grow: 0;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         display: flex;
-        top: 50%;
-        left: 50%;
         position: sticky;
     }
 
@@ -61,20 +115,29 @@
     {
         flex-grow: 2;
         align-items: flex-end;
-        justify-content: center;
         display: flex;
+        flex-flow: column;
     }
 
-
+    .lower-info {
+        width: 60%;
+        display: flex;
+        flex-flow: row;
+        margin-top: 30px;
+    }
 
     .login-banner
     {
+        display: flex;
         background-color: white;
-        width: 50%;
-        background-image: url('../../../assets/exos-core/exoscontentg.png');
+        width: 45%;
+        background-image: url('../../../assets/exos-core/Background.jpg');
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: right;
         text-align: center;
+        justify-content: center;
+        align-items: center;
     }
 
     .login-banner-content
@@ -84,10 +147,8 @@
 
     .login-banner-text
     {
-        margin-top: 70%;
-        margin-left: 20%;
         text-align: left;
-        color: #031e4c;
+        color: white;
     }
 
     .login-mode-mobile {
