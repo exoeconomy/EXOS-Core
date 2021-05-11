@@ -5,6 +5,8 @@
         padding-top: 20px;
         margin-left: auto;
         margin-right: auto;
+        background-image: url('../../../assets/exos-core/Balance_Block.png');
+        background-size: cover;
       }
 
       .mat-divider {
@@ -18,16 +20,17 @@
         margin-left: 25px;
     }
 
-      .mat-card-subtitle {
-        color: black;
+      .mat-card-subtitle , .mat-card-title {
+        color: white;
     }
 
       p {
         margin-left: 12px;
+        color: white;
       }
 
-      a {
-          color: black;
+      mat-list-item , a , .about-nav-caret {
+          color: white !important;
       }
 
       a:hover {
@@ -56,6 +59,7 @@
     .about-logo {
         margin-left: 10px;
         margin-right: 10px;
+        margin-bottom: 10px;
         width: calc(100% - 20px);
     }
 
@@ -66,5 +70,12 @@
     .about-card .mat-stroked-button {
         margin-right: 10px;
         margin-top: 10px;
+    }
+
+    .cancel-button {
+        background-image: url('../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1rem;
     }
 }
