@@ -8,6 +8,10 @@
     margin-left: 150px;
 }
 
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: white !important;
+}
+
 .load {
 
     .bar-progress {
