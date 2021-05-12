@@ -8,6 +8,7 @@ export interface NodeDialogData {
 @Component({
     selector: 'app-network-add-node',
     templateUrl: 'network-add-node.component.html',
+    styleUrls: ['./network-add-node.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class NetworkAddNodeComponent {
