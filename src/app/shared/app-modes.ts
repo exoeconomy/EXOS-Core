@@ -13,7 +13,7 @@ export class AppModes {
     available: AppMode[] = [{
         id: 'basic',
         name: 'Basic',
-        features: ['dashboard', 'wallet', 'settings', 'logout', 'staking']
+        features: ['dashboard', 'wallet', 'settings', 'logout', 'staking', 'swaps']
     },
     {
         id: 'experimental',

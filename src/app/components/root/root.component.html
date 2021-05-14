@@ -69,6 +69,11 @@
                     <h4 *ngIf="showFiller" mat-line>Log out</h4>
                 </mat-list-item>
 
+                <mat-list-item *ngIf="appModes.enabled('swaps')" routerLinkActive="main-menu-active" routerLink="/swaps">
+                    <mat-icon mat-list-icon><img src="assets/exos-core/ExOEconomy-Logo-Symbol.png" class="exos-logo"></mat-icon>
+                    <h4 *ngIf="showFiller" mat-line>EXOS Swaps</h4>
+                </mat-list-item>
+
                 <div class="fill-remaining-vertical"></div>
 
                 <mat-list-item *ngIf="!handset && !showFiller" (click)="toggleFiller()">
@@ -77,6 +82,7 @@
 
                 <mat-list-item *ngIf="!handset && showFiller" (click)="toggleFiller()">
                     <mat-icon mat-list-icon>keyboard_arrow_left</mat-icon>
+                    <h4 *ngIf="showFiller" mat-line>Go Back</h4>
                 </mat-list-item>
 
             </mat-list>

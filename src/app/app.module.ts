@@ -12,6 +12,7 @@ import { WalletModule } from './components/wallet/wallet.module';
 import { SettingsModule } from './components/settings/settings.module';
 import { LoginModule } from './components/login/login.module';
 import { LogoutModule } from './components/logout/logout.module';
+import { SwapsModule } from './components/swaps/swaps.module';
 import { AboutModule } from './components/about/about.module';
 import { AppSharedModule } from './shared/app-shared.module';
 import { APP_TITLE } from './services/title.service';
@@ -64,6 +65,7 @@ registerLocaleData(localezIT);
         SettingsModule,
         LoginModule,
         LogoutModule,
+        SwapsModule,
         AboutModule,
         AppSharedModule,
         LoadModule,

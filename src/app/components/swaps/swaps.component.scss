@@ -1,0 +1,109 @@
+.swaps-screen {
+    margin: 0;
+}
+
+.mat-tab-body-content {
+    padding: 40px;
+    height: auto !important;
+}
+
+.mat-tab-label {
+    color: white !important;
+    opacity: 1 !important;
+}
+
+.swap-title {
+    padding-left: 20px;
+}
+.main-swap-title{
+    display: flex;
+}
+
+.main-swap-title {
+    font-size: xx-large !important;
+    font-weight: bold !important;
+}
+
+.swap-cards {
+    padding: 100px;
+}
+
+.swap-from , .swap-into {
+    width: 250px !important;
+    height: 150px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.swap-from {
+    background-image: url('../../../assets/exos-core/Transactions-Block.png') !important;
+    background-size: cover !important;
+    color: white !important;
+}
+
+.swap-into {
+    background-image: url('../../../assets/exos-core/Left-Block-Gradient.jpg') !important;
+    background-size: cover !important;
+    color: white !important;
+}
+
+.arrow-div {
+    display: flex;
+    justify-content: center;
+}
+
+.exos-matcard-logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.secondary-logo {
+    margin-right: 15px;
+}
+
+.swap-from .mat-card-content , .swap-into .mat-card-content {
+    display: flex !important;
+    flex-flow: column;
+    align-items: center !important;
+}
+
+.swap-inner-title p {
+    margin: 0;
+}
+
+.swap-inner-info {
+    margin-top: 20px;
+}
+
+.swap-inner-title , .swap-inner-info {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.swap-inner-info p {
+    margin: 0;
+}
+
+.swapping-info {
+    text-align: end;
+}
+
+.ok-button {
+    margin-left: 30px;
+    background: white !important;
+    color: black !important;
+    font-weight: bold;
+}
+
+.mat-tab-label-active {
+    background-image: url('../../../assets/exos-core/Button.png');
+    background-size: cover;
+}
+
+.mat-tab-disabled {
+    color: grey !important;
+}
