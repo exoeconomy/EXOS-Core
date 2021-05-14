@@ -2,23 +2,27 @@
 .account-create
 {
     .content {
-        height: 100%;
         margin: 0;
-        padding: 30px;
+        padding: 60px 0 0 60px;
         background-image: url('../../../../assets/exos-core/Wallet_Background-WithoutShadow.jpg');
         background-size: cover;
     }
 
     .creation-stepper {
-        background-image: url('../../../../assets/exos-core/Balance_Block.png');
-        background-size: cover;
-        border-radius: 30px;
+        background-color: #110130;
+        border-top-left-radius: 30px;
+        padding-top: 30px;
+        margin-top: 50px;
     }
 
     ::ng-deep .mat-step {
         &.colorful-label .mat-step-text-label {
             color: white !important;
         }
+    }
+
+    .mat-h1 {
+        padding-left: 60px;
     }
 
 	button
@@ -117,11 +121,17 @@
     }
 
     .mat-step-header .mat-step-icon-state-number {
-        background-color: #19033a;
+        background-image: url('../../../../assets/exos-core/Left-Block-Gradient.jpg');
+        background-size: cover;
     }
 
     .mat-step-header .mat-step-icon-state-edit {
-        background-color: #2c0963;
+        background-image: url('../../../../assets/exos-core/Left-Block-Gradient.jpg');
+        background-size: cover;
+    }
+
+    .mat-stepper-vertical-line::before {
+        border-left-color: #6b508f;
     }
 
     .mat-form-field .mat-form-field-label {
