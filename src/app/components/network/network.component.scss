@@ -6,14 +6,20 @@
         margin-top: 4px;
     }
 
-    .card {
+    .mat-card {
         background-image: url('../../../assets/exos-core/Balance_Block.png');
         background-size: cover;
         color: white;
-        margin: 0px 20px 20px 20px;
+        // margin: 30px;
+        // margin: 30px 30px 0 30px;
+        height: 80px !important;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
     }
     
-    .card .mat-card-header .mat-card-header-text .mat-card-subtitle {
+    .mat-card-subtitle {
+        margin-top: 5px;
         color: white;
     }
 
@@ -27,9 +33,12 @@
         border-bottom: 1px solid silver;
     }
 
+    .network-stat-row {
+        margin-bottom: 0px !important;
+    }
+
     .network-details-footer {
         text-align: center;
-        padding-top: 20px;
         padding-bottom: 20px;
     }
 
