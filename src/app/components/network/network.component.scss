@@ -10,12 +10,14 @@
         background-image: url('../../../assets/exos-core/Balance_Block.png');
         background-size: cover;
         color: white;
-        // margin: 30px;
-        // margin: 30px 30px 0 30px;
         height: 80px !important;
         display: flex;
         flex-flow: column;
         justify-content: center;
+    }
+
+    .card {
+        height: auto !important;
     }
     
     .mat-card-subtitle {
