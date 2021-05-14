@@ -72,6 +72,10 @@
         width: 100%;
     }
 
+    .mat-form-field-appearance-fill .mat-form-field-infix {
+        padding: 0.5em 0;
+    }
+
     .mat-form-field-appearance-fill .mat-form-field-flex {
         background: white;
         border-radius: 10px;
@@ -117,6 +121,11 @@
         align-items: flex-end;
         display: flex;
         flex-flow: column;
+    }
+
+    .login-mode button {
+        width: 150px;
+        text-align: start;
     }
 
     .lower-info {
