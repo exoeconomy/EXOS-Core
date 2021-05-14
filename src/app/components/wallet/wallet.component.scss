@@ -15,8 +15,16 @@
         font-size: medium;
     }
 
+    .mat-tab-links {
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
     .mat-tab-link {
         font-weight: bolder !important;
+        height: 40px;
+        border-radius: 20px;
+        margin: 0 10px;
     }
 
     .balance-card > a , .internal-cards > a , .wallet-send , .wallet-receive , .wallet-button {
