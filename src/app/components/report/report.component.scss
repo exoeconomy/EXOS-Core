@@ -33,3 +33,9 @@
     .report-header > * {
         flex: 1 1 200px;
     }
+
+    .report-button {
+        background-image: url('../../../assets/exos-core/Button.png') !important;
+        background-size: cover;
+        color: white !important;
+    }
