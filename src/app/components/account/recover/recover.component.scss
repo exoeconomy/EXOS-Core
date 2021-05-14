@@ -1,9 +1,19 @@
 .account-recover {
     .content {
         margin: 0;
-        padding: 30px;
+        padding: 60px 0 0 60px;
         background-image: url('../../../../assets/exos-core/Wallet_Background-WithoutShadow.jpg');
         background-size: cover;
+    }
+
+    .recover-cards {
+        background-color: #110130;
+        border-top-left-radius: 30px;
+        padding: 60px;
+    }
+
+    .content .mat-h1 , .form-info {
+        padding-left: 60px;
     }
 
     .mat-card {
@@ -11,6 +21,15 @@
         background-size: cover;
         margin-bottom: 20px;
         color: white;
+    }
+
+    .top-cards {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .top-cards .mat-card {
+        width: 45%;
     }
 
     /* mat-form-field styling */
