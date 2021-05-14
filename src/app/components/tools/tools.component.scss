@@ -4,5 +4,35 @@
         overflow-wrap: break-word;
         display: inline-block;
         width: 100%;
-      }
+    }
+
+    .mat-tab-header {
+        margin-top: 30px;
+    }
+
+    .mat-tab-label {
+        background-image: url('../../../assets/exos-core/Wallet-Button.png');
+        background-size: cover;
+        color: white;
+        border-radius: 15px;
+        margin: 0 30px;
+    }
+
+    .mat-tab-label-active , .clear-button {
+        background-image: url('../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+    }
+
+    .mat-ink-bar {
+        display: none !important;
+    }
+
+    .tab-pane {
+        background-image: url('../../../assets/exos-core/Transactions-Block.png');
+        background-size: cover;
+        padding: 30px;
+        border-radius: 15px;
+    }
+
 }
