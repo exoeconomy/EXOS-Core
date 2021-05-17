@@ -168,20 +168,29 @@ ipcMain.on('daemon-change', (event, arg: any) => {
     daemonState = DaemonState.Changing;
 });
 
+ipcMain.on('check-storage', (event, arg: string) => {
+    var diskspace = require('diskspace');
+    let diskUnit = '/';
+    if (os.platform() === 'win32') {
+        diskUnit = 'C'
+    }
+
+    diskspace.check(diskUnit, function (err, result) {
+        event.returnValue = result.free;
+    });
+});
+
 // Called when the app needs to reset the blockchain database. It will delete the "blocks", "chain" and "coinview" folders.
 ipcMain.on('reset-database', (event, arg: string) => {
 
     writeLog('reset-database: User want to reset database, first attempting to shutdown the node.');
 
     // Make sure the daemon is shut down first:
-    shutdownDaemon((success, error) => {
-        const userDataPath = app.getPath('userData');
-        const appDataFolder = path.dirname(userDataPath);
-
-        const dataFolder = path.join(appDataFolder, 'Blockcore', 'exos', arg);
+        const appDataFolder = parseDataFolder([]);
+        const dataFolder = path.join(appDataFolder, 'exos', 'EXOSMain');
         const folderBlocks = path.join(dataFolder, 'blocks');
         const folderChain = path.join(dataFolder, 'chain');
-        const folderCoinView = path.join(dataFolder, 'coinview');
+        const folderCoinView = path.join(dataFolder, 'coindb');
         const folderCommon = path.join(dataFolder, 'common');
         const folderProvenHeaders = path.join(dataFolder, 'provenheaders');
         const folderFinalizedBlock = path.join(dataFolder, 'finalizedBlock');
@@ -193,7 +202,6 @@ ipcMain.on('reset-database', (event, arg: string) => {
         deleteFolderRecursive(folderCommon);
         deleteFolderRecursive(folderProvenHeaders);
         deleteFolderRecursive(folderFinalizedBlock);
-    });
 
     event.returnValue = 'OK';
 });
@@ -206,39 +214,22 @@ ipcMain.on('resize-main', (event, arg) => {
 });
 
 function parseDataFolder(arg: any) {
-    console.log('parseDataFolder: ', arg);
     let blockcorePlatform = '.blockcore';
     if (os.platform() === 'win32') {
         blockcorePlatform = 'Blockcore';
     }
-    // If the first argument is empty string, we must add the user data path.
-    if (arg[0] === '') {
-        // Build the node data folder, the userData includes app of the UI-app, so we must navigate down one folder.
-        const nodeDataFolder = path.join(app.getPath('userData'), '..', blockcorePlatform);
-
-        arg.unshift(nodeDataFolder);
-    }
-
+    const nodeDataFolder = path.join(getAppDataPath(), blockcorePlatform);
+    arg.unshift(nodeDataFolder);
     const dataFolder = path.join(...arg);
-
     return dataFolder;
 }
-
-ipcMain.on('open-data-folder', (event, arg: any) => {
-
-    const dataFolder = parseDataFolder(arg);
-
-    shell.openPath(dataFolder);
-
-    event.returnValue = 'OK';
-});
-
 
 ipcMain.on('download-blockchain-package', (event, arg: any) => {
 
     console.log('download-blockchain-package');
 
-    const dataFolder = parseDataFolder(arg.path);
+    const appDataFolder = parseDataFolder([]);
+    const dataFolder = path.join(appDataFolder, 'exos','EXOSMain');
 
     // Get the folder to download zip to:
     const targetFolder = path.dirname(dataFolder);
@@ -257,7 +248,6 @@ ipcMain.on('download-blockchain-package', (event, arg: any) => {
                 console.log('FINISHED!!');
             }
             else {
-                console.log('Progress: ' + progress.status);
             }
         });
     }
@@ -288,17 +278,18 @@ ipcMain.on('unpack-blockchain-package', (event, arg: any) => {
 
     console.log('CALLED!!!! - unpack-blockchain-package');
 
-    let targetFolder = parseDataFolder(arg.path);
+    const appDataFolder = parseDataFolder([]);
+    const targetFolder = path.join(appDataFolder, 'exos', 'EXOSMain');
     let sourceFile = arg.source;
 
-    console.log('targetFolder: ' + targetFolder);
-    console.log('sourceFile: ' + sourceFile);
 
     const extract = require('extract-zip');
     extract(sourceFile, { dir: targetFolder }).then(() => {
+        fs.unlinkSync(sourceFile);
         console.log('FINISHED UNPACKING!');
         contents.send('unpack-blockchain-package-finished', null);
     }).catch(err => {
+        fs.unlinkSync(sourceFile);
         console.error('Failed to unpack: ', err);
         contents.send('unpack-blockchain-package-finished', err);
     });
@@ -617,9 +608,9 @@ function getDaemonPath() {
     if (os.platform() === 'win32') {
         apiPath = path.resolve(__dirname, '..\\..\\resources\\daemon\\');
     } else if (os.platform() === 'linux') {
-        apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishLinux');
+        apiPath = path.resolve(__dirname, '..//..//resources//daemon//');
     } else {
-        apiPath = path.resolve(__dirname, '..//..//Resources//daemon//publishRocksDb//');
+        apiPath = path.resolve(__dirname, '..//..//Resources//daemon//');
     }
 
     return apiPath;
@@ -905,10 +896,6 @@ function downloadFile(fileUrl, folder, callback) {
             callback(true, { size: 0, downloaded: 0, progress: 0, status: 'Timeout' }, "File transfer timeout!");
         };
     };
-
-    console.log(blockchainDownloadRequest)
-
-
 
     blockchainDownloadRequest = http.get(fileUrl).on('response', function (res) {
         var len = parseInt(res.headers['content-length'], 10);

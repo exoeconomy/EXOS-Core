@@ -25,6 +25,9 @@
                         </mat-expansion-panel-header>
         
                         <div>
+                            <button (click)="resetDatabase()" mat-raised-button>Reset Database</button>
+                            <br>
+                            <br>
                             <button class="button-confirm" [disabled]="downloading || unpacking" (click)="downloadAndUnpack()" mat-raised-button>Download and unpack</button>
                             <br>
                             <br>
@@ -51,6 +54,15 @@
                                 You can now continue by clicking Start.
                             </div>
         
+                            <div *ngIf="resetDone">
+                                <br>
+                                Reset done!
+                            </div>
+                            <div *ngIf="noSpace">
+                                <br>
+                                 No space left on device, you need 5GB free minimum.
+                            </div>
+
                         </div>
                     </mat-expansion-panel>
         

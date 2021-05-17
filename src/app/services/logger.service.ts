@@ -54,7 +54,7 @@ export class Logger {
     catchErrorLogs() {
         const array = [];
         const data = this.lastEntries();
-        const catchers = [/Exception/g, /CRITICAL/g, /FATAL/g];
+        const catchers = [/Error message:/g, /Exception/g, /CRITICAL/g, /FATAL/g];
         const result = Object.values(data);
         for (const key of result) {
             const val = JSON.stringify(key);
