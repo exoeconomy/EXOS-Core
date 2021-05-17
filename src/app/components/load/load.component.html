@@ -14,7 +14,7 @@
         
                 <button (click)="launch()" [disabled]="selectedNetwork == null" mat-raised-button class="start-button">Start</button>
                 <br>
-                <mat-checkbox [(ngModel)]="remember">Remember</mat-checkbox>
+                <mat-checkbox class="network-remember" [(ngModel)]="remember">Remember</mat-checkbox>
                 <mat-accordion class="setup-headers-align" multi>
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
@@ -25,7 +25,7 @@
                         </mat-expansion-panel-header>
         
                         <div>
-                            <button (click)="resetDatabase()" mat-raised-button>Reset Database</button>
+                            <button class="button-confirm" (click)="resetDatabase()" mat-raised-button>Reset Database</button>
                             <br>
                             <br>
                             <button class="button-confirm" [disabled]="downloading || unpacking" (click)="downloadAndUnpack()" mat-raised-button>Download and unpack</button>
