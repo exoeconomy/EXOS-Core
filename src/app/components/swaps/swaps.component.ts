@@ -8,13 +8,7 @@ import { Component, HostBinding, ViewEncapsulation, OnInit } from '@angular/core
 })
 
 export class SwapsComponent implements OnInit {
-
-    // options = [{ title: 'INFORMATION' }, { title: 'INITIATE A SWAP' }, { title: 'LIST OF TRANSACTIONS' }];
-    // activeOption = this.options[0];
+    @HostBinding('class.swaps') hostClass = true;
 
     ngOnInit() {}
-
-    // filterHistory(opt) {
-    //     this.activeOption = opt;
-    // }
 }
