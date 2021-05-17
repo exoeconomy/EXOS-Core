@@ -27,6 +27,11 @@
 @include mat-core($app-typography);
 @include app-theme($app-dark-theme);
 
+@font-face {
+    font-family: alata;
+    src: url(../assets/fonts/Alata/Alata-Regular.ttf) format('truetype');
+}
+
 .app-light-theme {
 	@include app-theme($app-light-theme);
 }

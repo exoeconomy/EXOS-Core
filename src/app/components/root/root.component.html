@@ -64,14 +64,14 @@
                     <h4 *ngIf="showFiller" mat-line>Tools</h4>
                 </mat-list-item>
 
-                <mat-list-item *ngIf="appModes.enabled('logout')" routerLinkActive="main-menu-active" routerLink="/logout">
-                    <mat-icon mat-list-icon>power_settings_new</mat-icon>
-                    <h4 *ngIf="showFiller" mat-line>Log out</h4>
-                </mat-list-item>
-
                 <mat-list-item *ngIf="appModes.enabled('swaps')" routerLinkActive="main-menu-active" routerLink="/swaps">
                     <mat-icon mat-list-icon><img src="assets/exos-core/ExOEconomy-Logo-Symbol.png" class="exos-logo"></mat-icon>
                     <h4 *ngIf="showFiller" mat-line>EXOS Swaps</h4>
+                </mat-list-item>
+
+                <mat-list-item *ngIf="appModes.enabled('logout')" routerLinkActive="main-menu-active" routerLink="/logout">
+                    <mat-icon mat-list-icon>power_settings_new</mat-icon>
+                    <h4 *ngIf="showFiller" mat-line>Log out</h4>
                 </mat-list-item>
 
                 <div class="fill-remaining-vertical"></div>
