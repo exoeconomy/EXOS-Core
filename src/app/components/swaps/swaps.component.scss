@@ -7,6 +7,10 @@
     height: auto !important;
 }
 
+.mat-tab-labels {
+    background-color: #1a053d !important;
+}
+
 .mat-tab-label {
     color: white !important;
     opacity: 1 !important;
@@ -28,9 +32,14 @@
     padding: 100px;
 }
 
+.swap-card > mat-card {
+    padding: 0;
+    display: contents !important;
+}
+
 .swap-from , .swap-into {
     width: 250px !important;
-    height: 150px !important;
+    height: 130px !important;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -44,7 +53,7 @@
 }
 
 .swap-into {
-    background-image: url('../../../assets/exos-core/Left-Block-Gradient.jpg') !important;
+    background-image: url('../../../assets/exos-core/Button2.png') !important;
     background-size: cover !important;
     color: white !important;
 }
@@ -56,6 +65,8 @@
 
 .swap-links {
     text-decoration: none !important;
+    border-radius: 25px !important;
+    box-shadow: -5px 5px 15px rgba($color: white, $alpha: 0.4);
 }
 
 .exos-matcard-logo {
@@ -90,10 +101,12 @@
 
 .swap-inner-info p {
     margin: 0;
+    opacity: 0.7;
 }
 
 .swapping-info {
     text-align: end;
+    opacity: 0.4;
 }
 
 .mat-tab-label-active {
@@ -103,4 +116,8 @@
 
 .mat-tab-disabled {
     color: grey !important;
+}
+
+.mat-tab-label[aria-posinset="1"] {
+    display: none;
 }
