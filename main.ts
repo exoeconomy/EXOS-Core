@@ -233,6 +233,11 @@ ipcMain.on('download-blockchain-package', (event, arg: any) => {
 
     // Get the folder to download zip to:
     const targetFolder = path.dirname(dataFolder);
+    
+    if (!fs.existsSync(dataFolder)) {
+        console.log('The folder does not EXIST!');
+        fs.mkdirSync(dataFolder , { recursive: true });
+    }
 
     // We must have this in a try/catch or crashes will halt the UI.
     try {
