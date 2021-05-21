@@ -18,7 +18,7 @@ export class AppModes {
     {
         id: 'experimental',
         name: 'Experimental',
-        features: ['dashboard', 'wallet', 'settings', 'logout', 'staking', 'debug']
+        features: ['dashboard', 'wallet', 'settings', 'logout', 'staking', 'swaps', 'debug']
     }];
 
     active: AppMode;
