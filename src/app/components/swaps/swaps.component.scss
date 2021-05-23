@@ -7,11 +7,11 @@
     height: auto !important;
 }
 
-.mat-tab-labels {
+.swaps-screen > * .mat-tab-labels {
     background-color: #1a053d !important;
 }
 
-.mat-tab-label {
+.swaps-screen > * .mat-tab-label {
     color: white !important;
     opacity: 1 !important;
 }
@@ -21,9 +21,6 @@
 }
 .main-swap-title{
     display: flex;
-}
-
-.main-swap-title {
     font-size: xx-large !important;
     font-weight: bold !important;
 }
@@ -118,6 +115,6 @@
     color: grey !important;
 }
 
-.mat-tab-label[aria-posinset="1"] {
+.swaps-screen > * .mat-tab-label[aria-posinset="1"] {
     display: none;
 }

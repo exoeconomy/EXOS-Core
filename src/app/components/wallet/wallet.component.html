@@ -29,8 +29,8 @@
             </div>
             <div fxFlex class="balance-buttons">
                 <p>
-                    <button mat-stroked-button class="wallet-send" routerLink="/wallet/send">Send</button>&nbsp;
-                    <button mat-stroked-button class="wallet-receive" routerLink="/wallet/receive">Receive</button>&nbsp;
+                    <button mat-flat-button class="wallet-send" routerLink="/wallet/send">Send</button>&nbsp;
+                    <button mat-flat-button class="wallet-receive" routerLink="/wallet/receive">Receive</button>&nbsp;
                 </p>
             </div>
         </mat-card-content>
@@ -53,7 +53,7 @@
                                     <input matInput type="password" id="inputPassword" formControlName="walletPassword" placeholder="Fill out to unlock account">
                                 </mat-form-field>
                                 <br>
-                                <button type="button" mat-stroked-button id="flipcard" [disabled]="wallet.isStarting || !stakingForm.valid" (click)="startStaking()" class="wallet-button">Unlock</button>
+                                <button type="button" mat-flat-button id="flipcard" [disabled]="wallet.isStarting || !stakingForm.valid" (click)="startStaking()" class="wallet-button">Unlock</button>
                             </div>
                         </form>
                     </div>
@@ -79,7 +79,7 @@
                     </ul>
         
                     <p>
-                        <button type="button" class="wallet-button" mat-stroked-button [disabled]="wallet.isStopping" (click)="stopStaking()">Stop Staking</button>
+                        <button type="button" class="wallet-button" mat-flat-button [disabled]="wallet.isStopping" (click)="stopStaking()">Stop Staking</button>
                     </p>
                 </div>
             </mat-card>
@@ -119,123 +119,16 @@
                                         <strong>{{wallet.stakingInfo.searchInterval}}</strong>
                                     </li>
                                 </ul>
-                                <!-- <p>
-                                    Staking: {{wallet.stakingInfo.staking}}<br>
-                                    Errors: {{wallet.stakingInfo.errors}}<br>
-                                    CurrentBlockSize: {{wallet.stakingInfo.currentBlockSize}}<br>
-                                    CurrentBlockTx: {{wallet.stakingInfo.currentBlockTx}}<br>
-                                    PooledTx: {{wallet.stakingInfo.pooledTx}}<br>
-                                    Difficulty: {{wallet.stakingInfo.difficulty.toLocaleString(this.localeService.locale)}}<br>
-                                    Search interval: {{wallet.stakingInfo.searchInterval}}<br>
-                                </p> -->
                             </mat-card-content>
                         </div>
                     </div>
                 </div>
-                <!-- <div id="staking" class="wallet-split-left">
-                    <mat-accordion>
-                        <mat-expansion-panel>
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    Details
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                    Show advanced details
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
-        
-                            Staking: {{wallet.stakingInfo.staking}}<br>
-                            Errors: {{wallet.stakingInfo.errors}}<br>
-                            CurrentBlockSize: {{wallet.stakingInfo.currentBlockSize}}<br>
-                            CurrentBlockTx: {{wallet.stakingInfo.currentBlockTx}}<br>
-                            PooledTx: {{wallet.stakingInfo.pooledTx}}<br>
-                            Difficulty: {{wallet.stakingInfo.difficulty.toLocaleString(this.localeService.locale)}}<br>
-                            Search interval: {{wallet.stakingInfo.searchInterval}}<br>
-        
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                </div> -->
                 
             </mat-card>
         </div>
     </div>
 </div>
 
-    <!-- <mat-card *ngIf="wallet.hasBalance && appModes.enabled('staking')" class="wallet-split-card">
-
-        <div class="wallet-split-left" *ngIf="!wallet.stakingEnabled">
-            <h2 class="mat-h2">Staking</h2>
-            <div class="card-body">
-                <div class="alert alert-info text-center" role="alert">Unlock your wallet to start staking</div>
-                <br>
-                <form [formGroup]="stakingForm">
-                    <div class="form-group">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Account password</mat-label>
-                            <input matInput type="password" id="inputPassword" formControlName="walletPassword" placeholder="Fill out to unlock account">
-                        </mat-form-field>
-                        <br>
-                        <button type="button" mat-stroked-button id="flipcard" [disabled]="wallet.isStarting || !stakingForm.valid" (click)="startStaking()">Unlock</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div id="staking" class="wallet-split-left" *ngIf="wallet.stakingEnabled">
-
-            <h2 class="mat-h2">Staking</h2>
-            <ul>
-                <li *ngIf="wallet.isStarting">Waiting for staking to start...</li>
-                <li>Your weight is
-                    <strong>{{ wallet.stakingWeight | coinNotation | number: '1.0-8': this.localeService.locale }} {{ wallet.coinUnit }}</strong>
-                </li>
-                <li>Network weight is
-                    <strong>{{ wallet.netStakingWeight | coinNotation | number: '1.0-2': this.localeService.locale }} {{ wallet.coinUnit }}</strong>
-                </li>
-                <li class="mt-2">Expected reward time is:
-                    <strong>{{ wallet.dateTime }}</strong>
-                </li>
-                <li>
-                    % Network:
-                    <strong>{{ wallet.percentNetwork | number: '1.0-2': this.localeService.locale }}%</strong>
-
-                </li>
-            </ul>
-
-            <p>
-                <button type="button" mat-stroked-button [disabled]="wallet.isStopping" (click)="stopStaking()">Stop Staking</button>
-            </p>
-
-            <mat-accordion>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Details
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            Show advanced details
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-
-                    Staking: {{wallet.stakingInfo.staking}}<br>
-                    Errors: {{wallet.stakingInfo.errors}}<br>
-                    CurrentBlockSize: {{wallet.stakingInfo.currentBlockSize}}<br>
-                    CurrentBlockTx: {{wallet.stakingInfo.currentBlockTx}}<br>
-                    PooledTx: {{wallet.stakingInfo.pooledTx}}<br>
-                    Difficulty: {{wallet.stakingInfo.difficulty.toLocaleString(this.localeService.locale)}}<br>
-                    Search interval: {{wallet.stakingInfo.searchInterval}}<br>
-
-                </mat-expansion-panel>
-            </mat-accordion>
-
-        </div>
-
-        <div class="wallet-split-right mat-caption">
-            You can stake the balance you have in your wallet. If you just received your coins, it might take a while for staking to start, due to confirmation requirement for staked coins.
-            <br>When you stop staking, or receive stake rewards, it will take some time before the same coins can be used for staking.
-        </div>
-
-    </mat-card> -->
 <div class="content">
     <mat-card class="transactions">
         <h2 class="mat-h2">Transactions</h2>

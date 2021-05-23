@@ -32,9 +32,9 @@
 
     </mat-dialog-content>
     <mat-dialog-actions class="report-buttons" align="end">
-        <button class="report-button" mat-stroked-button ngbTooltip="Copy to clipboard" (click)="causeOnCopiedClick()">Copy cause</button>
-        <button class="report-button" mat-stroked-button ngbTooltip="Copy to clipboard" (click)="onCopiedClick()">Copy</button>
-        <button class="report-button" mat-stroked-button [mat-dialog-close]="true">Close</button>
-        <button class="report-button" mat-stroked-button [mat-dialog-close]="true" (click)="shutdown()" cdkFocusInitial>Exit</button>
+        <button class="report-button" mat-flat-button ngbTooltip="Copy to clipboard" (click)="causeOnCopiedClick()">Copy cause</button>
+        <button class="report-button" mat-flat-button ngbTooltip="Copy to clipboard" (click)="onCopiedClick()">Copy</button>
+        <button class="report-button" mat-flat-button [mat-dialog-close]="true">Close</button>
+        <button class="report-button" mat-flat-button [mat-dialog-close]="true" (click)="shutdown()" cdkFocusInitial>Exit</button>
     </mat-dialog-actions>
 </div>

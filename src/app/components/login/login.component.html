@@ -52,7 +52,7 @@
                     <button style="color:white" mat-button (click)="changeMode()"><span class="material-icons">public</span> Change Mode</button> &nbsp;
                     <button style="color:white" mat-button routerLink="/advanced">
                         <mat-icon mat-list-icon>settings</mat-icon>
-                        Advanced
+                        Tools
                     </button>
                 </div>
             </div>
@@ -62,74 +62,4 @@
     <div class="login-banner">
         <img src="assets\exos-core\Coin.png" class="login-logo">
     </div>
-
-    <!-- <div class="login-banner">
-        <div class="login-banner-content">
-            <img src="assets/exos-core/exosletralogo.png" class="login-logo">
-            <br>
-            <br>
-            <p class="login-banner-text">Release {{appState.version}}<br>
-                Network: {{appState.network}}<br>
-                Mode: {{appState.mode}}<br>
-                <span *ngIf="status">
-                    Connections: {{status?.inboundPeers.length + status?.outboundPeers.length}}
-                </span>
-            </p>
-        </div>
-
-    </div>
-    <div class="login-content">
-        <div class="login-accounts" *ngIf="hasWallet">
-            <mat-form-field>
-                <mat-select placeholder="Select wallet" [(ngModel)]="selectedAccount">
-                    <mat-option *ngFor="let account of accounts" [value]="account">
-                        {{account.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <span *ngIf="selectedAccount != null">
-                <br>
-                <mat-form-field appearance="outline">
-                    <mat-label>Wallet password</mat-label>
-                    <input matInput type="password" (keyup.enter)="unlock()" [(ngModel)]="password" placeholder="Fill out to unlock wallet">
-                </mat-form-field>
-                <br>
-                <button class="login-cancel-button" (click)="cancel()" mat-raised-button>Create</button>
-                <button class="login-unlock-button" (click)="unlock()" [disabled]="unlocking" mat-raised-button color="primary">Unlock</button>&nbsp;
-
-                <br>
-                <br>
-
-
-                <div *ngIf="invalidPassword">The password is not correct.</div>
-            </span>
-
-            <span *ngIf="errorMessage">
-                <br>
-                {{errorMessage}}
-            </span>
-
-
-
-        </div>
-        <div class="login-actions">
-            <div>
-                <div *ngIf="selectedAccount == null">
-                    <button routerLink="/account/create" mat-stroked-button class="login-unlock-button">Create</button> or
-                    <button routerLink="/account/recover" mat-stroked-button class="login-cancel-button">Restore</button>
-                    your account
-                </div>
-                <br>
-
-                <div class="login-mode">
-                    <button mat-button (click)="changeMode()"><span class="material-icons">public</span> Change Mode</button> &nbsp;
-                    <button style="color:black" mat-button routerLink="/advanced">
-                        <mat-icon mat-list-icon>settings</mat-icon>
-                        Advanced
-                    </button>
-                 </div>
-            </div>
-        </div>
-    </div> -->
 </div>

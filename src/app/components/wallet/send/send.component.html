@@ -88,8 +88,8 @@
       <div *ngIf="apiError" class="text-danger">{{ apiError }}</div>
     </form>
     <p>
-        <button mat-stroked-button class="wallet-send" [disabled]="!sendForm.valid || isSending || !estimatedFee" (click)="send()">Send</button>&nbsp;
-        <button mat-stroked-button class="wallet-cancel" (click)="cancel()">Cancel</button>
+        <button mat-flat-button class="wallet-send" [disabled]="!sendForm.valid || isSending || !estimatedFee" (click)="send()">Send</button>&nbsp;
+        <button mat-flat-button class="wallet-cancel" (click)="cancel()">Cancel</button>
     </p>
 
   </mat-card>
@@ -108,7 +108,7 @@
     <p>Destination: {{transaction.recipients[0].destinationAddress}}</p>
     <p>Transaction Id: {{transactionResult.transactionId }}</p>
     <!-- <p>Shuffled: {{transaction.shuffleOutputs}}</p> -->
-    <button mat-stroked-button (click)="cancel()">Close</button>
+    <button mat-flat-button (click)="cancel()">Close</button>
   </mat-card>
 
 </div>

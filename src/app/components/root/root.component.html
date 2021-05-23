@@ -99,7 +99,7 @@
             <span *ngIf="!handset">{{appTitle$ | async}}</span>
 
             <span *ngIf="handset && !appState.pageMode">
-                <button mat-stroked-button routerLink="/wallet/payment">
+                <button mat-flat-button routerLink="/wallet/payment">
                     <mat-icon>credit_card</mat-icon> Payment
                 </button>
             </span>
