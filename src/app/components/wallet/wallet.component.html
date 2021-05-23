@@ -206,7 +206,7 @@
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openTransactionDetails(row)"></tr>
                 </table>
 
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                <mat-paginator class="transaction-paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
             </div>
         </div>
 
