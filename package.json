@@ -121,7 +121,7 @@
         "electron-notarize": "^1.0.0",
         "electron-reload": "1.5.0",
         "enhanced-resolve": "4.3.0",
-        "exos-coininfo": "file:/./contrib/exos-coininfo-5.1.0.tgz",
+        "exos-coininfo": "file:./contrib/exos-coininfo-5.1.0.tgz",
         "hammerjs": "2.0.8",
         "jasmine-core": "~3.6.0",
         "jasmine-spec-reporter": "~5.0.2",
