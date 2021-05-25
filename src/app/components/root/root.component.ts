@@ -25,6 +25,8 @@ import { IdentityService } from 'src/app/services/identity.service';
 import { IdentityContainer } from '@models/identity';
 import { registerLocaleData } from '@angular/common';
 import { LocaleService } from 'src/app/services/locale.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 
 @Component({
@@ -77,6 +79,7 @@ export class RootComponent implements OnInit, OnDestroy {
         public settings: SettingsService,
         public localeService: LocaleService,
         private apiService: ApiService,
+        public snackBar: MatSnackBar,
         private walletService: WalletService,
         private readonly cd: ChangeDetectorRef,
         public dialog: MatDialog,
@@ -237,6 +240,9 @@ export class RootComponent implements OnInit, OnDestroy {
 
     checkForUpdates() {
         this.updateService.checkForUpdate();
+        if (!this.updateService.available) {
+            this.snackBar.open('Wallet is up to date', null, { duration: 3000, panelClass: ['snackbar-success'], verticalPosition: 'top' });
+        }
     }
 
     closeDetails(reason: string) {

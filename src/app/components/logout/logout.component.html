@@ -1,11 +1,13 @@
 <div class="content content-centered not-selectable">
     <!-- <h1>Logout</h1> -->
 
-    <p>Are you sure you want to log out?</p>
+    <h3>Are you sure you want to log out?</h3>
 
     <mat-spinner *ngIf="loggingOut"></mat-spinner>
 
     <p *ngIf="wallet.stakingEnabled">Warning: You are currently staking. This will stop the staking process.</p>
-
-    <button routerLink="/dashboard"  [disabled]="loggingOut" mat-stroked-button>No</button>&nbsp;<button (click)="logout()" [disabled]="loggingOut" mat-raised-button color="primary">Yes</button>
+    <p>
+        <button class="cancel-button" routerLink="/dashboard"  [disabled]="loggingOut" mat-raised-button>No</button>&nbsp;
+        <button class="accept-button" (click)="logout()" [disabled]="loggingOut" mat-raised-button color="primary">Yes</button>
+    </p>
 </div>

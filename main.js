@@ -177,6 +177,10 @@ electron_1.ipcMain.on('download-blockchain-package', function (event, arg) {
     var dataFolder = path.join(appDataFolder, 'exos', 'EXOSMain');
     // Get the folder to download zip to:
     var targetFolder = path.dirname(dataFolder);
+    if (!fs.existsSync(dataFolder)) {
+        console.log('The folder does not EXIST!');
+        fs.mkdirSync(dataFolder, { recursive: true });
+    }
     // We must have this in a try/catch or crashes will halt the UI.
     try {
         downloadFile(arg.url, targetFolder, function (finished, progress, error) {
@@ -479,10 +483,10 @@ function getDaemonPath() {
         apiPath = path.resolve(__dirname, '..\\..\\resources\\daemon\\');
     }
     else if (os.platform() === 'linux') {
-        apiPath = path.resolve(__dirname, '..//..//resources//daemon//publishLinux');
+        apiPath = path.resolve(__dirname, '..//..//resources//daemon//');
     }
     else {
-        apiPath = path.resolve(__dirname, '..//..//Resources//daemon//publishRocksDb//');
+        apiPath = path.resolve(__dirname, '..//..//Resources//daemon//');
     }
     return apiPath;
 }

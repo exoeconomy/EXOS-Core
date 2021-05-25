@@ -1,11 +1,13 @@
-<h1 mat-dialog-title>Add node</h1>
-<div mat-dialog-content>
-  <p>Fill out IP address of node</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.ip">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="data.ip" cdkFocusInitial>Add</button>
-    <button mat-button (click)="onNoClick()">Cancel</button>
+<div class="add-node-content">
+    <h1 mat-dialog-title>Add node</h1>
+    <div mat-dialog-content>
+      <p>Fill out IP address of node</p>
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.ip">
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button class="accept-button" [mat-dialog-close]="data.ip" cdkFocusInitial>Add</button>
+        <button mat-button class="cancel-button" (click)="onNoClick()">Cancel</button>
+    </div>
 </div>

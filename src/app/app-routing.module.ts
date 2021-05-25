@@ -15,6 +15,7 @@ import { ToolsComponent } from './components/tools/tools.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { NetworkDetailsComponent } from './components/network/network-details.component';
 import { HubDetailsComponent } from './components/settings/hub-details.component';
+import { SwapsComponent } from './components/swaps/swaps.component';
 
 const routes: Routes = [
     {
@@ -74,6 +75,14 @@ const routes: Routes = [
         canActivate: [AuthenticatedUserGuard],
         data: {
             title: 'Log out'
+        },
+    },
+    {
+        path: 'swaps',
+        component: SwapsComponent,
+        canActivate: [AuthenticatedUserGuard],
+        data: {
+            title: 'Swaps'
         },
     },
     {

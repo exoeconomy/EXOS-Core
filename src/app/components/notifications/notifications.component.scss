@@ -31,4 +31,21 @@
     {
         color: silver;
     }
+
+    .mat-card {
+        background-image: url('../../../assets/exos-core/Balance_Block.png');
+        background-size: cover;
+        color: white;
+    }
+
+    .mat-card-subtitle {
+        color: white;
+    }
+
+    .wallet-accept {
+        background-image: url('../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1.1rem;
+    }
 }

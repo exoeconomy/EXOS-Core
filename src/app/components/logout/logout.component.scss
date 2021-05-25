@@ -8,3 +8,17 @@
     text-align: center;
 
 }
+
+.accept-button {
+    background-image: url('../../../assets/exos-core/Button.png');
+    background-size: cover;
+    color: white;
+    font-size: 1rem;
+}
+
+.cancel-button {
+    background-image: url('../../../assets/exos-core/Wallet-Button.png');
+    background-size: cover;
+    color: white !important;
+    font-size: 1rem;
+}

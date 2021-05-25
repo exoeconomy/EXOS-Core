@@ -311,6 +311,9 @@ export class LoginComponent implements OnInit, OnDestroy {
                         const msg = error.error.errors[0].message;
                         this.errorMessage = msg;
                     }
+                    if (error.status === undefined) { // Invalid password / empty password
+                        this.errorMessage = 'Empty password field, please it out';
+                    }
 
                     this.wallet.stop();
                     this.authService.setAnonymous();

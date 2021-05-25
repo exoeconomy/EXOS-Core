@@ -1,10 +1,67 @@
-.splash-container {
-    background-image: url('../../../assets/exos-core/init-background.png') !important;
-    background-repeat: no-repeat;
-    background-size: cover;
+.advanced-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 
     .paragraph-margin {
         padding-left: 30px;
         padding-right: 30px;
+    }
+
+    .advanced-content
+    {
+        display: flex;
+        width: 55%;
+        min-width: 240px;
+        text-align: center;
+        align-items: stretch;
+        background-color: #3f0f79;
+        background-image: url('../../../assets/exos-core/Left-Block-Gradient.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .inner-content {
+        display: flex;
+        flex-flow: column;
+        padding: 10%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .advanced-banner
+    {
+        display: flex;
+        background-color: white;
+        width: 45%;
+        background-image: url('../../../assets/exos-core/Background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .advanced-logo
+    {
+        width: 50%; 
+    }
+
+    .advanced-buttons {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+    }
+
+    .advanced-button {
+        padding: 10px;
+        border-radius: 10px;
+        width: 180px;
+        font-size: 1rem;
+        font-weight: bold;
     }
 }

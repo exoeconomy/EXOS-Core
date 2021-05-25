@@ -19,6 +19,7 @@
 
   .mat-tab-link,
   .mat-tab-label {
+    color: white;
     font-weight: 300;
     text-transform: uppercase;
   }
@@ -40,21 +41,20 @@
     font-size: 16px;
   }
 
-  .link {
-  }
-
   .link:hover {
     text-decoration: underline;
   }
 
   a {
-    color: mat-color($accent);
+    color: white;
     text-decoration: none;
+    font-weight: bold;
   }
 
   a:hover {
-    color: mat-color($accent);
+    color: white;
     text-decoration: underline;
+    font-weight: bold;
   }
 
   .interactive-table {

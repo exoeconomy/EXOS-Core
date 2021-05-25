@@ -1,5 +1,77 @@
-<div class="not-selectable">
-    <mat-grid-list class="network-grid" [cols]="columns" rowHeight="2:1" #grid>
+<div class="content not-selectable">
+    <div fxLayout="column">
+        <div class="network-stat-row" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex fxLayoutGap="20px grid" fxLayoutGap.xs="20px grid" fxLayoutGap.sm="20px grid">
+            <div fxFlex>
+                <mat-card>
+                    <mat-card-title>
+                        <span class="network-label">Network Height</span>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <span class="network-value">{{walletService.generalInfo?.chainTip.toLocaleString(this.localeService.locale)}}</span>
+                    </mat-card-subtitle>
+                </mat-card>
+            </div>
+            <div fxFlex>
+                <mat-card>
+                    <mat-card-title>
+                        <span class="network-label">Wallet Height</span>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <span class="network-value">{{walletService.generalInfo?.lastBlockSyncedHeight.toLocaleString(this.localeService.locale)}}</span>
+                    </mat-card-subtitle>
+                </mat-card>
+            </div>
+            <div fxFlex>
+                <mat-card>
+                    <mat-card-title>
+                        <span class="network-label">Connections</span>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <span class="network-value">{{walletService.generalInfo?.connectedNodes}}</span>
+                    </mat-card-subtitle>
+                </mat-card>
+            </div>
+        </div>
+        <div class="network-stat-row" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex fxLayoutGap="20px grid" fxLayoutGap.xs="0px grid" fxLayoutGap.sm="0px grid">
+            <div fxFlex>
+                <mat-card>
+                    <mat-card-title>
+                        <span class="network-label">Network</span>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <span class="network-value">{{walletService.generalInfo?.network}}</span>
+                    </mat-card-subtitle>
+                </mat-card>
+            </div>
+            <div fxFlex>
+                <mat-card>
+                    <mat-card-title>
+                        <span class="network-label" *ngIf="walletService.generalInfo.isChainSynced">Chain Synced</span>
+                        <span class="network-label" *ngIf="!walletService.generalInfo.isChainSynced">Chain Syncing</span>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <span class="network-value" *ngIf="walletService.generalInfo.isChainSynced">
+                            <mat-icon>cloud_done</mat-icon>
+                        </span>
+                        <span class="network-value" *ngIf="!walletService.generalInfo.isChainSynced">
+                            <mat-icon>cloud_download</mat-icon>
+                        </span>
+                    </mat-card-subtitle>
+                </mat-card>
+            </div>
+            <div fxFlex>
+                <mat-card>
+                    <mat-card-title>
+                        <span class="network-label">Account date</span>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <span class="network-value">{{walletService.generalInfo?.creationTime.toLocaleDateString(this.localeService.locale)}}</span>
+                    </mat-card-subtitle>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <!-- <mat-grid-list class="network-grid" [cols]="columns" rowHeight="2:1" #grid>
         <mat-grid-tile>
             <span class="network-label">Network Height</span>
             <span class="network-value">{{walletService.generalInfo?.chainTip.toLocaleString(this.localeService.locale)}}</span>
@@ -30,10 +102,10 @@
             <span class="network-label">Account date</span>
             <span class="network-value">{{walletService.generalInfo?.creationTime.toLocaleDateString(this.localeService.locale)}}</span>
         </mat-grid-tile>
-    </mat-grid-list>
+    </mat-grid-list> -->
     <mat-progress-bar mode="determinate" ng-hide="walletService.generalInfo == null" *ngIf="walletService.percentSyncedNumber !== 100" bufferValue="0" mode="buffer" [value]="walletService.percentSyncedNumber"></mat-progress-bar>
 </div>
 
 <div class="network-details-footer">
-    <button (click)="details()" mat-raised-button>Show details</button>
+    <button class="accept-button" (click)="details()" mat-raised-button>Show details</button>
 </div>

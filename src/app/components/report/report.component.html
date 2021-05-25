@@ -1,38 +1,40 @@
-<h2 mat-dialog-title>{{data.title}}</h2>
-<mat-dialog-content class="mat-typography">
-    <p class="report-header">
-        <mat-icon class="report-icon">error</mat-icon>
-        <span class="report-description">EXOS Core will attempt to start the EXOS Node background daemon (process) at startup. This dialog appears due to failure to load EXOS Node daemon. You can copy the errors and report
-            them to the development team for support.</span>
-    </p>
-
-    <h3>Possible cause(s) of the problem:</h3>
-    <div id="error-cause-lines">
-        <p class="log-line" *ngFor="let specific of data.specific">
-            {{specific.timestamp | date:'HH:mm'}}: {{specific.message | json}}
-
-            <span *ngFor="let arg of specific.args">
-                {{arg | json}}
-            </span>
+<div class="report">
+    <h2 mat-dialog-title>{{data.title}}</h2>
+    <mat-dialog-content class="mat-typography">
+        <p class="report-header">
+            <mat-icon class="report-icon">error</mat-icon>
+            <span class="report-description">EXOS Core will attempt to start the EXOS Node background daemon (process) at startup. This dialog appears due to failure to load EXOS Node daemon. You can copy the errors and report
+                them to the development team for support.</span>
         </p>
-    </div>
 
-    <h3>Last {{data.lines.length}} log messages:</h3>
+        <h3>Possible cause(s) of the problem:</h3>
+        <div id="error-cause-lines">
+            <p class="log-line" *ngFor="let specific of data.specific">
+                {{specific.timestamp | date:'HH:mm'}}: {{specific.message | json}}
 
-    <div id="error-lines">
-        <p class="log-line" *ngFor="let line of data.lines">
-            {{line.timestamp | date:'HH:mm'}}: {{line.message | json}}
+                <span *ngFor="let arg of specific.args">
+                    {{arg | json}}
+                </span>
+            </p>
+        </div>
 
-            <span *ngFor="let arg of line.args">
-                {{arg | json}}
-            </span>
-        </p>
-    </div>
+        <h3>Last {{data.lines.length}} log messages:</h3>
 
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button mat-button ngbTooltip="Copy to clipboard" (click)="causeOnCopiedClick()">Copy cause</button>
-    <button mat-button ngbTooltip="Copy to clipboard" (click)="onCopiedClick()">Copy</button>
-    <button mat-button [mat-dialog-close]="true">Close</button>
-    <button mat-button color="primary" [mat-dialog-close]="true" (click)="shutdown()" cdkFocusInitial>Exit</button>
-</mat-dialog-actions>
+        <div id="error-lines">
+            <p class="log-line" *ngFor="let line of data.lines">
+                {{line.timestamp | date:'HH:mm'}}: {{line.message | json}}
+
+                <span *ngFor="let arg of line.args">
+                    {{arg | json}}
+                </span>
+            </p>
+        </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions class="report-buttons" align="end">
+        <button class="report-button" mat-flat-button ngbTooltip="Copy to clipboard" (click)="causeOnCopiedClick()">Copy cause</button>
+        <button class="report-button" mat-flat-button ngbTooltip="Copy to clipboard" (click)="onCopiedClick()">Copy</button>
+        <button class="report-button" mat-flat-button [mat-dialog-close]="true">Close</button>
+        <button class="report-button" mat-flat-button [mat-dialog-close]="true" (click)="shutdown()" cdkFocusInitial>Exit</button>
+    </mat-dialog-actions>
+</div>

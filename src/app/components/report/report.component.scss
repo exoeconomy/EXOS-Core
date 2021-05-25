@@ -1,27 +1,41 @@
-.log-line {
-    border-bottom: 1px solid rgba($color: silver, $alpha: 0.25);
-    padding-top: 3px;
-    padding-bottom: 3px;
-    margin: 0;
-}
+    .report {
+        background-image: url('../../../assets/exos-core/Balance_Block.png');
+        background-size: cover;
+        color: white;
+        margin: 0;
+        padding: 20px;
+    }
 
-.report-icon
-{
-    font-size: 3em;
-    max-width: 60px;
-}
+    .log-line {
+        border-bottom: 1px solid rgba($color: silver, $alpha: 0.25);
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin: 0;
+    }
 
-.report-description {
+    .report-icon
+    {
+        font-size: 3em;
+        max-width: 60px;
+    }
 
-}
+    .mat-dialog-content {
+        color: white;
+    }
 
-.report-header
-{
-  display: flex;  
-  flex-wrap: wrap;
-  align-content: space-between;
-}
+    .report-header
+    {
+    display: flex;  
+    flex-wrap: wrap;
+    align-content: space-between;
+    }
 
-.report-header > * {
-    flex: 1 1 200px;
-  }
+    .report-header > * {
+        flex: 1 1 200px;
+    }
+
+    .report-button {
+        background-image: url('../../../assets/exos-core/Button.png') !important;
+        background-size: cover;
+        color: white !important;
+    }
