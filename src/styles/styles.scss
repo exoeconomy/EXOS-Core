@@ -27,6 +27,11 @@
 @include mat-core($app-typography);
 @include app-theme($app-dark-theme);
 
+@font-face {
+    font-family: alata;
+    src: url(../assets/fonts/Alata/Alata-Regular.ttf) format('truetype');
+}
+
 .app-light-theme {
 	@include app-theme($app-light-theme);
 }
@@ -79,6 +84,7 @@ body {
 .content
 {
 	margin: 30px;
+    color: white;
 }
 
 .content-big-margin {
@@ -149,32 +155,49 @@ body {
 	flex-direction: column;
 }
 
+.main-menu-title {
+    margin-top: 20px;
+    text-align: center;
+}
+
 .main-menu .mat-list-item {
 	//border-left: 3px solid transparent;
-	border-right: 3px solid transparent;
+	// border-right: 3px solid transparent;
+    margin: 20px;
+    padding: 0px 20px;
     cursor: pointer;
     width: auto !important;
-    background-color:#031e4c;
+    // background-color:#1a053d;
+    background-image: url('../assets/exos-core/Wallet-Button.png');
+    background-size: cover;
+    color: #79589f !important;
+}
+
+.main-menu .mat-list-item .mat-list-text {
     color: white !important;
 }
 
 .main-menu .mat-list-item:hover {
-    background-color: #b7e5f9;
-    color: black !important;
+    // background-color: #b7e5f9;
+    background-image: url('../assets/exos-core/Button.png');
+    background-size: cover;
+    color: white !important;
 }
 
 .mat-list-item-focus {
     border-right: 3px solid #b7e5f9 !important;
-    background-color: #b7e5f9 !important;
-    color: black !important;
-
-
+    // background-color: #b7e5f9 !important;
+    background-image: url('../assets/exos-core/Button.png');
+    background-size: cover;
+    color: white !important;
 }
 
 .main-menu .main-menu-active {
     border-right: 3px solid #b7e5f9;
-    background-color: #b7e5f9 !important;
-    color: black !important;
+    // background-color: #b7e5f9 !important;
+    background-image: url('../assets/exos-core/Button.png');
+    background-size: cover;
+    color: white !important;
 }
 
 :focus {
@@ -220,6 +243,15 @@ span.ellipsis {
 .error-snackbar {
     color: #f44336 !important;
     font-weight: bolder;
+}
+
+simple-snack-bar span {
+    margin: auto;
+    text-align: center;
+}
+
+.snackbar-success {
+    background: green !important;
 }
 
 // ::-webkit-scrollbar-track {

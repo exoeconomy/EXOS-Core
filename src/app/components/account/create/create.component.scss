@@ -1,9 +1,49 @@
+
 .account-create
 {
+    .content {
+        margin: 0;
+        padding: 60px 0 0 60px;
+        background-image: url('../../../../assets/exos-core/Wallet_Background-WithoutShadow.jpg');
+        background-size: cover;
+    }
+
+    .creation-stepper {
+        background-color: #110130;
+        border-top-left-radius: 30px;
+        padding-top: 30px;
+        margin-top: 50px;
+    }
+
+    ::ng-deep .mat-step {
+        &.colorful-label .mat-step-text-label {
+            color: white !important;
+        }
+    }
+
+    .mat-h1 {
+        padding-left: 60px;
+    }
+
 	button
 	{
 		margin-right: 6px;
 	}
+
+    .accept-button {
+        background-image: url('../../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1rem;
+    }
+
+    .cancel-button {
+        width: 100px;
+        background-image: url('../../../../assets/exos-core/Wallet-Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1rem;
+    }
 
 	.account-create .mat-progress-spinner
 	{
@@ -16,11 +56,12 @@
 	}
 
 	.mnemonic, .mnemonic-print {
+        border-radius: 20px;
 		font-size: 1.2rem;
 		margin-top: 22px;
 		margin-bottom: 22px;
-		background-color: white;
-		color: black;
+		background-color: #2c0963;
+		color: white;
 		padding: 20px;
 		line-height: 40px;
 		vertical-align: bottom;
@@ -28,12 +69,78 @@
 	}
 	
 	.mnemonic-print {
-		color: black;
+		color: white;
 	}
 	
 	.mnemonic-date {
 		font-size: 1rem;
-		color: black;
+		color: white;
 		padding: 20px;
 	}
+
+    ::-webkit-input-placeholder { /* Edge */
+        color: rgba(255, 255, 255, 0.70) !important;
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: rgba(255, 255, 255, 0.70) !important;
+    }
+
+    ::placeholder {
+        color: rgba(255, 255, 255, 0.70) !important;
+    }
+
+    /* mat-form Border */
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: white;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+        color: white;
+    }
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
+        color: white;
+    }
+    .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-label{
+        color: red !important;
+    }
+
+    /* mat-form Border */
+    .mat-form-field.mat-focused .mat-form-field-label {
+        color: white;
+    }
+    .mat-form-field .mat-form-field-label {
+        color: white;
+    }
+    /* mat-form Font color */
+    input.mat-input-element {
+        color: white;
+    }
+    
+    .mat-step-header .mat-step-text-label {
+        color: white;
+    }
+
+    .mat-step-header .mat-step-icon-state-number {
+        background-image: url('../../../../assets/exos-core/Left-Block-Gradient.jpg');
+        background-size: cover;
+    }
+
+    .mat-step-header .mat-step-icon-state-edit {
+        background-image: url('../../../../assets/exos-core/Left-Block-Gradient.jpg');
+        background-size: cover;
+    }
+
+    .mat-stepper-vertical-line::before {
+        border-left-color: #6b508f;
+    }
+
+    .mat-form-field .mat-form-field-label {
+        color: white;
+    }
+    .mat-form-field .mat-form-field-underline {
+        background-color: white;
+    }
+    .mat-form-field .mat-focused .mat-form-field-underline {
+        background-color: white;
+    }
 }

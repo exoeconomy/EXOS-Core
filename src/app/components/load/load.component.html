@@ -1,82 +1,88 @@
 <div class="splash-container not-selectable">
 
-    <div class="">
-        <img src="assets/exos-core/exosletralogo.png" class="load-logo">
+    <div class="network-load">
+        <ng-template [ngIf]="!loading">
+            <img src="assets/exos-core/ExOEconomy_Small_White.png" class="load-logo">
+            <div class="network-start">
+                <mat-form-field appearance="fill">
+                    <mat-select placeholder="Select network" [(ngModel)]="selectedNetwork">
+                        <mat-option *ngFor="let network of networks" [value]="network">
+                            {{network.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+        
+                <button (click)="launch()" [disabled]="selectedNetwork == null" mat-raised-button class="start-button">Start</button>
+                <br>
+                <mat-checkbox class="network-remember" [(ngModel)]="remember">Remember</mat-checkbox>
+                <mat-accordion class="setup-headers-align" multi>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-description>
+                                Advanced
+                                <mat-icon>build</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+        
+                        <div>
+                            <button class="button-confirm" (click)="resetDatabase()" mat-raised-button>Reset Database</button>
+                            <br>
+                            <br>
+                            <button class="button-confirm" [disabled]="downloading || unpacking" (click)="downloadAndUnpack()" mat-raised-button>Download and unpack</button>
+                            <br>
+                            <br>
+                            <a onclick="window.open('https://link.exos.to/fullchain')">More about downloading the fullchain</a>
+                            <div *ngIf="downloading && downloadProgress">
+                                <br><br>
+                                Downloading:<br><br>
+                                <mat-progress-bar mode="determinate" [value]="downloadProgress.progress"></mat-progress-bar>
+                                <br>
+                                {{humanFileSize(downloadProgress.downloaded) }} of {{humanFileSize(downloadProgress.size) }}
+                                <br><br>
+                                <button class="button-cancel" (click)="cancelDownload()" mat-raised-button>Cancel</button>
+                            </div>
+        
+                            <div *ngIf="unpacking">
+                                <br><br>
+                                Unpacking:<br><br>
+                                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                            </div>
+        
+                            <div *ngIf="unpacked">
+                                <br><br>
+                                Download and unpacking completed.<br>
+                                You can now continue by clicking Start.
+                            </div>
+        
+                            <div *ngIf="resetDone">
+                                <br>
+                                Reset done!
+                            </div>
+                            <div *ngIf="noSpace">
+                                <br>
+                                 No space left on device, you need 5GB free minimum.
+                            </div>
+
+                        </div>
+                    </mat-expansion-panel>
+        
+                </mat-accordion>
+        
+        
+                <mat-accordion class="setup-headers-align" multi>
+        
+                </mat-accordion>
+            </div>
+            
+
+            <!-- <p class="mat-caption">
+                During PREVIEW RELEASE testing, <br>these options are set by default.
+            </p> -->
+
+        </ng-template>
     </div>
 
-    <ng-template [ngIf]="!loading" [ngIfElse]="spinner">
-
-        <mat-form-field>
-            <mat-select placeholder="Select network" [(ngModel)]="selectedNetwork">
-                <mat-option *ngFor="let network of networks" [value]="network">
-                    {{network.name}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <button (click)="launch()" [disabled]="selectedNetwork == null" mat-raised-button color="primary">Start</button>
-        <br>
-        <mat-checkbox [(ngModel)]="remember">Remember</mat-checkbox>
-        <mat-accordion class="setup-headers-align" multi>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-description>
-                        Advanced
-                        <mat-icon>build</mat-icon>
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-
-                <div>
-                    <button (click)="resetDatabase()" mat-raised-button>Reset Database</button>
-                    <br>
-                    <br>
-                    <button [disabled]="downloading || unpacking" (click)="downloadAndUnpack()" mat-raised-button>Download and unpack</button>
-                    <br>
-                    <br>
-                    <a onclick="window.open('https://link.exos.to/fullchain')">More about downloading the fullchain</a>
-                    <div *ngIf="downloading && downloadProgress">
-                        <br><br>
-                        Downloading:<br><br>
-                        <mat-progress-bar mode="determinate" [value]="downloadProgress.progress"></mat-progress-bar>
-                        <br>
-                        {{humanFileSize(downloadProgress.downloaded) }} of {{humanFileSize(downloadProgress.size) }}
-                        <br><br>
-                        <button (click)="cancelDownload()" mat-raised-button>Cancel</button>
-                    </div>
-
-                    <div *ngIf="unpacking">
-                        <br><br>
-                        Unpacking:<br><br>
-                        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-                    </div>
-
-                    <div *ngIf="unpacked">
-                        <br><br>
-                        Download and unpacking completed.<br>
-                        You can now continue by clicking Start.
-                    </div>
-                    <div *ngIf="resetDone">
-                        <br>
-                        Reset done!
-                    </div>
-                    <div *ngIf="noSpace">
-                        <br>
-                         No space left on device, you need 5GB free minimum.
-                    </div>
-
-                </div>
-            </mat-expansion-panel>
-
-        </mat-accordion>
-
-
-        <mat-accordion class="setup-headers-align" multi>
-
-        </mat-accordion>
-
-
-    </ng-template>
-    <ng-template #spinner>
+    <div class="loading-screen" *ngIf="this.loading">
         <span class="load-text">Loading <strong>{{appState.chain}}</strong> Modules... please wait.<br><br>
             <div class="load-feature-status" *ngFor="let feature of featureStatus">
                 <div class="name"><mat-spinner diameter="20" *ngIf="!feature.initialized"></mat-spinner><mat-icon *ngIf="feature.initialized" [ngStyle]="{'color':'green'}">done</mat-icon>  {{feature.name}}</div>
@@ -93,6 +99,5 @@
             <button routerLink="/advanced" mat-raised-button>Advanced</button>&nbsp;
             <button (click)="cancel()" mat-raised-button color="primary">Cancel</button>
         </span>
-    </ng-template>
-
+    </div>
 </div>

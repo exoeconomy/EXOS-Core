@@ -1,7 +1,7 @@
 <div class="content print-hidden">
     <h1 class="mat-h1">Create an account</h1>
 
-    <mat-vertical-stepper class="print-hidden" linear #stepper>
+    <mat-vertical-stepper class="print-hidden creation-stepper" linear #stepper>
         <mat-step label="Introduction" editable="true">
             <p>
                 <strong>Make sure nobody is watching your screen.</strong>
@@ -14,8 +14,8 @@
                 Nobody can restore it for you, if you lose it.
             </p>
             <div>
-                <button mat-raised-button color="primary" matStepperNext type="button">I understand</button>
-                <button mat-raised-button routerLink="/login" matStepperPrevious type="button">Cancel</button>
+                <button class="accept-button" mat-raised-button color="primary" matStepperNext type="button">I understand</button>
+                <button class="cancel-button" mat-raised-button routerLink="/login" matStepperPrevious type="button">Cancel</button>
             </div>
         </mat-step>
         <mat-step label="Recovery seed" editable="true">
@@ -36,8 +36,8 @@
                 on a website.<br> - Do not store it electronically.
             </p>
             <div>
-                <button mat-raised-button matStepperPrevious type="button">Back</button>
-                <button mat-raised-button color="primary" [disabled]="!mnemonic" matStepperNext type="button">Yes, it
+                <button class="cancel-button" mat-raised-button matStepperPrevious type="button">Back</button>
+                <button class="accept-button" mat-raised-button color="primary" [disabled]="!mnemonic" matStepperNext type="button">Yes, it
                     is safe!</button>
             </div>
         </mat-step>
@@ -53,8 +53,8 @@
                         Seed doesn't match.
                 </mat-error>
                 </mat-form-field>
-                <button mat-raised-button matStepperPrevious type="button">Back</button>
-                <button type="button" color="primary" (click)="validateSeed()" mat-raised-button>Verify</button>
+                <button class="cancel-button" mat-raised-button matStepperPrevious type="button">Back</button>
+                <button class="accept-button" type="button" color="primary" (click)="validateSeed()" mat-raised-button>Verify</button>
             </div>
             </form>
         </mat-step>
@@ -75,8 +75,8 @@
                     </mat-form-field>
                 </p>
                 <div>
-                    <button mat-raised-button matStepperPrevious type="button">Back</button>
-                    <button mat-raised-button color="primary" matStepperNext type="button">Next</button>
+                    <button class="cancel-button" mat-raised-button matStepperPrevious type="button">Back</button>
+                    <button class="accept-button" mat-raised-button color="primary" matStepperNext type="button">Next</button>
                 </div>
             </form>
         </mat-step>
@@ -99,8 +99,8 @@
                     </mat-form-field>
                 </p>
                 <div>
-                    <button mat-raised-button matStepperPrevious type="button">Back</button>
-                    <button mat-raised-button color="primary" matStepperNext type="button" [disabled]="accountPasswordForm.invalid">Next</button>
+                    <button class="cancel-button" mat-raised-button matStepperPrevious type="button">Back</button>
+                    <button class="accept-button" mat-raised-button color="primary" matStepperNext type="button" [disabled]="accountPasswordForm.invalid">Next</button>
                 </div>
             </form>
         </mat-step>
@@ -118,8 +118,8 @@
                     </mat-form-field>
                 </p>
                 <div>
-                    <button mat-raised-button matStepperPrevious type="button">Back</button>
-                    <button type="button" color="primary" (click)="createAccount()" matStepperNext mat-raised-button [disabled]="saving || accountNameForm.invalid">Create
+                    <button class="cancel-button" mat-raised-button matStepperPrevious type="button">Back</button>
+                    <button class="accept-button" type="button" color="primary" (click)="createAccount()" matStepperNext mat-raised-button [disabled]="saving || accountNameForm.invalid">Create
                         wallet
                     </button>
                     <div class="spinner-container" *ngIf="saving">

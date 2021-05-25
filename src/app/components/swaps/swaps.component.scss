@@ -1,0 +1,120 @@
+.swaps-screen {
+    margin: 0;
+}
+
+.mat-tab-body-content {
+    padding: 40px;
+    height: auto !important;
+}
+
+.swaps-screen > * .mat-tab-labels {
+    background-color: #1a053d !important;
+}
+
+.swaps-screen > * .mat-tab-label {
+    color: white !important;
+    opacity: 1 !important;
+}
+
+.swap-title {
+    padding-left: 20px;
+}
+.main-swap-title{
+    display: flex;
+    font-size: xx-large !important;
+    font-weight: bold !important;
+}
+
+.swap-cards {
+    padding: 100px;
+}
+
+.swap-card > mat-card {
+    padding: 0;
+    display: contents !important;
+}
+
+.swap-from , .swap-into {
+    width: 250px !important;
+    height: 130px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.swap-from {
+    background-image: url('../../../assets/exos-core/Transactions-Block.png') !important;
+    background-size: cover !important;
+    color: white !important;
+}
+
+.swap-into {
+    background-image: url('../../../assets/exos-core/Button2.png') !important;
+    background-size: cover !important;
+    color: white !important;
+}
+
+.arrow-div {
+    display: flex;
+    justify-content: center;
+}
+
+.swap-links {
+    text-decoration: none !important;
+    border-radius: 25px !important;
+    box-shadow: inset -5px 5px 5px rgba($color: white, $alpha: 0.4);
+}
+
+.exos-matcard-logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.secondary-logo {
+    margin-right: 15px;
+}
+
+.swap-from .mat-card-content , .swap-into .mat-card-content {
+    display: flex !important;
+    flex-flow: column;
+    align-items: center !important;
+}
+
+.swap-inner-title p {
+    margin: 0;
+}
+
+.swap-inner-info {
+    margin-top: 20px;
+}
+
+.swap-inner-title , .swap-inner-info {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.swap-inner-info p {
+    margin: 0;
+    opacity: 0.7;
+}
+
+.swapping-info {
+    text-align: end;
+    opacity: 0.4;
+}
+
+.mat-tab-label-active {
+    background-image: url('../../../assets/exos-core/Button.png');
+    background-size: cover;
+}
+
+.mat-tab-disabled {
+    color: grey !important;
+}
+
+.swaps-screen > * .mat-tab-label[aria-posinset="1"] {
+    display: none;
+}

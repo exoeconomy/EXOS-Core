@@ -1,34 +1,45 @@
 <div class="content">
-
     <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex fxLayoutGap="20px grid" fxLayoutGap.xs="0px grid" fxLayoutGap.sm="0px grid">
         <div fxFlex>
-            <mat-card class="balance-card">
+            <mat-card class="balance-card balance">
                 <mat-icon class="dashboard-info-icon" [matTooltip]="walletInfo">info</mat-icon>
                 <mat-card-title>Balance</mat-card-title>
-                <mat-card-subtitle>The balance of: {{wallet.walletName}}</mat-card-subtitle>
-                <mat-card-content>
-                    <p>
-                        <strong>{{ (wallet.confirmedBalance | coinNotation| number: '1.0-8': this.localeService.locale) || (0 | coinNotation) }}</strong>
-                        <small class="text-uppercase"><b> {{ wallet.coinUnit }} </b></small>
-                        <em *ngIf="isIBD">Updating the chain</em>
-                    </p>
-                    <ul *ngIf="wallet.unconfirmedBalance">
-                        <li>
-                            <strong>{{ (wallet.unconfirmedBalance | coinNotation | number: '1.0-8': this.localeService.locale) || (0 | coinNotation) }}</strong>
-                            <em> (unconfirmed)</em>
-                        </li>
-                    </ul>
+                <br>
+                <div>
+                    <div fxFlex>
+                    <mat-card-subtitle><h4>The balance of: {{wallet.walletName}}</h4></mat-card-subtitle>
+                    <mat-card-content>
+                        <p>
+                            <strong>{{ (wallet.confirmedBalance | coinNotation| number: '1.0-8': this.localeService.locale) || (0 | coinNotation) }}</strong>
+                            <small class="text-uppercase"><b> {{ wallet.coinUnit }} </b></small>
+                            <em *ngIf="isIBD">Updating the chain</em>
+                        </p>
+                        <ul *ngIf="wallet.unconfirmedBalance">
+                            <li>
+                                <strong>{{ (wallet.unconfirmedBalance | coinNotation | number: '1.0-8': this.localeService.locale) || (0 | coinNotation) }}</strong>
+                                <em> (unconfirmed)</em>
+                            </li>
+                        </ul>
+                    </mat-card-content>
+                </div>
+                <div class="balance-buttons">
+                    <button mat-flat-button class="dashboard-send" routerLink="/wallet/send">Send</button>&nbsp;
+                    <button mat-flat-button class="dashboard-receive" routerLink="/wallet/receive">Receive</button>&nbsp;
+                </div>
+                </div>
 
-                    <p>
-                        <button mat-stroked-button class="dashboard-send" routerLink="/wallet/send">Send</button>&nbsp;
-                        <button mat-stroked-button class="dashboard-receive" routerLink="/wallet/receive">Receive</button>&nbsp;
-                    </p>
-                </mat-card-content>
             </mat-card>
         </div>
         <div fxFlex>
-            <mat-card class="dashboard-card-know-us">
-                <img src="assets/exos-core/exos-dashboard.png" class="card-logo">
+            <mat-card class="balance-card notifications">
+                <!-- <img src="assets/exos-core/demonetize.png" class="card-image">
+                <br> -->
+                <!-- <mat-card-title>Notifications</mat-card-title>
+                <br>
+                <mat-card-content>
+                    <h4>Summary from your Notification Center</h4>
+                </mat-card-content>
+                <a routerLink="/notifications" mat-flat-button>Open</a> -->
             </mat-card>
         </div>
     </div>
@@ -37,39 +48,39 @@
 <div class="content">
     <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex fxLayoutGap="20px grid" fxLayoutGap.xs="0px grid" fxLayoutGap.sm="0px grid">
         <div fxFlex>
-            <mat-card  class="internal-cards">
-                <img src="assets/exos-core/demonetize.png" class="card-image">
-                <br>
-                <mat-card-title>Demonetize</mat-card-title>
+            <mat-card class="internal-cards connect">
+                <!-- <img src="assets/exos-core/demonetize.png" class="card-image">
+                <br> -->
+                <mat-card-title>Connect</mat-card-title>
                 <br>
                 <mat-card-content class="internal-content">
-                    <p>As technology becomes cheaper moving toward no/low cost development, money is increasingly removed from the equation. DeFi is holy grail in unlocking value creation as a model for value-exchange of services, smart contracts and staking incentives to name a few.</p>
+                    <h4>Enter our Marketplace and know the latest offers and demands from our community members.</h4>
                 </mat-card-content>
-
+                <a href="https://economy.openexo.com/contact/" target="_blank" mat-flat-button>Get In</a>
             </mat-card>
         </div>
         <div fxFlex>
-            <mat-card  class="internal-cards">
-                <img src="assets/exos-core/democratize.png" class="card-image">
-                <br>
-                <mat-card-title>Democratize</mat-card-title>
+            <mat-card class="internal-cards community">
+                <!-- <img src="assets/exos-core/democratize.png" class="card-image">
+                <br> -->
+                <mat-card-title>Community</mat-card-title>
                 <br>
                 <mat-card-content class="internal-content">
-                    <p>ExO Economy is an emerging DAO, to accelerate, democratize and internationalize the Innovation ecosystem. The goal is to increase the knowledge and adoption of blockchain technology to generate business and purpose-driven opportunities.</p>
+                    <h4>Join our community on Discord and interact with our community members.</h4>
                 </mat-card-content>
-
+                <a href="https://link.exos.to/discord" target="_blank" mat-flat-button>Join</a>
             </mat-card>
         </div>
         <div fxFlex>
-            <mat-card  class="internal-cards">
-                <img src="assets/exos-core/decentralize.png" class="card-image">
-                <br>
-                <mat-card-title>Decentralize</mat-card-title>
+            <mat-card class="internal-cards learn">
+                <!-- <img src="assets/exos-core/decentralize.png" class="card-image">
+                <br> -->
+                <mat-card-title>Learn</mat-card-title>
                 <br>
                 <mat-card-content class="internal-content">
-                    <p>This community-driven utility token EXOS is the heartbeat, the nervous system, the mind of the new economy. A decentralized model works toward a more fair and equitable society for everyone, regardless of social status or economic standing.
-                    </p>
+                    <h4>Visit our media library for access to event replays, speakers and training clips.</h4>
                 </mat-card-content>
+                <a href="https://economy.openexo.com/#/" target="_blank" mat-flat-button>View</a>
             </mat-card>
         </div>
     </div>

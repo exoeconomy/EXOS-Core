@@ -12,7 +12,7 @@
         }
     ],
     "releaseInfo": {
-        "releaseName": "${version}"
+        "releaseName": "EXOS-Core"
     },
     "files": [
         "dist/**",
@@ -45,7 +45,8 @@
         "category": "public.app-category.productivity"
     },
     "pkg": {
-        "allowAnywhere": false,
+        "isRelocatable": false,
+        "overwriteAction": "upgrade",
         "license": "dist/assets/license.txt",
         "welcome": "dist/assets/welcome.rtf",
         "conclusion": "dist/assets/readme.rtf",
@@ -72,6 +73,7 @@
         "daemon/**/*",
         "dist/assets/exos-core/icon-tray.ico",
         "dist/assets/exos-core/logo-tray.png",
+        "dist/assets/exos-core/logo.png",
         "dist/assets/license.txt"
     ]
 }

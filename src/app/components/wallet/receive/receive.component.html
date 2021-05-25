@@ -35,7 +35,7 @@
     </form>
 
     <div class="centered">
-        <button class="cancel-button" *ngIf="showAll" mat-stroked-button (click)="showOneAddress()">← Back to one address</button>
+        <button class="cancel-button" *ngIf="showAll" mat-flat-button (click)="showOneAddress()">← Back to one address</button>
     </div>
 
     <form *ngIf="showAll">
@@ -82,7 +82,7 @@
     </form>
 
     <div class="centered">
-        <button *ngIf="!showAll" mat-stroked-button (click)="showAllAddresses()">Show all addresses</button>
+        <button *ngIf="!showAll" class="show-button" mat-flat-button (click)="showAllAddresses()">Show all addresses</button>
     </div>
 
 </div>

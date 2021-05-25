@@ -13,7 +13,12 @@
         text-align: center;
     }
 
-
+    .show-button {
+        background-image: url('../../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1rem;
+    }
 
     .tab-pane {
         margin: 20px;

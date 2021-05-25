@@ -1,0 +1,59 @@
+<div class="content swaps-screen not-selectable">
+    <mat-tab-group>
+        <mat-tab class="swapping-landing" label="Landing">
+            <div class="swap-cards" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-around center">
+                <div class="swap-card">
+                    <h1 class="swap-title">Swap from</h1>
+                    <mat-card>
+                        <mat-card-content>
+                            <a class="swap-from swap-links" href="https://link.exos.to/swapinfo1" target="_blank">
+                                <div class="swap-inner-title">
+                                    <img class="exos-matcard-logo" src="assets/exos-core/ExOEconomy-Logo-Symbol.png" alt="">
+                                    <p class="main-swap-title">EXOS</p>
+                                </div>
+                            </a>
+                        </mat-card-content>
+                    </mat-card>
+                    <div class="swap-inner-info">
+                        <img class="secondary-logo" src="assets/exos-core/ExOEconomy-Symbol-opaque.png" alt="">
+                        <p>EXOS blockchain,<br> ExO Economy's native currency</p>
+                    </div>
+                </div>
+                <div class="arrow-div">
+                    <img src="assets/exos-core/arrow-right-alt.png" alt="">
+                </div>
+                <div class="swap-card">
+                    <h1 class="swap-title">Swap into</h1>
+                    <mat-card>
+                        <mat-card-content>
+                            <a class="swap-into swap-links" href="https://link.exos.to/swapinfo2" target="_blank">
+                                <div class="swap-inner-title">
+                                    <img class="exos-matcard-logo" src="assets/exos-core/wEXOS.png" alt="">
+                                    <p class="main-swap-title">wEXOS</p>
+                                </div>
+                            </a>
+                        </mat-card-content>
+                    </mat-card>
+                    <div class="swap-inner-info">
+                        <img class="secondary-logo" src="assets/exos-core/ethereum.png" alt="">
+                        <p>EXOS equivalent on the Ethereum<br> blockchain; an ERC20 token</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swapping-info">
+                <h4>
+                    *  the swapping features will be actived in the coming EXOS Core updates
+                </h4>
+            </div>
+        </mat-tab>
+        <mat-tab disabled label="INFORMATION *">
+        </mat-tab>
+        <mat-tab disabled label="INITIATE A SWAP *">
+        </mat-tab>
+        <mat-tab disabled label="LIST OF TRANSACTIONS *">
+        </mat-tab>
+    </mat-tab-group>      
+    <!-- <nav mat-tab-nav-bar mat-stretch-tabs>
+        <a mat-tab-link *ngFor="let opt of options" (click)="filterHistory(opt)" [active]="activeOption == opt" class="transaction-types"> {{opt.title}} </a>
+    </nav> -->
+</div>

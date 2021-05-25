@@ -4,6 +4,16 @@
     background-color: #3f0f79 !important;
     }
 
+
+::ng-deep snack-bar-container.snackbar {
+        background: green !important;
+        text-align: center;
+    }
+
+    p.ng-star-inserted.root-text {
+        margin: 0px;
+    }
+
 .root {
   .daemon-shutdown-status {
     z-index: 10000;
@@ -58,20 +68,23 @@
   }
 
   .mat-drawer {
-    background: #031e4c;
+    background: #1a053d;
     color: white;
   }
 
   .menu-top-logo {
       width: 32px;
       height: 32px;
-
   }
 
-  .toolbar {
-    background-color: #031e4c;
-    color: white;
+  .exos-logo {
+    width: 24px;
+    height: 24px;
+}
 
+  .toolbar {
+    background-color: #1a053d;
+    color: white;
    }
 
    .mat-card {
@@ -79,8 +92,15 @@
     border-radius: 25px !important;
    }
 
+   .mat-list .mat-list-item {
+       border-radius: 10px;
+       border-right: 0;
+   }
 
-
+   mat-list-item > h4 {
+    color: white;
+    font-weight: bold;
+}
 
   .menu-top-text {
     margin-left: 20px;
@@ -91,9 +111,7 @@
 }
 
     .app-sidenav-content {
-        background-color: #b7e5f9;
+        background-color: #120030;
+        // background: url('../../../assets/exos-core/Dashboard/Background/Dashboard_Background-WithoutShadow.jpg');
     }
-
-
-
 }

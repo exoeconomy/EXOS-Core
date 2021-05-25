@@ -1,6 +1,4 @@
 .network {
-    mat-grid-tile {
-    }
 
     .add-node {
         float: right;
@@ -8,8 +6,23 @@
         margin-top: 4px;
     }
 
+    .mat-card {
+        background-image: url('../../../assets/exos-core/Balance_Block.png');
+        background-size: cover;
+        color: white;
+        height: 80px !important;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+    }
+
     .card {
-        margin: 0px 20px 20px 20px;
+        height: auto !important;
+    }
+    
+    .mat-card-subtitle {
+        margin-top: 5px;
+        color: white;
     }
 
     .details-content
@@ -22,14 +35,16 @@
         border-bottom: 1px solid silver;
     }
 
+    .network-stat-row {
+        margin-bottom: 0px !important;
+    }
+
     .network-details-footer {
         text-align: center;
-        padding-top: 20px;
         padding-bottom: 20px;
     }
 
     .network-label {
-        font-color: gray;
         padding-bottom: 10px;
     }
 
@@ -38,11 +53,17 @@
         font-size: 1.6em;
     }
 
+    .mat-grid-list {
+        color: white;
+    }
+
     .mat-grid-tile .mat-figure {
         flex-direction: column !important;
     }
 
     .mat-grid-tile {
+        background-image: url('../../../assets/exos-core/Wallet-Button.png');
+        background-size: cover;
         border-right: 1px solid silver !important;
         border-bottom: 1px solid silver !important;
     }
@@ -54,5 +75,22 @@
 
     .network-grid .mat-icon {
         font-size: 1.6em !important;
+    }
+
+    .mat-list .mat-list-item , .mat-list-base .mat-subheader {
+        color: white;
+    }
+    .accept-button {
+        background-image: url('../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1.1rem;
+    }
+    .cancel-button {
+        width: 100px;
+        background-image: url('../../../assets/exos-core/Wallet-Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1.1rem;
     }
 }

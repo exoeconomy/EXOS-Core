@@ -15,27 +15,121 @@
         font-size: medium;
     }
 
-    .mat-tab-link {
-        font-weight: bolder !important;
+    .mat-tab-links {
+        padding-top: 10px;
+        padding-bottom: 20px;
     }
 
-    .wallet-send {
-        background-color: #3f0f79;
+    .mat-tab-link {
+        font-weight: bolder !important;
+        height: 40px;
+        border-radius: 20px;
+        margin: 0 10px;
+    }
+
+    .balance-card > a , .internal-cards > a , .wallet-send , .wallet-receive , .wallet-button {
+        width: 150px;
+        background-image: url('../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    .details-button {
+        width: 230px;
+        background-image: url('../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    .transaction-types {
+        background-image: url('../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+        font-size: 1rem;
+    }
+
+    .balance-buttons , .details-buttons > p {
+        margin-top: auto;
+        text-align: right;
+    }
+
+    .mat-card {
+        margin-bottom: auto;
         color: white;
     }
 
-    .wallet-receive {
-        background-color: #b7e5f9;
-
-    }
-
-
     .mat-card {
-        margin-bottom: 20px;
+        margin-bottom: auto;
     }
 
-    mat-card {
-        margin-bottom: 20px;
+    .mat-card-subtitle > h4 {
+        color: white;
+    }
+
+    .balance {
+        background-image: url('../../../assets/exos-core/Balance_Block.png') !important;
+        background-size: cover;
+    }
+
+    .staking , .details {
+        background-image: url('../../../assets/exos-core/Transactions-Block.png') !important;
+        background-size: cover;
+        height: 220px;
+    }
+
+    .transactions {
+        background-image: url('../../../assets/exos-core/Transactions-Block.png') !important;
+        background-size: cover;
+    }
+
+    .advanced-details {
+        display: flex;
+        flex-flow: row;
+        width: 100%;
+    }
+
+    .mat-card-content > p {
+        text-align: left;
+    }
+
+    /* mat-form-field styling */
+    ::-webkit-input-placeholder { /* Edge */
+        color: rgba(255, 255, 255, 0.70) !important;
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: rgba(255, 255, 255, 0.70) !important;
+    }
+
+    ::placeholder {
+        color: rgba(255, 255, 255, 0.70) !important;
+    }
+
+    /* mat-form Border */
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: white;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+        color: white;
+    }
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
+        color: white;
+    }
+    .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-label{
+        color: red !important;
+    }
+    /* mat-form Border */
+    .mat-form-field.mat-focused .mat-form-field-label {
+        color: white;
+    }
+    .mat-form-field .mat-form-field-label {
+        color: white;
+    }
+    /* mat-form Font color */
+    input.mat-input-element {
+        color: white;
     }
 
     .dashboard-split-card {
@@ -79,6 +173,9 @@
         clear: both;
     }
 
+    .transaction-paginator > * .mat-select-value, .transaction-paginator > * .mat-select-arrow {
+        color: rgba(0, 0, 0, 0.54);
+    }
 
 
     .link {

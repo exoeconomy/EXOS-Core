@@ -29,13 +29,16 @@
             <mat-list class="main-menu">
 
                 <div class="menu-top">
-
-                    <img src="assets/exos-core/logo.png" class="menu-top-logo">
+                    <img src="assets/exos-core/ExOEconomy-Logo-Symbol.png" class="menu-top-logo">
                     <span *ngIf="showFiller" class="menu-top-text" mat-line>{{coinName}}</span>
                 </div>
 
+                <div class="main-menu-title">
+                    <h1>Menu</h1>
+                </div>
+
                 <mat-list-item *ngIf="appModes.enabled('dashboard')" routerLinkActive="main-menu-active" routerLink="/dashboard">
-                    <mat-icon mat-list-icon>dashboard</mat-icon>
+                    <mat-icon mat-list-icon>home</mat-icon>
                     <h4 *ngIf="showFiller" mat-line>Dashboard</h4>
                 </mat-list-item>
 
@@ -59,6 +62,11 @@
                 <mat-list-item *ngIf="handset" routerLinkActive="main-menu-active" routerLink="/tools">
                     <mat-icon mat-list-icon>build</mat-icon>
                     <h4 *ngIf="showFiller" mat-line>Tools</h4>
+                </mat-list-item>
+
+                <mat-list-item *ngIf="appModes.enabled('swaps')" routerLinkActive="main-menu-active" routerLink="/swaps">
+                    <mat-icon mat-list-icon><img src="assets/exos-core/ExOEconomy-Logo-Symbol.png" class="exos-logo"></mat-icon>
+                    <h4 *ngIf="showFiller" mat-line>EXOS Swaps</h4>
                 </mat-list-item>
 
                 <mat-list-item *ngIf="appModes.enabled('logout')" routerLinkActive="main-menu-active" routerLink="/logout">
@@ -91,14 +99,14 @@
             <span *ngIf="!handset">{{appTitle$ | async}}</span>
 
             <span *ngIf="handset && !appState.pageMode">
-                <button mat-stroked-button routerLink="/wallet/payment">
+                <button mat-flat-button routerLink="/wallet/payment">
                     <mat-icon>credit_card</mat-icon> Payment
                 </button>
             </span>
 
             <span class="fill-remaining-vertical"></span>
 
-            <p *ngIf="updateService.available" >
+            <p class="root-text" *ngIf="updateService.available" >
                 A new version is available!
             </p>
 

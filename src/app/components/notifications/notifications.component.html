@@ -2,7 +2,7 @@
 
     <div class="notifications-actions">
 
-        <button *ngIf="notification.any" (click)="notification.clear()" mat-raised-button color="primary">Remove All</button>
+        <button class="wallet-accept" *ngIf="notification.any" (click)="notification.clear()" mat-raised-button color="primary">Remove All</button>
         <div *ngIf="!notification.any">There is nothing to see here.</div>
 
     </div>
