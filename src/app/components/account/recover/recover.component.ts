@@ -74,7 +74,7 @@ export class RecoverAccountComponent {
             .recoverWallet(recoverWallet)
             .subscribe(
                 response => {
-                    this.snackBar.open('Your wallet has been recovered.', null, { duration: 3000 });
+                    this.snackBar.open('Your wallet has been recovered.', null, { duration: 3000, panelClass: ['snackbar-success'] });
                     localStorage.setItem('Network:Wallet', recoverWallet.name);
                     this.router.navigateByUrl('/login');
                 },

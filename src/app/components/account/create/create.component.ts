@@ -202,7 +202,7 @@ export class CreateAccountComponent implements OnInit {
 
                 self.saving = false;
                 self.log.info('Wallet Created!');
-                self.snackBar.open('Account successfully created!', null, { duration: 3000 });
+                self.snackBar.open('Account successfully created!', null, { duration: 3000, panelClass: ['snackbar-success'] });
                 self.router.navigateByUrl('/login');
 
 
