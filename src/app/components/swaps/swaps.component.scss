@@ -2,11 +2,6 @@
     margin: 0;
 }
 
-.mat-tab-body-content {
-    padding: 40px;
-    height: auto !important;
-}
-
 .swaps-screen > * .mat-tab-labels {
     background-color: #1a053d !important;
 }
@@ -117,4 +112,9 @@
 
 .swaps-screen > * .mat-tab-label[aria-posinset="1"] {
     display: none;
+}
+
+.swaps-screen > * .mat-tab-body-content {
+    padding: 40px;
+    height: auto !important;
 }
