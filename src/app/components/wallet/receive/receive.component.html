@@ -35,12 +35,10 @@
     </form>
 
     <div class="centered">
-        <button class="cancel-button" *ngIf="showAll" mat-flat-button (click)="showOneAddress()">← Back to one address</button>
+        <button class="show-button" *ngIf="showAll" mat-flat-button (click)="showOneAddress()">← Back to one address</button>
     </div>
 
-    <form *ngIf="showAll">
-
-
+    <form *ngIf="showAll" class="receive-addresses">
         <br>
         <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
             <mat-tab label="Unused">
