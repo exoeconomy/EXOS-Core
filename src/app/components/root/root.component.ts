@@ -207,7 +207,7 @@ export class RootComponent implements OnInit, OnDestroy {
 
     get networkStatusTooltip(): string {
         if (this.walletService.generalInfo) {
-            return `Connections: ${this.walletService.generalInfo.connectedNodes}\nBlock Height: ${this.walletService.generalInfo.chainTip.toLocaleString(this.localeService.locale)}\nSynced: ${this.walletService.percentSynced}`;
+            return `Connections: ${this.walletService.generalInfo.connectedNodes}\nBlock Height: ${this.walletService.generalInfo.chainTip.toLocaleString(this.localeService.locale)} ${this.walletService.generalInfo.isChainSynced ? '' : `\n${this.walletService.daysAhead}`}\nSynced: ${this.walletService.percentSynced}`;
         }
     }
 
@@ -245,6 +245,10 @@ export class RootComponent implements OnInit, OnDestroy {
         }
     }
 
+    checkSyncDates() {
+        this.walletService.fetchBlockData();
+    }
+
     closeDetails(reason: string) {
         this.detailsService.hide();
     }
@@ -279,6 +283,14 @@ export class RootComponent implements OnInit, OnDestroy {
         setInterval(() => {
             this.checkForUpdates();
         }, 60000 * 60 * 6);
+
+        if (this.router.url !== '/load') {
+            if (!this.generalInfo?.isChainSynced) {
+                setInterval(() => {
+                    this.checkSyncDates();
+                }, 5000);
+            }
+        }
 
         if (this.router.url !== '/load') {
             this.router.navigateByUrl('/load');

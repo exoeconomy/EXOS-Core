@@ -8,6 +8,7 @@ import { ApiService } from './api.service';
 import { GeneralInfo } from '../classes/general-info';
 import { Logger } from './logger.service';
 import { StakingInfo } from '../classes/staking-info';
+import { LocaleService } from 'src/app/services/locale.service';
 
 @Injectable({
     providedIn: 'root'
@@ -45,6 +46,8 @@ export class WalletService {
     public stakingInfo: StakingInfo;
     public activeWallet: any;
 
+    public daysAhead: string;
+
     // tslint:disable-next-line: variable-name
     private _history = new Subject();
     public history$ = this._history.asObservable();
@@ -53,6 +56,7 @@ export class WalletService {
         private apiService: ApiService,
         private globalService: GlobalService,
         private log: Logger,
+        public localeService: LocaleService,
         public appState: ApplicationStateService
     ) {
 
@@ -89,6 +93,70 @@ export class WalletService {
         this.active = false;
         this.transactionArray = [];
         this.cancelSubscriptions();
+    }
+
+    extractStrigData(s, prefix, suffix) {
+        let i = s.indexOf(prefix);
+        if (i >= 0) {
+            s = s.substring(i + prefix.length);
+        }
+        else {
+            return '';
+        }
+        if (suffix) {
+            i = s.indexOf(suffix);
+            if (i >= 0) {
+                s = s.substring(0, i);
+            }
+            else {
+            return '';
+            }
+        }
+        return s;
+    }
+
+    public timingAhead(days){
+        const calculateTimimg = d => {
+            let years = 0;
+            let months = 0;
+            let day = 0;
+            while (d){
+                if (d >= 365){
+                    years++;
+                    d -= 365;
+                }else if (d >= 30) {
+                    months++;
+                    d -= 30;
+                }else{
+                    day++;
+                    d--;
+               }
+            }
+            return {
+               years, months, day
+            };
+        };
+        const timing = calculateTimimg(days);
+        if (timing.years !== 0) {
+            return `${timing.years} year(s), ${timing.months} month(s) and ${timing.day} day(s) behind`;
+        }else if (timing.years === 0 && timing.months !== 0) {
+            return `${timing.months} month(s) and ${timing.day} day(s) behind`;
+        }else if (timing.years === 0 && timing.months === 0){
+            return `${timing.day} day(s) behind`;
+        }
+    }
+
+    fetchBlockData() {
+        this.apiService.getStats()
+            .subscribe( data => {
+                const tipAge = parseInt(this.extractStrigData(data, 'Age:', '.'), 10);
+                // console.log('tipAge: ', tipAge);
+                // console.log('tipAge type: ', typeof tipAge);
+                const pendingTime = this.timingAhead(tipAge);
+                // console.log('pendingTime: ', pendingTime);
+                // console.log('pendingTime type: ', typeof pendingTime);
+                this.daysAhead = pendingTime;
+            });
     }
 
     public startStaking(password: string) {
