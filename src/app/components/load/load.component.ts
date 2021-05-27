@@ -429,6 +429,7 @@ export class LoadComponent implements OnInit, OnDestroy {
                 sub.unsubscribe();
             }
 
+            if (!this.loading) { sub.unsubscribe(); }
         });
     }
 

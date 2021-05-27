@@ -94,6 +94,10 @@
             <h1 style="text-align: center">{{progressbarValue | number: '1.0-0'}} %</h1>
         </div>
             <br>Release {{appState.version}}
+        <span *ngIf="!delayed">
+            <br>
+            <button (click)="cancel()" mat-raised-button color="primary">Go Back</button>
+        </span>
         <span *ngIf="delayed">
             <br>
             <button routerLink="/advanced" mat-raised-button>Advanced</button>&nbsp;
