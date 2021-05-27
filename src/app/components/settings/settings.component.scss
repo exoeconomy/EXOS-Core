@@ -99,4 +99,8 @@
         background-color: white;
     }
 
+    .settings-card > * .mat-focused .mat-form-field-ripple {
+        background-color: white !important;
+    }
+
 }
