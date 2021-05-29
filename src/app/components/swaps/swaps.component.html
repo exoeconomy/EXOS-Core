@@ -47,7 +47,7 @@
             </div>
         </mat-tab>
 
-        <mat-tab label="INFORMATION *">
+        <mat-tab label="INFORMATION">
             <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column">
                 <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between stretch">
                     <div fxFlex>
@@ -197,7 +197,7 @@
             </div>
         </mat-tab>
 
-        <mat-tab label="INITIATE A SWAP *">
+        <mat-tab label="INITIATE A SWAP">
             <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column">
                 <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between stretch">
                     <div fxFlex fxLayout="column">
@@ -279,25 +279,50 @@
             </div>
         </mat-tab>
 
-        <mat-tab label="LIST OF TRANSACTIONS *">
-            <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column">
-                <h1>You have no transactions to view, yet. Please initiate a swap first</h1>
+        <mat-tab label="LIST OF TRANSACTIONS">
+            <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" class="swap-transactions">
+                <h1 style="display: none;">You have no transactions to view, yet. Please initiate a swap first</h1>
                 <h1>Please double-click a transaction to see more details</h1>
-                <table class="wallet-transactions-table interactive-table" mat-table matSort [dataSource]="dataSource">
+                <table>
+                    <tr class="tx-headers">
+                        <th></th>
+                        <th>Value</th>
+                        <th>Status</th>
+                        <th>Date modified</th>
+                    </tr>
+                    <tr class="tx-data">
+                        <td><mat-icon>swap_horiz</mat-icon></td>
+                        <td>2000 EXOS</td>
+                        <td>User sent EXOS to the swapping gateway</td>
+                        <td>18-05-2021-20:30:12 UTC (completed)</td>
+                    </tr>
+                </table>
+
+
+                <!-- <table class="wallet-transactions-table interactive-table" mat-table matSort [dataSource]="dataSource">
 
                     <ng-container matColumnDef="transactionType">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Value </th>
                         <td mat-cell *matCellDef="let transaction" [ngClass]="{'unconfirmed': !transaction.transactionConfirmedInBlock}">
-                            <!-- <mat-icon class="wallet-confirmed-icon" matTooltip="Transaction not confirmed in any blocks yet." matTooltipPosition="right" *ngIf="!transaction.transactionConfirmedInBlock">warning</mat-icon>
+                            <mat-icon class="wallet-confirmed-icon" matTooltip="Transaction not confirmed in any blocks yet." matTooltipPosition="right" *ngIf="!transaction.transactionConfirmedInBlock">warning</mat-icon>
                             <mat-icon class="wallet-confirmed-icon" matTooltip="Confirmed in block #{{transaction.transactionConfirmedInBlock}}" matTooltipPosition="right" *ngIf="transaction.transactionConfirmedInBlock">check</mat-icon>
-                            {{transaction.transactionType}} -->
+                            {{transaction.transactionType}}
                         </td>
                     </ng-container>
 
-                    <ng-container matColumnDef="transactionAmount">
+                    <ng-container matColumnDef="transactionValue">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Value </th>
+                        <td mat-cell *matCellDef="let transaction" [ngClass]="{'unconfirmed': !transaction.transactionConfirmedInBlock}">
+                            <mat-icon class="wallet-confirmed-icon" matTooltip="Transaction not confirmed in any blocks yet." matTooltipPosition="right" *ngIf="!transaction.transactionConfirmedInBlock">warning</mat-icon>
+                            <mat-icon class="wallet-confirmed-icon" matTooltip="Confirmed in block #{{transaction.transactionConfirmedInBlock}}" matTooltipPosition="right" *ngIf="transaction.transactionConfirmedInBlock">check</mat-icon>
+                            {{transaction.transactionType}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="transactionStatus">
                         <th mat-header-cell *matHeaderCellDef> Status </th>
                         <td mat-cell *matCellDef="let transaction" [ngClass]="{'unconfirmed': !transaction.transactionConfirmedInBlock}">
-                            <!-- <span *ngIf="transaction.transactionType == 'sent'">
+                            <span *ngIf="transaction.transactionType == 'sent'">
                                 <strong>- {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.localeService.locale
                                 }}
                                 </strong>
@@ -311,24 +336,23 @@
                                 <strong>+ {{ transaction.transactionAmount + transaction.transactionFee | coinNotation | number: '1.0-8': this.localeService.locale
                                 }}
                                 </strong>
-                            </span> -->
+                            </span>
                         </td>
                     </ng-container>
 
                     <ng-container matColumnDef="transactionTimestamp">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date modifie </th>
                         <td mat-cell *matCellDef="let transaction" [ngClass]="{'unconfirmed': !transaction.transactionConfirmedInBlock}">
-                            <!-- <span *ngIf="!appState.handset">{{ transaction.transactionTimestamp * 1000 | date:'medium': this.localeService.locale
+                            <span *ngIf="!appState.handset">{{ transaction.transactionTimestamp * 1000 | date:'medium': this.localeService.locale
                             }}</span>
                             <span *ngIf="appState.handset">{{ transaction.transactionTimestamp * 1000 | date:'short': this.localeService.locale
-                            }}</span> -->
+                            }}</span>
                         </td>
                     </ng-container>
-
-
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openTransactionDetails(row)"></tr>
-                </table>
+                </table> -->
+
                 <div fxFlex class="swapping-buttons-2">
                     <p><mat-icon class="info-icon little-icon" aria-label="Print">info</mat-icon> What does the status of my transaction(s) mean?</p>
                     <button mat-flat-button>INITIATE A NEW SWAP</button>
