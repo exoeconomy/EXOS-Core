@@ -181,6 +181,10 @@
     padding-bottom: 0 !important;
 }
 
+.swapping-form > * .mat-focused input {
+    caret-color: white;
+}
+
 .swapping-input {
     margin-bottom: 10px;
 }
@@ -243,6 +247,24 @@
 .swapping-error-title > h3 , .swapping-error-description > p {
     margin: 0;
 }
+
+.swap-transactions > table {
+    border-spacing: 0;
+}
+
+.swap-transactions > * tr {
+    height: 40px;
+}
+
+.swap-transactions > * th , .swap-transactions > * td {
+    border-bottom: 1px solid white !important;
+}
+
+.tx-headers { background-color: #64b6f7; }
+
+.tx-headers > th { text-align: initial; }
+
+.tx-data { background-color: #2e1d4b; }
 
 .warn-tip { color: #ff737f !important;}
 
