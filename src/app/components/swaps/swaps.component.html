@@ -1,5 +1,5 @@
 <div class="content swaps-screen not-selectable">
-    <mat-tab-group>
+    <mat-tab-group [(selectedIndex)]="actualSwapTabIndex">
         <mat-tab class="swapping-landing" label="Landing">
             <div class="swap-cards" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-around center">
                 <div class="swap-card">
@@ -40,148 +40,29 @@
                     </div>
                 </div>
             </div>
-            <div class="swapping-info">
-                <h4>
-                    *  the swapping features will be actived in the coming EXOS Core updates
-                </h4>
+            <div class="swapping-buttons">
+                <button mat-flat-button (click)="swapToTab(1)">PROCEED</button>
             </div>
         </mat-tab>
 
         <mat-tab label="INFORMATION">
             <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column">
-                <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between stretch">
+                <div fxFlex fxLayout="row" fxLayout.xs="row" fxLayout.sm="row" fxLayoutAlign="space-between stretch">
                     <div fxFlex>
                         <h1>What you need to know before swapping EXOS to wEXOS?</h1>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title class="warn-tip">
-                                        <mat-icon class="panel-icon" aria-label="Print">warning</mat-icon>Video tutorial for getting wEXOS
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>What are wExos?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>Why swap EXOS to wEXOS?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>How to install Metamask?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>How do I get a wEXOS receive address?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>Why is there a minimum for EXOS exchanged?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>Why does the process run in batches?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>Who pays the ETH fees?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>Why do we have daily and individual swap limits?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>How do I check the status of my transaction(s)?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>What is a decentralized exchange?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>What is UniSwap?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                        <mat-accordion>
-                            <mat-expansion-panel class="swapping-tip" hideToggle>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title>
-                                        <mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>How to use a liquidity pool?
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div></div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
+                        <a href="" class="warn-tip swapping-tip"><mat-icon class="panel-icon" aria-label="Print">warning</mat-icon>Video tutorial for getting wEXOS</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>What are wExos?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>Why swap EXOS to wEXOS?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>How to install Metamask?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>How do I get a wEXOS receive address?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>Why is there a minimum for EXOS exchanged?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>Why does the process run in batches?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>Who pays the ETH fees?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>Why do we have daily and individual swap limits?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>How do I check the status of my transaction(s)?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>What is a decentralized exchange?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>What is UniSwap?</a><br>
+                        <a href="" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>How to use a liquidity pool?</a><br>
                     </div>
                     <a class="toDashboard" routerLink="/dashboard">
                         <div fxFlex>
@@ -191,8 +72,8 @@
                     </a>
                 </div>
                 <div fxFlex class="swapping-buttons">
-                    <button mat-flat-button class="dashboard-send">LIST OF TRANSACTIONS</button>
-                    <button mat-flat-button>INITIATE A NEW SWAP</button>
+                    <button mat-flat-button class="dashboard-send" (click)="swapToTab(3)">LIST OF TRANSACTIONS</button>
+                    <button mat-flat-button (click)="swapToTab(2)">INITIATE A NEW SWAP</button>
                 </div>
             </div>
         </mat-tab>
@@ -273,7 +154,7 @@
                     <mat-checkbox>I am aware that wEXOS should be transfered no earlier than 21st of May, 2021</mat-checkbox>
                 </div>
                 <div fxFlex class="swapping-buttons">
-                    <button mat-flat-button>MORE INFO</button>
+                    <button mat-flat-button (click)="swapToTab(1)">MORE INFO</button>
                     <button mat-flat-button>PROCEED</button>
                 </div>
             </div>
@@ -290,7 +171,7 @@
                         <th>Status</th>
                         <th>Date modified</th>
                     </tr>
-                    <tr class="tx-data">
+                    <tr class="tx-data" (click)="openTransactionDetails()">
                         <td><mat-icon>swap_horiz</mat-icon></td>
                         <td>2000 EXOS</td>
                         <td>User sent EXOS to the swapping gateway</td>
@@ -355,7 +236,7 @@
 
                 <div fxFlex class="swapping-buttons-2">
                     <p><mat-icon class="info-icon little-icon" aria-label="Print">info</mat-icon> What does the status of my transaction(s) mean?</p>
-                    <button mat-flat-button>INITIATE A NEW SWAP</button>
+                    <button mat-flat-button (click)="swapToTab(2)">INITIATE A NEW SWAP</button>
                 </div>
             </div>
         </mat-tab>
