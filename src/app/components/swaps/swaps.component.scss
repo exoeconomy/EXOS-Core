@@ -60,6 +60,12 @@
     justify-content: center;
 }
 
+@media (max-width: 959px) {
+    .arrow-div img {
+        transform: rotate(90deg);
+    }
+}
+
 .swap-links {
     text-decoration: none !important;
     border-radius: 25px !important;
