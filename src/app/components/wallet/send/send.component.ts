@@ -34,6 +34,7 @@ export class SendComponent implements OnInit, OnDestroy {
     public apiError: string;
     public transactionResult: TransactionResult;
     public transaction: TransactionBuilding;
+    public notFunds = '';
 
     public showInputField = true;
     public showSendingField = false;
@@ -183,6 +184,7 @@ export class SendComponent implements OnInit, OnDestroy {
             this.sendForm.get('fee').value,
             true
         );
+        this.notFunds = '';
 
         this.apiService.estimateFee(transaction)
             .subscribe(
@@ -196,14 +198,8 @@ export class SendComponent implements OnInit, OnDestroy {
                     if (error.status === 0) {
                         // this.genericModalService.openModal(null, null);
                     } else if (error.status >= 400) {
-
+                        this.notFunds = error.error.errors[0].message;
                         this.apiService.handleException(error);
-
-                        if (!error.json().errors[0]) {
-                        } else {
-                            // this.genericModalService.openModal(null, error.json().errors[0].message);
-                            this.apiError = error.json().errors[0].message;
-                        }
                     }
                 },
                 () => {
