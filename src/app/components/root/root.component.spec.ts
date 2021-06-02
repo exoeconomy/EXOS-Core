@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/app/material.module';
 import { AppSharedModule } from 'src/app/shared/app-shared.module';
 import { DetailsModule } from '../details/details.module';
+import { WexoDetailsModule } from '../details/wexo-details.module';
 import { ViewAreaModule } from 'src/app/shared/view-area/view-area.module';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -17,6 +18,7 @@ describe('AppComponent', () => {
             MaterialModule,
             AppSharedModule,
             DetailsModule,
+            WexoDetailsModule,
             ViewAreaModule,
             RouterTestingModule.withRoutes([]),
         ],

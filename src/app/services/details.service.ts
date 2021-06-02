@@ -8,6 +8,8 @@ export class DetailsService {
     static singletonInstance: DetailsService;
 
     public item: any;
+    public exosTransaction = false;
+    public wexosTransaction = false;
 
     constructor() {
 
@@ -19,12 +21,19 @@ export class DetailsService {
 
     }
 
-    show(item: any) {
+    show(item: any, transactionType) {
         this.item = item;
+        if (transactionType) {
+            this.exosTransaction = true;
+        }else {
+            this.wexosTransaction = true;
+        }
     }
 
     hide() {
         this.item = null;
+        this.exosTransaction = false;
+        this.wexosTransaction = false;
     }
 
     get opened(): boolean {

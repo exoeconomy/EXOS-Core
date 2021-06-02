@@ -175,6 +175,6 @@ export class WalletComponent implements OnInit, OnDestroy {
     }
 
     public openTransactionDetails(transaction: TransactionInfo) {
-        this.detailsService.show(transaction);
+        this.detailsService.show(transaction, true);
     }
 }
