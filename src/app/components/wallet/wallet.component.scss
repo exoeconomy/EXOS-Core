@@ -56,12 +56,12 @@
     }
 
     .mat-card {
-        margin-bottom: 20px;
+        margin-bottom: auto;
         color: white;
     }
 
-    mat-card {
-        margin-bottom: 20px;
+    .mat-card {
+        margin-bottom: auto;
     }
 
     .mat-card-subtitle > h4 {
@@ -130,6 +130,10 @@
     /* mat-form Font color */
     input.mat-input-element {
         color: white;
+    }
+
+    .staking > * .mat-focused input {
+        caret-color: white;
     }
 
     .dashboard-split-card {

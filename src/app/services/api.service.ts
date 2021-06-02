@@ -553,6 +553,14 @@ export class ApiService {
     }
 
     /**
+     * Get last log output with stats
+     */
+    getStats(): Observable<any> {
+        const self = this;
+        return this.http.get(self.apiUrl + '/Dashboard/Stats', {responseType: 'text'});
+    }
+
+    /**
      * Add node
      */
     addNode(ip: string): Observable<any> {
