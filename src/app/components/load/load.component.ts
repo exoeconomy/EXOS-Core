@@ -503,11 +503,17 @@ export class LoadComponent implements OnInit, OnDestroy {
 
     cancel() {
         this.unsubscribe();
-
         this.appState.connected = false;
         this.loading = false;
         this.delayed = false;
         this.appState.daemon.mode = null;
+
+        this.appState.changingMode = true;
+        this.electronService.ipcRenderer.send('daemon-change');
+        // Make sure we shut down the existing node when user choose the change mode action.
+        this.apiService.shutdownNode().subscribe(response => {
+        });
+        this.electronService.ipcRenderer.send('kill-process');
     }
 
     simpleWalletConnect() {
