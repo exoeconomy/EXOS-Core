@@ -85,6 +85,14 @@
         color: white;
     }
 
+    .recover-cards > * .mat-focused .mat-form-field-ripple {
+        background-color: white !important;
+    }
+
+    .recover-cards > * .mat-focused input , .recover-cards > * .mat-focused textarea {
+        caret-color: white;
+    }
+
     button
 	{
 		margin-right: 6px;

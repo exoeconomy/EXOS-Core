@@ -2,11 +2,6 @@
     margin: 0;
 }
 
-.mat-tab-body-content {
-    padding: 40px;
-    height: auto !important;
-}
-
 .swaps-screen > * .mat-tab-labels {
     background-color: #1a053d !important;
 }
@@ -302,4 +297,8 @@
 /* mat-form Font color */
 input.mat-input-element {
     color: white !important;
+}
+.swaps-screen > * .mat-tab-body-content {
+    padding: 40px;
+    height: auto !important;
 }

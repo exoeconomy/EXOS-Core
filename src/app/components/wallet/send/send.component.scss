@@ -111,4 +111,9 @@
     input.mat-input-element {
         color: white;
     }
+
+    .send-card > * .mat-focused input {
+        caret-color: white;
+    }
+
 }

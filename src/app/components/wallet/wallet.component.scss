@@ -132,6 +132,10 @@
         color: white;
     }
 
+    .staking > * .mat-focused input {
+        caret-color: white;
+    }
+
     .dashboard-split-card {
         display: flex;
         flex-direction: row;
