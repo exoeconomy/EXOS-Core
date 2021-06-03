@@ -64,21 +64,21 @@
                         <a href="https://link.exos.to/faq12" target="_blank" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>What is UniSwap?</a><br>
                         <a href="https://link.exos.to/faq13" target="_blank" class="swapping-tip"><mat-icon class="panel-icon info-icon" aria-label="Print">info</mat-icon>How to use a liquidity pool?</a><br>
                     </div>
-                    <a class="toDashboard" routerLink="/dashboard">
+                    <a class="toDashboard" href="https://link.exos.to/wexosportal" target="_blank">
                         <div fxFlex>
                             <h1>wEXOS Portal</h1>
                             <p>Visit the dashboard and check out the EXOS/wEXOS learning materials</p>
                         </div>
                     </a>
                 </div>
-                <div fxFlex class="swapping-buttons">
+                <div fxFlex class="swapping-buttons" style="display: none !important;">
                     <button mat-flat-button class="dashboard-send" (click)="swapToTab(3)">LIST OF TRANSACTIONS</button>
                     <button mat-flat-button (click)="swapToTab(2)">INITIATE A NEW SWAP</button>
                 </div>
             </div>
         </mat-tab>
 
-        <mat-tab label="INITIATE A SWAP">
+        <mat-tab label="INITIATE A SWAP" disabled>
             <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column">
                 <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between stretch">
                     <div fxFlex fxLayout="column">
@@ -127,7 +127,7 @@
                         </form>
                     </div>
                     <div fxFlex fxLayout="column" class="swapping-right-column">
-                        <a class="toDashboard" routerLink="/dashboard">
+                        <a class="toDashboard" href="https://link.exos.to/wexosportal" target="_blank">
                             <div fxFlex>
                                 <h1>wEXOS Portal</h1>
                                 <p>Visit the dashboard and check out the EXOS/wEXOS learning materials</p>
@@ -160,7 +160,7 @@
             </div>
         </mat-tab>
 
-        <mat-tab label="LIST OF TRANSACTIONS">
+        <mat-tab label="LIST OF TRANSACTIONS" disabled>
             <div fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" class="swap-transactions">
                 <h1 style="display: none;">You have no transactions to view, yet. Please initiate a swap first</h1>
                 <h1>Please double-click a transaction to see more details</h1>
