@@ -249,10 +249,6 @@ export class RootComponent implements OnInit, OnDestroy {
         this.walletService.fetchBlockData();
     }
 
-    checkSyncDates() {
-        this.walletService.fetchBlockData();
-    }
-
     closeDetails(reason: string) {
         this.detailsService.hide();
     }
