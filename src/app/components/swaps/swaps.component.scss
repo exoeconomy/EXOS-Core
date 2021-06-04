@@ -120,6 +120,184 @@
     display: none;
 }
 
+.toDashboard {
+    background: url('../../../assets/exos-core/Learn-Block.png');
+    background-position: center;
+    background-size: cover;
+    width: 260px;
+    height: 130px;
+    padding: 15px;
+    border-radius: 16px;
+    flex: initial !important;
+    text-decoration: none !important;
+}
+
+.swapping-tip {
+    display: inline-flex;
+    text-decoration: none !important;
+    margin-bottom: 8px;
+}
+
+.panel-icon {
+    margin-right: 10px;
+}
+
+.swapping-input-info {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.swapping-input-info > p {
+    margin: 0;
+}
+
+.swapping-input-info > * .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+}
+
+.swapping-form {
+    flex-direction: column !important;
+}
+
+.swapping-form > * .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+}
+
+.swapping-form > * .mat-focused input {
+    caret-color: white;
+}
+
+.swapping-input {
+    margin-bottom: 10px;
+}
+
+.swapping-input > .mat-form-field {
+    max-width: 60%;
+}
+
+.swapping-right-column {
+    flex: none !important;
+    align-items: center;
+}
+
+.swapping-checkboxes {
+    margin: 10px 0 30px;
+}
+
+.swapping-buttons {
+    display: flex !important;
+    justify-content: flex-end;
+}
+
+.swapping-buttons-2 {
+    display: flex !important;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.swapping-buttons > button , .swapping-buttons-2 > button , .trouble-button {
+    background: url('../../../assets/exos-core/Button2.png');
+    background-size: cover;
+    margin-left: 20px;
+    color: white !important;
+}
+
+.trouble-button {
+    width: 70%;
+    margin: 30px 0;
+}
+
+.swapping-alert {
+    border-radius: 15px;
+    min-width: 220px;
+    max-width: 500px;
+}
+
+.swapping-error-title {
+    background-color: #ff737f;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+}
+
+.swapping-error-description {
+    background-color: white;
+    color: #ff737f; 
+    border-radius: 0 0 10px 10px;
+    padding: 5px;   
+}
+
+.swapping-error-title > h3 , .swapping-error-description > p {
+    margin: 0;
+}
+
+.swap-transactions > table {
+    border-spacing: 0;
+}
+
+.swap-transactions > * tr {
+    height: 40px;
+}
+
+.swap-transactions > * th , .swap-transactions > * td {
+    border-bottom: 1px solid white !important;
+}
+
+.tx-headers { background-color: #64b6f7; }
+
+.tx-headers > th { text-align: initial; }
+
+.tx-data {
+    background-color: #2e1d4b;
+    cursor: pointer;
+}
+
+.warn-tip { color: #ff737f !important;}
+
+.info-icon { color: #6ac0fe;}
+
+.little-icon { font-size: 15px; }
+
+
+/* mat-form-field styling */
+::-webkit-input-placeholder { /* Edge */
+    color: rgba(255, 255, 255, 0.70) !important;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 0.70) !important;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.70) !important;
+}
+
+/* mat-form Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: white !important;
+}
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
+    color: white !important;
+}
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-label{
+    color: red !important;
+}
+/* mat-form Border */
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: white !important;
+}
+.mat-form-field .mat-form-field-label {
+    color: white !important;
+}
+/* mat-form Font color */
+input.mat-input-element {
+    color: white !important;
+}
 .swaps-screen > * .mat-tab-body-content {
     padding: 40px;
     height: auto !important;
