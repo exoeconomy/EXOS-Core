@@ -244,6 +244,14 @@ span.ellipsis {
     color: #f44336 !important;
     font-weight: bolder;
 }
+simple-snack-bar span {
+    margin: auto;
+    text-align: center;
+}
+
+.snackbar-success {
+    background: green !important;
+}
 
 // ::-webkit-scrollbar-track {
 // 	background-color: orange;

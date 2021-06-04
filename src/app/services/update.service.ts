@@ -14,7 +14,7 @@ export class UpdateService {
     public info: UpdateInfo;
     public progress: any;
     public downloaded = false;
-    public available = false;
+    public available: boolean;
     public downloading = false;
 
     constructor(
