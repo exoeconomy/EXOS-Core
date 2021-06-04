@@ -15,14 +15,38 @@
 
     <mat-drawer #details mode="over" [ngClass]="{'details-full-width': handset}" (keydown.escape)="closeDetails('escape')" [opened]="detailsService.opened" position="end">
 
+        <div *ngIf="detailsService.exosTransaction">
+            <button (click)="closeDetails('toggle button')" mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+
+            <h1 class="mat-h1" class="details-title">Transaction details</h1>
+
+            <app-details *ngIf="detailsService.item"></app-details>
+        </div>
+
+        <div *ngIf="detailsService.wexosTransaction">
+            <button (click)="closeDetails('toggle button')" mat-icon-button>
+                <mat-icon>close</mat-icon>
+            </button>
+
+            <h1 class="mat-h1" class="details-title">Detailed EXOS-wEXOS swap transaction data</h1>
+
+            <app-wexodetails *ngIf="detailsService.item"></app-wexodetails>
+        </div>
+        
+    </mat-drawer>
+
+    <!-- <mat-drawer #wEXOS mode="over" [ngClass]="{'details-full-width': handset}" (keydown.escape)="closeDetails('escape')" [opened]="detailsService.opened" position="end">
+
         <button (click)="closeDetails('toggle button')" mat-icon-button>
             <mat-icon>close</mat-icon>
         </button>
 
-        <h1 class="mat-h1" class="details-title">Transaction details</h1>
+        <h1 class="mat-h1" class="details-title">Detailed EXOS-wEXOS swap transaction data</h1>
 
         <app-details *ngIf="detailsService.item"></app-details>
-    </mat-drawer>
+    </mat-drawer> -->
 
     <mat-drawer #drawer class="not-selectable" [(opened)]="menuOpened" [(mode)]="menuMode">
         <app-view-area>
@@ -106,7 +130,7 @@
 
             <span class="fill-remaining-vertical"></span>
 
-            <p class="root-text" *ngIf="updateService.available" >
+            <p *ngIf="updateService.available" >
                 A new version is available!
             </p>
 

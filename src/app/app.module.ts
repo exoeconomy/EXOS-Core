@@ -24,6 +24,7 @@ import { GlobalService } from './services/global.service';
 import { LoadModule } from './components/load/load.module';
 import { NetworkModule } from './components/network/network.module';
 import { DetailsModule } from './components/details/details.module';
+import { WexoDetailsModule } from './components/details/wexo-details.module';
 import { environment } from '../environments/environment';
 import { ChainService } from './services/chain.service';
 import { LocaleService } from './services/locale.service';
@@ -74,6 +75,7 @@ registerLocaleData(localezIT);
         ReportModule,
         UpdateModule,
         DetailsModule,
+        WexoDetailsModule,
         AdvancedModule,
         ToolsModule,
         HistoryModule,

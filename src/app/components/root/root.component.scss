@@ -4,16 +4,6 @@
     background-color: #3f0f79 !important;
     }
 
-
-::ng-deep snack-bar-container.snackbar {
-        background: green !important;
-        text-align: center;
-    }
-
-    p.ng-star-inserted.root-text {
-        margin: 0px;
-    }
-
 .root {
   .daemon-shutdown-status {
     z-index: 10000;

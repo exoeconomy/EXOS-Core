@@ -56,6 +56,16 @@
         color: white;
     }
 
+    .token-send > * .mat-form-field-subscript-wrapper {
+        position: inherit;
+    }
+
+    .extraError {
+        color: red;
+        font-size: 12px;
+        margin-left: 10px;
+    }
+
     .wallet-send , .wallet-cancel {
         width: 100px;
         background-image: url('../../../../assets/exos-core/Button.png');
