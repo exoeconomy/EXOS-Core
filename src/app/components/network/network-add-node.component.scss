@@ -7,6 +7,14 @@
     color: white;
 }
 
+.add-node-content > * .mat-focused .mat-form-field-ripple {
+    background-color: white !important;
+}
+
+.add-node-content > * .mat-focused input {
+    caret-color: white;
+}
+
 .accept-button {
     background-image: url('../../../assets/exos-core/Button.png') !important;
     font-size: 1rem;
@@ -15,5 +23,4 @@
 .cancel-button {
     background-image: url('../../../assets/exos-core/Wallet-Button.png') !important;
     font-size: 1rem;
-    border: solid 1px white;
 }

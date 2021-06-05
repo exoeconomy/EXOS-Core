@@ -5,7 +5,26 @@
         background-image: url('../../../assets/exos-core/Balance_Block.png');
         background-size: cover;
         color: white;
+        display: flex;
+        flex-flow: column;
     }
+    
+    .update-card > * button {
+        background: url('../../../assets/exos-core/Button2.png');
+        background-size: cover;
+        margin-left: 20px;
+        color: white !important;
+    }
+
+    .update-card > .mat-card-header { order: 1;}
+
+    .update-card > .mat-card-actions {
+        order: 2;
+        margin: 10px 0px;
+        padding: 0;
+    }
+
+    .update-card > .mat-card-content { order: 3;}
 
     .update-card-header-image {
         background-image: url('../../../assets/exos-core/ExOEconomy-Logo-Symbol.png');

@@ -4,8 +4,7 @@
     background-color: #3f0f79 !important;
     }
 
-
-::ng-deep snack-bar-container.snackbar {
+    ::ng-deep snack-bar-container.snackbar {
         background: green !important;
         text-align: center;
     }

@@ -9,7 +9,7 @@
     </h2>
   </mat-card>
 
-  <mat-card class="send-card" *ngIf="showInputField">
+  <mat-card class="send-card token-send" *ngIf="showInputField">
     <form [formGroup]="sendForm">
       <mat-form-field appearance="outline">
         <mat-label>Amount</mat-label>
@@ -18,8 +18,11 @@
         <mat-error *ngIf="formErrors.amount">
           {{ formErrors.amount }}
         </mat-error>
+        
       </mat-form-field>
-
+        <div class="extraError" *ngIf="this.notFunds!=''">
+            {{ this.notFunds }}, be sure to increase your available amount with the missing amount
+        </div>
       <br>
 
       <mat-form-field appearance="outline">

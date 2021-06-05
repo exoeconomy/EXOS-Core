@@ -27,4 +27,22 @@
     .tab-pane-line {
 
     }
+
+    .receive-addresses > * .mat-tab-label {
+        background-image: url('../../../../assets/exos-core/Wallet-Button.png');
+        background-size: cover;
+        color: white;
+        border-radius: 15px;
+        margin: 0 30px;
+    }
+
+    .receive-addresses > * .mat-tab-label-active {
+        background-image: url('../../../../assets/exos-core/Button.png');
+        background-size: cover;
+        color: white;
+    }
+
+    .receive-addresses > * .mat-ink-bar {
+        display: none !important;
+    }
 }

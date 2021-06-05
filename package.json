@@ -1,6 +1,6 @@
 {
     "name": "exoscore",
-    "version": "1.0.20",
+    "version": "1.0.21",
     "license": "MIT",
     "author": {
         "name": "OpenExO",
@@ -117,11 +117,11 @@
         "crypto-js": "4.0.0",
         "dexie": "3.0.2",
         "electron": "9.4.0",
-        "electron-builder": "22.11.5",
+        "electron-builder": "22.9.1",
         "electron-notarize": "^1.0.0",
         "electron-reload": "1.5.0",
         "enhanced-resolve": "4.3.0",
-        "exos-coininfo": "file:./contrib/exos-coininfo-5.1.0.tgz",
+        "exos-coininfo": "file:/./contrib/exos-coininfo-5.1.0.tgz",
         "hammerjs": "2.0.8",
         "jasmine-core": "~3.6.0",
         "jasmine-spec-reporter": "~5.0.2",

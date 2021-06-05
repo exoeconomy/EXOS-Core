@@ -72,8 +72,8 @@
     "extraResources": [
         "daemon/**/*",
         "dist/assets/exos-core/icon-tray.ico",
-        "dist/assets/exos-core/logo-tray.png",
         "dist/assets/exos-core/logo.png",
+        "dist/assets/exos-core/logo-tray.png",
         "dist/assets/license.txt"
     ]
 }

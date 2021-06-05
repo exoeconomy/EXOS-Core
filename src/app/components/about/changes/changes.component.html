@@ -1,6 +1,18 @@
 <div class="content">
     <h1 class="mat-h1" *ngIf="appState.handset">{{appState.appTitle$ | async}}</h1>
 
+    <h3 class="mat-h3">Jun 4, 2021 (1.0.21)</h3>
+    <ul>
+        <li>Add the information tab on the EXOS Swaps screen, which contains direct links to the FAQ pages</li>
+        <li>Fix the Wallet-Receive screen UI when showing all addresses</li>
+        <li>Fix the cursor color and the input-box border when clicking an input-box</li>
+        <li>Add Go back button on modules load screen, which allows to go back to the network selection screen and then reload the node if the modules load takes a long time or if an error was reported with the node</li>
+        <li>Fix the extra padding of the elements of the Tools screen, after having previously been in the EXOS Swaps screen</li>
+        <li>Add Node Syncing dates feature, it is now possible to know from the Network status screen and from the tiptool of the top menu the remaining time for the node to synchronize</li>
+        <li>Fix update details, from now on the list of changes and the download links of a new update are detailed</li>
+        <li>Update daemon packages(1.0.23) to reduce the node time on start up for all platforms</li>
+    </ul>
+
     <h3 class="mat-h3">May 25, 2021 (1.0.20)</h3>
     <ul>
         <li>Full revamp of the EXOS-Core wallet UI</li>

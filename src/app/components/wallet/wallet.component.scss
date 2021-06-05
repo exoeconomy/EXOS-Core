@@ -60,7 +60,7 @@
         color: white;
     }
 
-    .mat-card {
+    mat-card {
         margin-bottom: auto;
     }
 
@@ -130,6 +130,10 @@
     /* mat-form Font color */
     input.mat-input-element {
         color: white;
+    }
+
+    .staking > * .mat-focused input {
+        caret-color: white;
     }
 
     .dashboard-split-card {

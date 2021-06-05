@@ -1,0 +1,27 @@
+.details-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.details-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
+}
+
+.details-row-title {
+    font-weight: bold;
+    width: 230px;
+}
+
+.details-row-value {
+    display: inline-flex;
+}
+
+.details-row-value mat-icon {
+    margin-left: 10px;
+}
+
+.details-full-width {
+    min-width: 100% !important;
+}
